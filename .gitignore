@@ -1,0 +1,8 @@
+latex-templates
+
+# see bibliography
+literature
+
+*.pdf
+
+*.gz
