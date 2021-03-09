@@ -1,20 +1,19 @@
-\documentclass[12pt,a4paper,twoside]{article}
+\documentclass[a4paper,12pt]{article}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\setlength{\voffset}{-28.4mm}
-\setlength{\hoffset}{-1in}
-\setlength{\topmargin}{20mm}
-\setlength{\oddsidemargin}{25mm}
-\setlength{\evensidemargin}{25mm}
-\setlength{\textwidth}{160mm}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm
+}
+\setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
-\setlength{\textheight}{235mm}
-\setlength{\footskip}{20mm}
-\setlength{\headsep}{50pt}
-\setlength{\headheight}{0pt}
 
 \begin{document}
 
@@ -29,7 +28,7 @@
 
 \input{sections/abstract}
 
-\input{sections/chapters}
+\input{sections/introduction}
 
 \bibliographystyle{plain}
 \bibliography{main}
