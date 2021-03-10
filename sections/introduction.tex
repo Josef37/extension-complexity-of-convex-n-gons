@@ -1,12 +1,66 @@
 \section{Introduction} 
 % todo March 10
+% todo: citations
 
+\subsection{Extension Complexity}
+
+To describe a regular hexagon with inequalities, 6 inequalities are required. However by projecting a 3-dimensional polytope, one can achive the same polygon with 5 inequalities, see \ref{fig:hexagon}. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5,trim={0 2.5cm 0 2cm},clip]{assets/hexagon}
+  \caption{A regular hexagon as a projection of a polytope with 5 factes (see \cite{kwan2020extension}).}
+  \label{fig:hexagon}
+\end{figure}
+
+This is the key idea behind extended formulations. Simplifing the representation of polygons by projecting simpler (higher-dimensional) polytopes "down" to the desired polytope.
+One can think of this operation as "compressing" the representation. This illustration is inspired by the fact, that regular $n$-gons (i.e. polygons with $n$ vertices), only require $O(log(n))$ inequalities in their compressed form, since their very nature is regular.
+
+This intuition is formalized like this:
+
+\begin{definition}[Extended Formulation]
+  Let $P$ be a $d$-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points}, $Q$ a $m$-dimensional polytope and $\pi:\mathbb{R}^d \to \mathbb{R}^m$ a linear projection.
+  The pair $(Q,\pi)$ is called an \textit{extended formulation} of $P$, if $\pi(Q)=P$. The \textit{size} of $(Q,\pi)$ is defined as the number of factes of $Q$.
+\end{definition}
+
+\begin{definition}[Extension Complexity]
+  The \textit{extension complexity} of a polytope $P$ is the smallest possible size of an extended formulation of $P$. Is is usually denoted with $xc(P)$.
+\end{definition}
+
+Polytopes with a small extension complexity can be "compressed" very well with the approach of extended formulations.
+Such simplified formulations can be used for improving linear programs, since optimization is typically faster, the less inequalities are required.
+
+\subsection{Overview of Current Research}
+The application of extended formulations for solving hard linear problems seems promising. But reserach in the past years shows some bad examples:
 \begin{itemize}
-  \item overview of extended formulations in general
-  \item importance of extended formulations (application in optimization, ...)
-  \item visualization/image
-  \item importance of n-gons as a benchmark for extended formulations
-  \item state of current research
-  \item (maybe) overview of known extensions
-  \item overview of this paper (structure, style)
+  \item It was shown, that the \textit{traveling salesman} polytope can't have polynomial extension complexity. So here extended formulations don't provide an improvement over traditional methods.
+  \item The results for the \textit{matching} polytope are even worse: In contrast to the polynomial-time algorithm for solving this problem, there is no polynomial-size extended formulation.
+\end{itemize}
+So the study of polyons has importance as a benchmark for extened formulations in general.
+That's why current research focuses on finding good bounds for the extension complexity, rather than developing algorithms for constructing such extensions.
+
+% todo: slack matrix
+
+Because this document is focused on polygons, we recall briefly recall the history of bounds and conjectures for the extension complexity:
+
+Define $\mathcal{P}_n$ as the set of all convex polygons with $n$ vertices. Then $$pc:\mathbb{N} \to \mathbb{N}, pc(n) = \max_{P \in \mathcal{P}_n} xc(P)$$ is called the \textit{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
+
+The lower bound $pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done by the authors of @todo by a counting argument. In this paper we will provide another approach to proving this lower bound. 
+
+But the upper bound is more challenging. Only few improvements were made for a long time and the trivial upper bound $pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by Shitov and Padrol \& Pfeifle and proved that $pc(n) \leq (6n+6)/7$. The basis for their proved was the fact that $pc(7)=6$, i.e. each heptagon has extension complexity at most 6.
+It was conjectured, that $pc(n) \in \Theta(n)$, which was falsified by Shitov by proving $pc(n) \in o(n)$. He later improved the upper bound to $pc(n) \in O(n^{2/3})$, which is the best known bound so far.
+
+So this is currently known about the polgon complexity:
+$$pc(n) \in \Omega(n^{1/2}) \cup O(n^{2/3})$$
+
+There is another recent paper, which focuses on cyclic polygons (all vertices lie on a circle). The authors proved that $xc(P) \in O(n^{1/2})$ for all circular $n$-gons. 
+This led the authors to propose, that this upper bound could also hold for general $n$-gons, since "cyclic polygons seem to represent quite a diverse cross-section of the space of all polygons".
+
+\subsection{Overview of this Document}
+\begin{itemize}
+  \item structure, style: Focus on examples and key ideas, refer to original for techincal details
+  \item upper bound of $O(n^{2/3})$ with geometric approach
+  \item upper bound of $O(n^{1/2})$ for circular n-gons with semi-geometric / semi-algebraic approach
+  \item compare, how both approaches differ
+  \item lower bound (multiple proof already done)
 \end{itemize}
