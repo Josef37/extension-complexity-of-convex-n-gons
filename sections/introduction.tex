@@ -30,7 +30,10 @@ This intuition is formalized like this:
 Polytopes with a small extension complexity can be "compressed" very well with the approach of extended formulations.
 Such simplified formulations can be used for improving linear programs, since optimization is typically faster, the less inequalities are required.
 
+
+
 \subsection{Overview of Current Research}
+
 The application of extended formulations for solving hard linear problems seems promising. But reserach in the past years shows some bad examples:
 \begin{itemize}
   \item It was shown, that the \textit{traveling salesman} polytope can't have polynomial extension complexity. So here extended formulations don't provide an improvement over traditional methods.
@@ -73,11 +76,15 @@ $$pc(n) \in \Omega(n^{1/2}) \cup O(n^{2/3})$$
 There is another recent paper, which focuses on cyclic polygons (all vertices lie on a circle). The authors proved that $xc(P) \in O(n^{1/2})$ for all circular $n$-gons. 
 This led the authors to propose, that this upper bound could also hold for general $n$-gons, since "cyclic polygons seem to represent quite a diverse cross-section of the space of all polygons".
 
+
+
 \subsection{Overview of this Document}
-\begin{itemize}
-  \item structure, style: Focus on examples and key ideas, refer to original for techincal details
-  \item upper bound of $O(n^{2/3})$ with geometric approach
-  \item upper bound of $O(n^{1/2})$ for circular n-gons with semi-geometric / semi-algebraic approach
-  \item compare, how both approaches differ
-  \item lower bound (multiple proof already done)
-\end{itemize}
+
+In this paper we focus on the key ideas behind the discussed papers. We will make use of examples and skip most technical details.
+
+In the first part we examine the results that led to the best known upper bounds. 
+We will start with Shitov's paper, which provides the upper bound of $O(n^{2/3})$ with a purely geometric approach.
+From there we have a look at cyclic n-gons and the upper bound of $O(n^{1/2})$, which was provided by a semi-geometric / semi-algebraic approach.
+Next we try to compare these two approaches, as far as they are comparable. First on a high level (comparing key ideas) and later on a more technical level.
+
+In the second part we give a proof of the lower bound and present the used theorem, which can be applied on various problems. We also give a quick overview of the key ideas behind it.
