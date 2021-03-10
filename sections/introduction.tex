@@ -39,11 +39,28 @@ The application of extended formulations for solving hard linear problems seems 
 So the study of polyons has importance as a benchmark for extened formulations in general.
 That's why current research focuses on finding good bounds for the extension complexity, rather than developing algorithms for constructing such extensions.
 
-% todo: slack matrix
+There are currently two main approaches for finding bounds for the extension complexity: The first one is the natural geometric approach, but the second one is a linear algebraic approach based on a remarkable result of Yannakakis, which we'll recall briefly:
+
+\begin{definition}[Slack Matrix]
+  Let $P$ be a polytope.
+  Then a \textit{slack matrix}\footnote{Note that the slack matrix depends on the representation of $P$. So there is no single slack matrix to a given polytope.} $M$ of $P$ is a nonnegative matrix whose rows are indexed by the vertices of $P$ and whose columns are indexed by the linear constraints of some representation of $P=\{x \in \mathbb{R}^d \mid Ax \leq b\}$. 
+  The entries of $M$ are defined as $m_{ij} = b_j - a_j v_i$, where $a_j$ is a row of $A$ and $v_i$ is a vertex of $P$.
+\end{definition}
+
+\begin{definition}[Nonnegative Rank]
+  The \textit{nonnegative rank} of a nonnegative matrix $M \in \mathbb{R}^n \times \mathbb{R}^m$ is the smallest integer $k$, for which $M = TU$, where $T \in \mathbb{R}^n \times \mathbb{R}^k$ and $U \in \mathbb{R}^k \times \mathbb{R}^m$.
+  We define $rank_+(M) := k$.
+\end{definition}
+
+\begin{theorem}(see Yannakakis)
+  Let $P$ be a polytope and $M$ a slack matrix of $P$. Then $xc(P) = rank_+(M)$.
+\end{theorem}
+
+This theorem allows to tackle the question of the extension complexity in a linear algebraic way, which we will present in this paper, too.
 
 Because this document is focused on polygons, we recall briefly recall the history of bounds and conjectures for the extension complexity:
 
-Define $\mathcal{P}_n$ as the set of all convex polygons with $n$ vertices. Then $$pc:\mathbb{N} \to \mathbb{N}, pc(n) = \max_{P \in \mathcal{P}_n} xc(P)$$ is called the \textit{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
+Define $\mathcal{P}_n$ as the set of all convex polygons with $n$ vertices. Then $$pc:\mathbb{N} \to \mathbb{N}, pc(n) = \max \{xc(P) \mid P \in \mathcal{P}_n\}$$ is called the \textit{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
 
 The lower bound $pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done by the authors of @todo by a counting argument. In this paper we will provide another approach to proving this lower bound. 
 
