@@ -1,5 +1,4 @@
 \section{Lower Bounds for the Extension Complexity}
-% todo: define ball (B) and norm (euclid)
 % todo: Think about multi-dimensional proof
 
 In this section we provide yet another proof for $pc(n) \in \Omega(n^{1/2})$.
@@ -8,7 +7,13 @@ After the proof is done, we will explain the key concepts of the applied theorem
 
 The central piece of the proof is Theorem~1 from \cite{averkov2016maximum}, which we adopt for the case of linear extended formulations (the original also allowed semidefinite ones).
 
-Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty compact sets $X,Y \subseteq \R^d$, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
+We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mid \norm{x} \leq 1 \}$ to be the $d$-dimensional unit ball.
+
+
+
+\subsection{Introducing the Applied Theorem}
+
+Frist we have to define the \textit{Hausdorff distance} of two non-empty compact sets $X,Y \subseteq \R^d$, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
 
 \begin{figure}[h]
   \centering
