@@ -1,24 +1,58 @@
-
 \section{Upper Bounds for the Extension Complexity}
 % todo @ March 12
 
 \begin{itemize}
   \item overview of upcoming section
-  \item overview of known upper bounds
-  \item history of conjectures
-  \item current conjectures (intuition?)
 \end{itemize}
+
+
 
 \subsection{Arbitrary Convex n-gons}
 % todo @ March 13 to 15
 
 \begin{itemize}
-  \item overview of Shitovs paper
-  \item What is the key idea?
-  \item Maximum possible result with Theorem 28
-  \item Why can't one just apply Theorem 28 (and skip the rest of the paper)?
+  \item What is the key idea? 
+  \begin{itemize}
+    \item splitting n-gons into thin slices
+    \item Extracting subset (vertices not neccessarily in order) with small extension, since $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$, repeatedly
+    \item Constructing and glueing 3-d extended formulations: Theorem 28
+  \end{itemize}
+  \item essential statements
+  \begin{itemize}
+    \item Theorem 28
+    \begin{itemize}
+      \item What does it say?
+      \item Maximum possible result with Theorem 28
+      \item Why can't one just apply Theorem 28 (and skip the rest of the paper)?
+    \end{itemize}
+  \end{itemize}
+  \item connections between statements
+  \begin{itemize}
+    \item (empty)
+  \end{itemize}
+  \item proofs worth repeating
+  \begin{itemize}
+    \item (empty)
+  \end{itemize}
   \item Intuition for the technical part (especially definitions) through examples
 \end{itemize}
+
+\begin{tabular}{| p{50mm} | p{100mm} |}
+  \hline
+  \multicolumn{2}{|c|}{\textbf{Main results per chapter}}\\ \hline
+  3. Preliminaries & Extension Complexity for union of polytopes \\ \hline
+  4. Acute polyhedra & There is an acute polyhedron for a polygon, where all main edges except one have fixed direction \\ \hline
+  5. Acute diagrams & There is an acute diagram for a polygon, where all main edges except one have fixed direction \\ \hline
+  6. Glueing acute extensions together & Skip vertices of a polygon by joining acute diagrams to get an extended formulation which represents the original polygon \\ \hline
+  7. Thin sequences & Splitting polygons is now a thing \& something about rays passing a horizontal line \\ \hline
+  8. Good sequences & good sequences let you apply Theorem 28, identify good sequence via ray passing through top \\ \hline
+  9. Extracting a slanted subsequence & When it's not slanted, it'll extend well (Lemma 49) \\ \hline
+  10. Decreasing slanted sequences & Get estimates of xc for slanted sequences \\ \hline
+  11. Extensions for slanted sequences & Subsequence of slanted sequence with good xc \\ \hline
+  12. Completing the proof & Split the polygon, iteratively extract a subsequence and bound xc (see chapter 11 for slanted, chapter 9 for not slanted) \\ \hline
+\end{tabular}
+
+
 
 \subsection{Cyclic n-gons}
 % todo @ March 16 to 18
@@ -30,6 +64,8 @@
   \item intuition of rescaling rows
   \item Higher-dimensional statements
 \end{itemize}
+
+
 
 \subsection{Comparison}
 % todo @ March 19 to 20
