@@ -99,6 +99,6 @@ Here is a short outline of the proof:
 \end{enumerate}
 
 The lower bounding of $\xc$ ($\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$) is achieved by inverting the implication: 
-$$ \left( \forall P\in\P: \xc(P) \leq m \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \exists P\in\P: xc(P) > m \right) $$
+$$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
 
 This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a familiy $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
