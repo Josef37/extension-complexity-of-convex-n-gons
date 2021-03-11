@@ -11,8 +11,8 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
 
 \begin{figure}[h]
   \centering
-  \includegraphics[height=60mm]{assets/Hausdorff_distance.png}
-  \caption{Example of the Hausdorff distance \cite{rocchini2007hausdorff}}
+  \includegraphics[height=55mm]{assets/Hausdorff_distance.png}
+  \caption{Hausdorff distance example \cite{rocchini2007hausdorff}}
   \label{fig:hausdorff}
 \end{figure}
 
@@ -27,6 +27,8 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
   Then $$m^2 \geq \frac{\log_2 \abs{\P}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P} \right)} =: B.$$
   In particular, we have $$\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B} .$$
 \end{theorem}
+
+
 
 \subsection{Proof of Lower Bound}
 
@@ -44,11 +46,11 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
 
   \begin{figure}[h]
     \centering
-    \includegraphics[height=70mm]{assets/Minimal_Hausdorff_distance.png}
+    \includegraphics[height=55mm]{assets/Minimal_Hausdorff_distance.png}
     \caption{Definition of $d_{min}$}
     \label{fig:distance}
   \end{figure}
-
+  
   \begin{align*}
     1 - d_{min} &= \cos\left( \frac{2 \pi}{n^2} \right)\\
     d_{min} &\geq 1 - \left(1 - \frac{\left(\frac{2 \pi}{n^2}\right)^2}{2} \right) = 2 \frac{\pi^2}{n^4} =: \Delta
@@ -71,6 +73,15 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
   Therefore we can conclude $$\pc(n) \geq \max \{\xc(P) \mid P \in \P_n\} \stackrel{\text{(Th. \ref{theorem:family})}}{\geq} \sqrt{B} \geq \frac{1}{12} \sqrt{n} .$$
 \end{proof}
 
-\subsection{Key Ideas Behind the Applied Theorem}
 
-% todo: overview of used theorem (how to apply, idea behind it)
+
+\subsection{Key Ideas Behind the Applied Theorem}
+% todo: formulate
+
+\begin{enumerate}
+  \item Encode polytopes trough normalized extended formulations (Everything from now on in encoding vector space)
+  \item Bound pairwise distance from below (using $\Delta$)
+  \item Draw spheres around enconding point (half of min distance)
+  \item Bound radius of containing ball from above (using $\rho$)
+  \item Bound maximum number of possible by volume (how many encodings can fit in containing ball)
+\end{enumerate}
