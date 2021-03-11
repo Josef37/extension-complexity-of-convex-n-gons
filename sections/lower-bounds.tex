@@ -1,4 +1,5 @@
 \section{Lower Bounds for the Extension Complexity}
+% todo: define ball (B) and norm (euclid)
 % todo: Think about multi-dimensional proof
 
 In this section we provide yet another proof for $pc(n) \in \Omega(n^{1/2})$.
@@ -32,7 +33,7 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
 
 \subsection{Proof of Lower Bound}
 
-\begin{corollary}
+\begin{corollary}\label{corollary:lower-bound}
   $pc(n) \in \Omega(\sqrt{n})$
 \end{corollary}
 \begin{proof}
@@ -50,7 +51,7 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
     \caption{Definition of $d_{min}$}
     \label{fig:distance}
   \end{figure}
-  
+
   \begin{align*}
     1 - d_{min} &= \cos\left( \frac{2 \pi}{n^2} \right)\\
     d_{min} &\geq 1 - \left(1 - \frac{\left(\frac{2 \pi}{n^2}\right)^2}{2} \right) = 2 \frac{\pi^2}{n^4} =: \Delta
@@ -75,13 +76,24 @@ Therefore we have to introduce the \textit{Hausdorff distance} of two non-empty 
 
 
 
-\subsection{Key Ideas Behind the Applied Theorem}
-% todo: formulate
+\subsection{Key Idea of the Used Theorem~\ref{theorem:family}}
 
+The central idea of \ref{theorem:family} is to encode the extended formulations. Then one counts how many extended formulations fit into the containing volume, since those formulations are seperated themselves.
+
+Here is a short outline of the proof:
 \begin{enumerate}
-  \item Encode polytopes trough normalized extended formulations (Everything from now on in encoding vector space)
-  \item Bound pairwise distance from below (using $\Delta$)
-  \item Draw spheres around enconding point (half of min distance)
-  \item Bound radius of containing ball from above (using $\rho$)
-  \item Bound maximum number of possible by volume (how many encodings can fit in containing ball)
+  \item Each extended formulation can be normalized, i.e. $P = \varphi(Q) + t$ with $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
+  \item Each polytope $P_i \in \P$ ($P_i = \varphi_i(Q_i) + t_i$, $Q_i = \{ x \in \R^{n_i} \mid A_ix \leq \mathbbm{1} \}$) is encoded trough $P_i \mapsto (A_i, \varphi_i, t_i)$.\\
+  From now on everything takes place in the encoding vector spaces $\mathcal{V^n}$, where $n$ is the dimension of the extended formulation.
+  \item The encodings are partitioned into sets $W_i$ by the dimension of $Q_i$.
+  \item The distance between two encodings $w, w' \in W_i$ can be bounded by $\norm{w - w'} \geq \Delta$.
+  \item The overall space required can be bounded by $\norm{w} \leq 3\rho n^2 \forall w \in W_i$.
+  \item One creates small balls around each encoding with radius $\Delta/2$ and a ball containing all small balls with radius $3\rho n^2 + \Delta/2$ around the origin.
+  \item By comparing volumes, one can bound $\abs{W_i}$ from above depending on $\rho$, $\Delta$, $m$ and~$d$.
+  \item These bounds are joined together for all $W_i$ and solved for $m$.
 \end{enumerate}
+
+The lower bounding of $\xc$ ($\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$) is achieved by inverting the implication: 
+$$ \left( \forall P\in\P: \xc(P) \leq m \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \exists P\in\P: xc(P) > m \right) $$
+
+This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a familiy $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
