@@ -1,5 +1,5 @@
 \section{Upper Bounds for the Extension Complexity}
-% todo @ March 12
+% todo @ March 12 to 18
 
 \begin{itemize}
   \item overview of upcoming section
@@ -13,28 +13,36 @@
 \begin{itemize}
   \item What is the key idea? 
   \begin{itemize}
-    \item splitting n-gons into thin slices
-    \item Extracting subset (vertices not neccessarily in order) with small extension, since $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$, repeatedly
+    \item splitting n-gons into (constantly many) thin slices
+    \item Inductively extracting subsets (vertices not neccessarily in order) with small extension, since $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$, repeatedly
+    \item Bounding $\xc$ of those subsets (either it's "slanted" or not)
     \item Constructing and glueing 3-d extended formulations: Theorem 28
+    \item Finding subsets, which are "good" in regards to Theorem 28
   \end{itemize}
   \item essential statements
   \begin{itemize}
     \item Theorem 28
     \begin{itemize}
       \item What does it say?
-      \item Maximum possible result with Theorem 28
-      \item Why can't one just apply Theorem 28 (and skip the rest of the paper)?
+      \item Maximum possible result with Theorem 28: $O(n^{1/2})$
+      \item Why can't one just apply Theorem 28 (and skip the rest of the paper)? Cue: contains.
     \end{itemize}
-  \end{itemize}
-  \item connections between statements
-  \begin{itemize}
-    \item (empty)
+    \item Requirements of Theorem 28
+    \begin{itemize}
+      \item G-good = Theorem 28 applicable
+      \item Acute Diagram existent = Rays leave through upper edge (Lemma 42)
+    \end{itemize}
   \end{itemize}
   \item proofs worth repeating
   \begin{itemize}
-    \item (empty)
+    \item I guess Theorem 28 :)
+    \item Lemma 42 (good = ray)?
+    \item Lemma 48/49 maybe?
   \end{itemize}
   \item Intuition for the technical part (especially definitions) through examples
+  \begin{itemize}
+    \item How would you explain slanted sequences? I still don't know\dots
+  \end{itemize}
 \end{itemize}
 
 \begin{tabular}{| p{50mm} | p{100mm} |}
@@ -75,5 +83,5 @@
   \item general differences (splitting by angle vs count, coloring and independece of slices in general case)
   \item How is the circle property used? Can the approach be generalised?
   \item could the general case be $O(\sqrt{n})$, too? (current conjectures)
-  \item Is there a way to adopt a proof to the other case?
+  \item Is there a way to adopt a proof to the other case? Try Shitov's work on cyclic polygons.
 \end{itemize}
