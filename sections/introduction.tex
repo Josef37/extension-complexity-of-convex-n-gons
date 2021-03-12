@@ -2,7 +2,7 @@
 
 \subsection{Extension Complexity}
 
-To describe a regular hexagon with inequalities, 6 inequalities are required. However by projecting a 3-dimensional polytope, one can describe the same polygon with 5 inequalities, see Figure~\ref{fig:hexagon}. 
+To describe a regular hexagon with linear inequalities, 6 of these are required. However by projecting a 3-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, one can describe the same polygon with 5 linear inequalities, see Figure~\ref{fig:hexagon}. 
 
 \begin{figure}[h]
   \centering
@@ -17,7 +17,7 @@ One can think of this operation as "compressing" the representation. This mental
 This intuition is formalized like this:
 
 \begin{definition}[Extended Formulation]
-  Let $P$ be a $d$-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, $Q$ a $m$-dimensional polytope and $\pi:\R^d \to \R^m$ a linear projection.
+  Let $P$ be a $d$-dimensional polytope, $Q$ a $m$-dimensional polytope and $\pi:\R^d \to \R^m$ a linear projection.
   The pair $(Q,\pi)$ is called an \textit{extended formulation} of $P$, if $\pi(Q)=P$. The \textit{size} of $(Q,\pi)$ is defined as the number of factes of $Q$.
 \end{definition}
 
