@@ -1,47 +1,88 @@
 \section{Upper Bounds for the Extension Complexity}
 % todo @ March 12 to 18
-
-\begin{itemize}
-  \item overview of upcoming section
-\end{itemize}
-
-
+% todo: skip overview, since it is provided at the end of introduction
 
 \subsection{Arbitrary Convex n-gons}
 % todo @ March 13 to 15
 
+In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
+We focus on the underlying ideas and present only important proofs in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
+
+% todo: Maybe give overview (split, subsequence, glueing simple extension)
+
+The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
+\begin{lemma}\label{lemma:union}
+  Let $P$ and $Q$ be polytopes in $\R^d$ each different from a point. Then $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$\footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}.
+\end{lemma}
+
+With \ref{lemma:union} in mind, we split the original $n$-gon into so-called "thin slices".
+
+% todo: def thin slice
+% todo: proof/state splitting the n-gon into 12 distinct pi/6 slices (constantly many)
+% todo: thin slices have small extension complexity --> Can be merged via \ref{lemma:union}
+
+% todo: inductively extract subsequence with small extension complexity (and build final extension through \ref{lemma:union})
+% todo: proof/state each sequence has subsequence with small xc: differentiate between "slanted" and "not slanted"
+% todo: Explain Theorem 28's idea of glueing simple extensions
+
+% todo: transition to Theorem 28 (note: you can't explain any more without mentioning "actue" stuff)
+% todo: Explain acute diagrams and the idea behind them.
+% todo: State/explain Lemma 26
+% todo: State Theorem 28
+% todo: Limits of Theorem 28: $O(n^{1/2})$
+% todo: Note the difference in Theorem 28 ("contains") and Lemma 26 ("direction") and note that it's not compatible
+% todo: explain G-good and Lemma 42 (ray definition of "good")
+
+% todo: Return sequences
+% todo: We look at two cases: Slanted and unslanted sequences
+% todo: State that both have (big enough) subsequences which can utilize Theorem 28 well (the asymptotical optimum for Theorem 28 is achived) --> Glimpse of chapters 9 to 11
+
+% todo: summarize 
+% todo: possible improvements, applications
+
 \begin{itemize}
-  \item What is the key idea? 
+  \item What is the key idea?
   \begin{itemize}
     \item splitting n-gons into (constantly many) thin slices
     \item Inductively extracting subsets (vertices not neccessarily in order) with small extension, since $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$, repeatedly
     \item Bounding $\xc$ of those subsets (either it's "slanted" or not)
     \item Constructing and glueing 3-d extended formulations: Theorem 28
+    \item Considering simple extensions ("liftings") by looking at acute diagrams
     \item Finding subsets, which are "good" in regards to Theorem 28
   \end{itemize}
-  \item essential statements
+  \item Essential statements
   \begin{itemize}
+    \item Existence of an acute diagram with all but one direction fixed (Lemma 26)
     \item Theorem 28
     \begin{itemize}
       \item What does it say?
-      \item Maximum possible result with Theorem 28: $O(n^{1/2})$
-      \item Why can't one just apply Theorem 28 (and skip the rest of the paper)? Cue: contains.
+      \item Maximum possible result with Theorem 28: $O(n^{1/2})$ (it is achived for the extracted subsequences)
+      \item Why can't one just apply Theorem 28 (and skip the rest of the paper)? Cue: "contains"
     \end{itemize}
     \item Requirements of Theorem 28
     \begin{itemize}
-      \item G-good = Theorem 28 applicable
-      \item Acute Diagram existent = Rays leave through upper edge (Lemma 42)
+      \item G-good = Theorem 28 applicable (acute diagram exists)
+      \item Rays leave through upper edge = acute diagram exists (Lemma 42)
     \end{itemize}
+    \item Good upper bounds for slanted/not slanted subsequences
   \end{itemize}
-  \item proofs worth repeating
+  \item Proofs worth repeating
   \begin{itemize}
     \item I guess Theorem 28 :)
     \item Lemma 42 (good = ray)?
-    \item Lemma 48/49 maybe?
+    \item Lemma 48?
+    \item Lemma 25 / Corollary 26?
   \end{itemize}
-  \item Intuition for the technical part (especially definitions) through examples
+  \item Examples worth making/drawing
   \begin{itemize}
-    \item How would you explain slanted sequences? I still don't know\dots
+    \item all examples from source
+    \item Examples of acute polytope/diagram (main edges + orientation in most proofs)
+    \item Examples of thin sequences (one thin, one not thin and one thin with one side > 90 deg)
+    \item Ray $\rho$
+    \item G-envelope + G-good
+    \item Slanted sequences: angle $\beta$
+    \item Decreasing sequence?
+    \item Perfect sequence
   \end{itemize}
 \end{itemize}
 
