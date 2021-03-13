@@ -1,39 +1,93 @@
 \section{Upper Bounds for the Extension Complexity}
 % todo @ March 12 to 18
 % todo: skip overview, since it is provided at the end of introduction
+% todo: choose right fraction (\frac or "/") to look nice (ctrl+F)
+% todo: add citations from original paper (to every definition, theorem, ...)
+% todo: maybe add sum subsubsections?
 
 \subsection{Arbitrary Convex n-gons}
 % todo @ March 13 to 15
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
-We focus on the underlying ideas and present only important proofs in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
+We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
 
 % todo: Maybe give overview (split, subsequence, glueing simple extension)
 
 The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
 \begin{lemma}\label{lemma:union}
-  Let $P$ and $Q$ be polytopes in $\R^d$ each different from a point. Then $\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q)$\footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}.
+  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
-With \ref{lemma:union} in mind, we split the original $n$-gon into so-called "thin slices".
+This allows us to split the polygon into smaller pieces with small extension complexity. Joining them together will transfer this good extension complexity to the original polygon.
 
-% todo: def thin slice
-% todo: proof/state splitting the n-gon into 12 distinct pi/6 slices (constantly many)
-% todo: thin slices have small extension complexity --> Can be merged via \ref{lemma:union}
+Now we will go on to define those smaller pieces, which we can handle well.
 
-% todo: inductively extract subsequence with small extension complexity (and build final extension through \ref{lemma:union})
-% todo: proof/state each sequence has subsequence with small xc: differentiate between "slanted" and "not slanted"
-% todo: Explain Theorem 28's idea of glueing simple extensions
+\begin{definition}[Thin sequence]
+  % todo: Formulate + examples
+\end{definition}
+\begin{observation}[Splitting into thin sequences]\label{observation:splitting}
+  % todo: formulate + image
+\end{observation}
 
-% todo: transition to Theorem 28 (note: you can't explain any more without mentioning "actue" stuff)
+Based on Observation~\ref{observation:splitting} we choose to split the $n$-gon into $12$ distinct $pi/6$-thin sequences. Joining those (constantly many) sequences will not change the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}. \\
+Now we will go on to show that each sequence has extension complexity $O(n^{2/3})$.
+
+\begin{theorem}\label{theorem:subsequence}
+  Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
+  Then $v$ contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.
+\end{theorem}
+% todo: explain that proof comes later
+
+% todo: explain motivation/idea
+\begin{corollary}\label{corollary:subsequence}
+  Let $v$ be a $\pi/6$-thin sequence with $n > 263 000$ vertices. 
+  Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{\frac{2}{3}}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{\frac{1}{3}}$.
+\end{corollary}
+% todo: proof (sketch)
+
+% todo: explain idea (induction)
+\begin{corollary}\label{corollary:thin-xc}
+  Let $v$ be a $\pi/6$-thin sequence. Then $\xc(v) \leq \frac{324}{\sqrt[3]{129}} n^{\frac{2}{3}}$.
+\end{corollary}
+% todo: proof (sketch)
+
+% todo: summarize idea
+\begin{theorem}\label{theorem:xc}
+  Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{\frac{2}{3}}$.
+\end{theorem}
+% todo: proof
+
+
+Before we can determine the subsequences in Theorem~\ref{theorem:subsequence}, we need to find a way to build those extended formulations.
+
+The key idea here is to omit some vertices to obtain a simpler surrounding polygon. For this polygon we build extended formulations with respect to the omitted vertices. If we now "glue" those extended formulations together in a special way, we get an extended formulation for the original polygon with small extension complexity.
+
+Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and acute diagrams. These help us build the extensions for the (simple) surrounding polygon.
 % todo: Explain acute diagrams and the idea behind them.
 % todo: State/explain Lemma 26
-% todo: State Theorem 28
+
+% todo: introduce Theorem 28 (idea, application and reference to image)
+\begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]
+  Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subset V$ be a proper subset of all vertices. Fix $\delta \geq 1$. Assume that
+
+  (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$.
+
+  (ii) there are $\delta$ points $\left\{s^1, \dots, s^\delta \right\}$ in the interior of the triangle ${T_s = \conv \left\{s,s',s''\right\}}$.
+  
+  (iii) the triangles $T_s$ are disjoint for different $s$.
+
+  (iv) for any $i \in \{1,\dots,\delta\}$ there exists and acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$. 
+  
+  Then $$\xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta .$$
+\end{theorem}
+% todo: image of theorem 28
+% todo: proof theorem 28
+
 % todo: Limits of Theorem 28: $O(n^{1/2})$
 % todo: Note the difference in Theorem 28 ("contains") and Lemma 26 ("direction") and note that it's not compatible
 % todo: explain G-good and Lemma 42 (ray definition of "good")
 
-% todo: Return sequences
+% todo: Return to sequences
 % todo: We look at two cases: Slanted and unslanted sequences
 % todo: State that both have (big enough) subsequences which can utilize Theorem 28 well (the asymptotical optimum for Theorem 28 is achived) --> Glimpse of chapters 9 to 11
 
