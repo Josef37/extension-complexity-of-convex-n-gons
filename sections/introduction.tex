@@ -18,11 +18,11 @@ This intuition is formalized like this:
 
 \begin{definition}[Extended Formulation]
   Let $P$ be a $d$-dimensional polytope, $Q$ a $m$-dimensional polytope and $\pi:\R^d \to \R^m$ a linear projection.
-  The pair $(Q,\pi)$ is called an \textit{extended formulation} of $P$, if $\pi(Q)=P$. The \textit{size} of $(Q,\pi)$ is defined as the number of factes of $Q$.
+  The pair $(Q,\pi)$ is called an \emph{extended formulation} of $P$, if $\pi(Q)=P$. The \emph{size} of $(Q,\pi)$ is defined as the number of factes of $Q$.
 \end{definition}
 
 \begin{definition}[Extension Complexity]
-  The \textit{extension complexity} of a polytope $P$ is the smallest possible size of an extended formulation of $P$. Is is usually denoted with $\xc(P)$.
+  The \emph{extension complexity} of a polytope $P$ is the smallest possible size of an extended formulation of $P$. Is is usually denoted with $\xc(P)$.
 \end{definition}
 
 Polytopes with a small extension complexity can be "compressed" very well with extended formulations.
@@ -34,8 +34,8 @@ Such simplified formulations can be used for building faster algorithms for hard
 
 The application of extended formulations for solving hard linear problems seems promising. But reserach in the past years shows some unpromising examples:
 \begin{itemize}
-  \item It was shown in \cite{fiorini2015exponential}, that the \textit{traveling salesman} polytope can't have polynomial extension complexity. So here extended formulations don't provide an improvement over traditional methods.
-  \item The results for the \textit{matching} polytope are even worse: In contrast to the polynomial-time algorithm (\cite{ford1956maximal}) for solving this problem, there is no polynomial-size extended formulation (\cite{rothvoss2017matching}).
+  \item It was shown in \cite{fiorini2015exponential}, that the \emph{traveling salesman} polytope can't have polynomial extension complexity. So here extended formulations don't provide an improvement over traditional methods.
+  \item The results for the \emph{matching} polytope are even worse: In contrast to the polynomial-time algorithm (\cite{ford1956maximal}) for solving this problem, there is no polynomial-size extended formulation (\cite{rothvoss2017matching}).
 \end{itemize}
 
 So the study of polyons has importance as a benchmark for extened formulations in general (Braun and Pokutta called this "prototypical importance" in \cite{braun2015matching}).
@@ -45,12 +45,12 @@ There are currently two main approaches for finding bounds for the extension com
 
 \begin{definition}[Slack Matrix]
   Let $P$ be a polytope.
-  Then a \textit{slack matrix}\footnote{Note that the slack matrix depends on the representation of $P$. So there is no single slack matrix to a given polytope.} $M$ of $P$ is a nonnegative matrix whose rows are indexed by the vertices of $P$ and whose columns are indexed by the linear constraints of some representation of $P=\{x \in \R^d \mid Ax \leq b\}$. 
+  Then a \emph{slack matrix}\footnote{Note that the slack matrix depends on the representation of $P$. So there is no single slack matrix to a given polytope.} $M$ of $P$ is a nonnegative matrix whose rows are indexed by the vertices of $P$ and whose columns are indexed by the linear constraints of some representation of $P=\{x \in \R^d \mid Ax \leq b\}$. 
   The entries of $M$ are defined as $m_{ij} = b_j - a_j v_i$, where $a_j$ is a row of $A$ and $v_i$ is a vertex of $P$.
 \end{definition}
 
 \begin{definition}[Nonnegative Rank]
-  The \textit{nonnegative rank} of a nonnegative matrix $M \in \R^n \times \R^m$ is the smallest integer $k$, for which $M = TU$, where $T \in \R^n \times \R^k$ and $U \in \R^k \times \R^m$.
+  The \emph{nonnegative rank} of a nonnegative matrix $M \in \R^n \times \R^m$ is the smallest integer $k$, for which $M = TU$, where $T \in \R^n \times \R^k$ and $U \in \R^k \times \R^m$.
   We define $rank_+(M) := k$.
 \end{definition}
 
@@ -60,7 +60,7 @@ There are currently two main approaches for finding bounds for the extension com
 
 Because this document is focused on polygons, we briefly recall the history of bounds and conjectures for the extension complexity of $n$-gons:
 
-Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N, \pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called the \textit{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
+Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N, \pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called the \emph{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
 
 The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done by the authors of \cite{fiorini2012extended} by a counting argument. In this paper we will provide another approach to proving this lower bound. 
 
