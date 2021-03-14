@@ -1,0 +1,250 @@
+\subsection{Arbitrary Convex n-gons}
+% todo @ March 13 to 15
+% todo: choose right fraction (\frac or "/") to look nice (ctrl+F)
+% todo: add citations from original paper (to every definition, theorem, ...)
+% todo: maybe add some subsubsections?
+
+In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
+We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
+
+% todo: Maybe give overview (split, subsequence, glueing simple extension)
+
+The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
+\begin{lemma}\label{lemma:union}
+  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
+\end{lemma}
+
+This allows us to split the polygon into smaller pieces with small extension complexity. Joining them together will transfer this good extension complexity to the original polygon.
+
+Now we will go on to define those smaller pieces, which we can handle well.
+
+\begin{definition}[Thin sequence]
+  % todo: Formulate + examples
+\end{definition}
+\begin{observation}[Splitting into thin sequences]\label{observation:splitting}
+  % todo: formulate + image
+\end{observation}
+
+Based on Observation~\ref{observation:splitting} we choose to split the $n$-gon into $12$ distinct $pi/6$-thin sequences. Joining those (constantly many) sequences will not change the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}. \\
+Now we will go on to show that each sequence has extension complexity $O(n^{2/3})$.
+
+\begin{theorem}\label{theorem:subsequence}
+  Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
+  Then $v$ contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.
+\end{theorem}
+% todo: explain that proof comes later
+
+% todo: explain motivation/idea
+\begin{corollary}\label{corollary:subsequence}
+  Let $v$ be a $\pi/6$-thin sequence with $n > 263 000$ vertices. 
+  Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{\frac{2}{3}}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{\frac{1}{3}}$.
+\end{corollary}
+% todo: proof (sketch)
+
+% todo: explain idea (induction)
+\begin{corollary}\label{corollary:thin-xc}
+  Let $v$ be a $\pi/6$-thin sequence. Then $\xc(v) \leq \frac{324}{\sqrt[3]{129}} n^{\frac{2}{3}}$.
+\end{corollary}
+% todo: proof (sketch)
+
+% todo: summarize idea
+\begin{theorem}\label{theorem:xc}
+  Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{\frac{2}{3}}$.
+\end{theorem}
+% todo: proof
+
+Before we can determine the subsequences in Theorem~\ref{theorem:subsequence}, we need to find a way to build those extended formulations.
+
+The key idea here is to omit some vertices to obtain a simpler surrounding polygon. For this polygon we build extended formulations with respect to the omitted vertices. If we now "glue" those extended formulations together in a special way, we get an extended formulation for the original polygon with small extension complexity.
+
+Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and \emph{acute diagrams}. These help us build the extensions for the (simple) surrounding polygon.
+
+\begin{definition}[Acute Polyhedron]
+  Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its factes. If all other facets $F \neq B$ of $P$ 
+  share an edge with $B$ and
+  the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
+  then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$.
+\end{definition}
+% todo: image of actue polyhedron and not acute polyhedron
+
+\begin{definition}[Main edge]
+  An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
+\end{definition}
+% todo: image of main edges (merge with image before)
+
+\begin{lemma}
+  Any base vertex of an acute polyhedron belongs to a unique main edge.
+\end{lemma}
+% todo: summarize proof
+
+Now follows an important lemma, which allows us to construct an acute polyhedron for a given base, where all main edges but one have fixed direction with respect to the base.
+\begin{lemma}\label{lemma:acute-direction}
+  Let $V$ be a polygon with vertices $v_1,\dots,v_n$ and let $y_1,\dots,y_{n-1}$ be a set of inner points of $V$.
+  Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$ \footnote{We use $x \wedge y$ to describe the line joining two points $x$ and $y$. It can also the intersection of two lines $x$ and $y$.}.
+\end{lemma}
+% todo: describe proof (go around building, make sure it does not contradict in the end, that's why you have to have one y less)
+
+\begin{observation}\label{observation:acute-projection}
+  Let $P$ be an acute polyhedron with base $B$.
+  The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injecively into interior of $B$.
+\end{observation}
+
+\begin{definition}[Acute diagram and lifting]
+  Let $P$ be an acute polyhedron with base $B$ and $\pi$ like in Observation~\ref{observation:acute-projection}.
+  The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
+  We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
+\end{definition}
+% todo: add image of polyhedron, diagram and flow/orientation
+
+We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
+
+\begin{corollary}\label{corollary:acute-direction}
+  Let $V$ be a polygon with vertices $v_1,\dots,v_n$ and let $y_1,\dots,y_{n-1}$ be a set of inner points of $V$.
+  Then there is an acute diagram with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the main edge from $v_i$ lies on $v_i \wedge y_i$.
+\end{corollary}
+
+Since we have shown that every acute polyhedron has an acute diagram, we want to describe the properties of acute diagrams, which allow us to lift them into an acute polyhedron.
+
+\begin{lemma}[Properties of acute diagrams]\label{lemma:diagram-properties}
+  Let $\Delta$ be the acute diagram of an acute polyhedron $P$ with base $B$.
+  Then $\Delta$ is a planar straight-line graph such that
+
+  (o) the base of $\Delta$ is $B$,
+  
+  (i) every node of $\Delta$ has degree at least three,
+
+  (ii) the non-base nodes of $\Delta$ lie in the interior of the base,
+
+  (iii) every edge of the base is an arc of $\Delta$,
+
+  (iv) every bounded face $F$ of $\Delta$ contains exactly one arc $e_F$ of the base,
+
+  (v) if a non-base arc $e$ of $\Delta$ separates faces $F$, $G$, then $e, e_F, e_G$ are concurrent.
+\end{lemma}
+
+% todo: Explain flow?
+% todo: Summarize reasoning for lifting
+
+\begin{lemma}[Lifting acute diagrams]
+  A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
+\end{lemma}
+% todo: repeat or summarize proof
+
+We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
+
+% todo: insert image example
+\begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:glueing}
+  Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subset V$ be a proper subset of all vertices. Fix $\delta \geq 1$. Assume
+
+  (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$,
+
+  (ii) there are $\delta$ points $\left\{s^1, \dots, s^\delta \right\}$ in the interior of the triangle ${T_s = \conv \left\{s,s',s''\right\}}$,
+  
+  (iii) the triangles $T_s$ are disjoint for different $s$ and
+
+  (iv) for any $i \in \{1,\dots,\delta\}$ there exists and acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$. 
+  
+  $$\Rightarrow \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
+\end{theorem}
+% todo: proof theorem 28
+
+\begin{remark}\label{remark:pitfall}
+  There is a subtle difference between Theorem~\ref{theorem:glueing} and Corollary~\ref{corollary:acute-direction}.
+
+  In the theorem we assume that "the segment between $s$ and $s^i$ is a \textbf{subset} of the main edge", but in the corollary we construct a diagram for which "the main edge from $v_i$ lies on $v_i \wedge y_i$", implying that $y_i$ can lie outside the main edge. 
+
+  So we can't just apply Theorem~\ref{theorem:glueing} to any choice of points fulfilling (i)-(iii).
+\end{remark}
+
+To understand Theorem~\ref{theorem:glueing} better, we will now look at the limits it has in application. This observation is aside from the main argument, so feel free to skip it.
+
+\begin{observation}[Limits of Theorem~{\ref{theorem:glueing}}]
+  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended fromulation for $P$ with size $\Omega(\sqrt{n})$.
+\end{observation}
+\begin{proof}
+  We set $P = \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
+  \begin{equation}\label{eq:limit-n}
+    n \leq (v-s) + s(2+\delta) = v + s(1+\delta).
+  \end{equation}
+
+  With \eqref{eq:limit-n} we can express $\delta$ dependent on $n$, $v$ and $s$:
+  \begin{equation*}
+    \delta \geq \frac{n-v}{s} - 1
+  \end{equation*}
+  We now define $\delta := (n-v)/s$ as the minimal possible value for given $n$, $v$ and $s$, since the size of the extended formulation increases with $\delta$. This way we can define $f_n(v,s) := v + s + \delta = v + s + (n-v)/s$ as the size of the extended formulation for given $v$ and $s$.
+
+  $\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s+1$ according to Theorem~\ref{theorem:glueing}.
+
+  \begin{align*}
+    f_n(s+1, s) &= (s+1) + s + \frac{n-(s+1)}{s} \\
+    &= 2s + \frac{n-1}{s}\\
+    \frac{\partial}{\partial s} f_n(s+1,s) &= 2 - \frac{n-1}{s^2} \Rightarrow s_{min} := \sqrt{\frac{1}{2}(n-1)} \\
+    \frac{\partial^2}{\partial^2 s} f_n(s+1,s) &= \frac{2(n-1)}{s^3} > 0
+  \end{align*}
+  
+   This shows that $f_n$ has a minimum at $s_{min}$ with $v_{min}=s_{min}+1$.
+
+  Finally we can find the minimal value for $f_n$.
+  \begin{align*}
+    f_n(s_{min}+1, s_{min}) = 2\sqrt{2(n-1)}
+  \end{align*}
+\end{proof}
+
+After defining this central lemma, we have to make a way to apply it to general polygons (see Remark~\ref{remark:pitfall}, why we can't do this until now).
+Therefore we formalize the notion of "good" sequences with respect to Theorem~\ref{theorem:glueing}.
+
+\begin{definition}[G-envelope]
+\end{definition}
+% todo: Image of G-envelope
+
+\begin{definition}[G-good]
+\end{definition}
+
+Now we have to find a way to determine which seqeunces are actually \emph{G-good}.
+\begin{lemma}
+  % todo: Lemma 42: ray definition of G-good
+\end{lemma}
+% todo: proof?
+
+% todo: Return to sequences: Summarize everything needed in chapters 9 to 11 (1. building acute diagrams; 2. G-good reformulation of Theorem 28; 3. ray = good)
+% todo: We look at two cases: Slanted and unslanted sequences
+% todo: State that both have (big enough) subsequences which can utilize Theorem 28 well (the asymptotical optimum $\xc \in O(n^{1/2})$ for Theorem 28 is achived) --> Glimpse of chapters 9 to 11
+
+% todo: summarize: split into thin --> inductively extract subsequences --> slanted or not, you can glue simple extensions together
+% todo: possible improvements, applications?
+
+
+Proofs worth repeating
+\begin{itemize}
+  \item Theorem 28
+  \item Lemma 42 (good = ray)?
+  \item Lemma 48?
+  \item Lemma 25 / Corollary 26?
+\end{itemize}
+
+Examples worth making/drawing
+\begin{itemize}
+  \item all examples from source
+  \item Examples of acute polytope/diagram (main edges + orientation in most proofs)
+  \item Examples of thin sequences (one thin, one not thin and one thin with one side > 90 deg)
+  \item Ray $\rho$
+  \item G-envelope + G-good
+  \item Slanted sequences: angle $\beta$
+  \item Decreasing sequence?
+  \item Perfect sequence
+\end{itemize}
+
+\begin{tabular}{| p{50mm} | p{100mm} |}
+  \hline
+  \multicolumn{2}{|c|}{\textbf{Main results per chapter}}\\ \hline
+  3. Preliminaries & Extension Complexity for union of polytopes \\ \hline
+  4. Acute polyhedra & There is an acute polyhedron for a polygon, where all main edges except one have fixed direction \\ \hline
+  5. Acute diagrams & There is an acute diagram for a polygon, where all main edges except one have fixed direction \\ \hline
+  6. Glueing acute extensions together & Skip vertices of a polygon by joining acute diagrams to get an extended formulation which represents the original polygon \\ \hline
+  7. Thin sequences & Splitting polygons is now a thing \& something about rays passing a horizontal line \\ \hline
+  8. Good sequences & good sequences let you apply Theorem 28, identify good sequence via ray passing through top \\ \hline
+  9. Extracting a slanted subsequence & When it's not slanted, it'll extend well (Lemma 49) \\ \hline
+  10. Decreasing slanted sequences & Get estimates of xc for slanted sequences \\ \hline
+  11. Extensions for slanted sequences & Subsequence of slanted sequence with good xc \\ \hline
+  12. Completing the proof & Split the polygon, iteratively extract a subsequence and bound xc (see chapter 11 for slanted, chapter 9 for not slanted) \\ \hline
+\end{tabular}
