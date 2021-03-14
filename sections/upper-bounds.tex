@@ -3,7 +3,7 @@
 % todo: skip overview, since it is provided at the end of introduction
 % todo: choose right fraction (\frac or "/") to look nice (ctrl+F)
 % todo: add citations from original paper (to every definition, theorem, ...)
-% todo: maybe add some subsubsections?
+% todo: maybe add some subsubsections and split subsections into files?
 
 \subsection{Arbitrary Convex n-gons}
 % todo @ March 13 to 15
@@ -134,7 +134,7 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
 \end{lemma}
 % todo: repeat or summarize proof
 
-We can now focus on the main result, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
+We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
 
 % todo: insert image example
 \begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:glueing}
@@ -152,7 +152,7 @@ We can now focus on the main result, which allows us to build small extended for
 \end{theorem}
 % todo: proof theorem 28
 
-\begin{remark}
+\begin{remark}\label{remark:pitfall}
   There is a subtle difference between Theorem~\ref{theorem:glueing} and Corollary~\ref{corollary:acute-direction}.
 
   In the theorem we assume that "the segment between $s$ and $s^i$ is a \textbf{subset} of the main edge", but in the corollary we construct a diagram for which "the main edge from $v_i$ lies on $v_i \wedge y_i$", implying that $y_i$ can lie outside the main edge. 
@@ -165,8 +165,6 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
 \begin{observation}[Limits of Theorem~{\ref{theorem:glueing}}]
   Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended fromulation for $P$ with size $\Omega(\sqrt{n})$.
 \end{observation}
-
-% todo: Change formulation: Make f_n(v,s) -> size of extension, minimize that function
 \begin{proof}
   We set $P = \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
   \begin{equation}\label{eq:limit-n}
@@ -196,11 +194,23 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
   \end{align*}
 \end{proof}
 
-% todo: Definition and Image of G-envelope
-% todo: G-good means Theorem 28 applicable for this one set of vertices
-% todo: Explain Lemma 42: ray definition of G-good
+After defining this central lemma, we have to make a way to apply it to general polygons (see Remark~\ref{remark:pitfall}, why we can't do this until now).
+Therefore we formalize the notion of "good" sequences with respect to Theorem~\ref{theorem:glueing}.
 
-% todo: Return to sequences
+\begin{definition}[G-envelope]
+\end{definition}
+% todo: Image of G-envelope
+
+\begin{definition}[G-good]
+\end{definition}
+
+Now we have to find a way to determine which seqeunces are actually \emph{G-good}.
+\begin{lemma}
+  % todo: Lemma 42: ray definition of G-good
+\end{lemma}
+% todo: proof?
+
+% todo: Return to sequences: Summarize everything needed in chapters 9 to 11 (1. building acute diagrams; 2. G-good reformulation of Theorem 28; 3. ray = good)
 % todo: We look at two cases: Slanted and unslanted sequences
 % todo: State that both have (big enough) subsequences which can utilize Theorem 28 well (the asymptotical optimum $\xc \in O(n^{1/2})$ for Theorem 28 is achived) --> Glimpse of chapters 9 to 11
 
