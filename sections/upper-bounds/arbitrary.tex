@@ -6,7 +6,7 @@
 % todo: make sure all "cw" and "ccw" are replaced with full words.
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
-We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
+We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
 
 The gist of the approach is this: 
 \begin{enumerate}
@@ -30,14 +30,13 @@ The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1
   Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
-This allows us to split the polygon into smaller pieces with small extended formulations. Joining them together will transfer this property to the original polygon.
+This lemma allows us to consider a partition of the polygon, since we can merge the extended formulations of those parts.
 
-Now we will go on to define those smaller pieces, which we can handle well.
+Now we will go on to define those smaller parts, which we can handle well.
 
 \begin{definition}[Turning angle]
-  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
+  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. In other words, it is the amount the angle at $v$ deviates from $\pi$. The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
-% todo?: Image
 
 \begin{definition}[Correct sequence]
   A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \textit{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
@@ -46,7 +45,7 @@ Now we will go on to define those smaller pieces, which we can handle well.
 \begin{definition}[Thin sequence]
   Let $\alpha\in(0,\pi)$ and $n \geq 3$. A sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ is correct and, additionally, the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
-% todo: examples
+% todo?: motivation for meeting on the same side
 
 \begin{observation}[Splitting into thin sequences]\label{observation:splitting}
   Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
@@ -54,7 +53,7 @@ Now we will go on to define those smaller pieces, which we can handle well.
 % todo: image picpic11.png
 % todo?: proof or gist: Collect vertices until you can no more (by thinness). Then start new set.
 
-Based on Observation~\ref{observation:splitting} we choose to split the $n$-gon into $12$ distinct $pi/6$-thin sequences. Joining those (constantly many) sequences will not change the bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
+Based on Observation~\ref{observation:splitting} we choose to split the original $n$-gon into $12$ distinct $\pi/6$-thin sequences. Joining those (constantly many) sequences will not change the asymptotical bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
 
 Now we will go on to show that each $pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
 
@@ -62,25 +61,35 @@ Now we will go on to show that each $pi/6$-thin sequence has extension complexit
   Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.
 \end{theorem}
-% todo: explain that proof comes later
+
+Proving this theorem is the objective of the rest of the paper. We preempted it to provide a better understanding of the results.
 
 % todo: explain motivation/idea
 \begin{corollary}\label{corollary:subsequence}
-  Let $v$ be a $\pi/6$-thin sequence with $n > 263 000$ vertices. 
+  Let $v$ be a $\pi/6$-thin sequence with $n > 263\,000$ vertices. 
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{\frac{2}{3}}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{\frac{1}{3}}$.
 \end{corollary}
-% todo: proof (sketch)
+
+\begin{proof}[Proof outline]
+  Apply Theorem~\ref{theorem:subsequence} with $\tau=\left\lfloor (n/1032)^{1/3} \right\rfloor$, which gives the desired result for $n > 263\,000$.
+\end{proof}
 
 % todo: explain idea (induction)
 \begin{corollary}\label{corollary:thin-xc}
   Let $v$ be a $\pi/6$-thin sequence. Then $\xc(v) \leq \frac{324}{\sqrt[3]{129}} n^{\frac{2}{3}}$.
 \end{corollary}
-% todo: proof (sketch)
+
+% todo?: describe induction step in more detail
+\begin{proof}[Proof outline]
+  Use induction for $n > 263\,000$ and apply Corollary~\ref{corollary:subsequence} and Lemma~\ref{lemma:union} for the induction step.
+\end{proof}
 
 We can now prove the main result by joining the extended formulations for all $\pi/6$-thin sequences.
 
-\begin{proof}[Proof of \ref{theorem:xc}]
-  % todo
+\begin{proof}[Proof outline of \ref{theorem:xc}]
+  Using Observation~\ref{observation:splitting} we spilt the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
+
+  We apply Lemma~\ref{lemma:union} and Corollary~\ref{corollary:thin-xc} and get $$\xc(P)\leq\frac{324}{\sqrt[3]{129}}\left(\sum\limits_{i=1}^{12}n_i^{2/3}\right)\leq\frac{324}{\sqrt[3]{129}}\left(12\left(\frac{n}{12}\right)^{2/3}\right) < 147 n^{2/3} .$$
 \end{proof}
 
 
