@@ -2,32 +2,61 @@
 % todo @ March 13 to 15
 % todo: choose right fraction (\frac or "/") to look nice (ctrl+F)
 % todo: add citations from original paper (to every definition, theorem, ...)
-% todo: maybe add some subsubsections?
 % todo: remove some statements based on how much of chapter 9 to 11 is used
+% todo: make sure all "cw" and "ccw" are replaced with full words.
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we present the proof "backwards", starting from the results, since in doing so we can highlight the reasoning more clearly.
 
-% todo: Maybe give overview (split, subsequence, glueing simple extension)
+The gist of the approach is this: 
+\begin{enumerate}
+  \item We cut the polygon into smaller slices, for which we can provide small extended formulations. Joining these together preserves this property.
+  \item We prove this small extended formulation by iteratively finding a large enough subset of vertices in the slice, for which we can build a small extended formulation. Joining these subsets together will also preserve this property.
+  \item We build the small extended formulation by building 3-dimensional extended formulations for a surrounding polygon. These are "glued" together resulting in an extended formulation for the original set of vertices.
+\end{enumerate}
+
+
+
+\subsubsection{Main Result}
+
+\begin{theorem}\label{theorem:xc}
+  Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{\frac{2}{3}}$.
+\end{theorem}
+
+Naturally, we need to gather more statements, before we can prove this theorem. 
 
 The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
 \begin{lemma}\label{lemma:union}
   Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
-This allows us to split the polygon into smaller pieces with small extension complexity. Joining them together will transfer this good extension complexity to the original polygon.
+This allows us to split the polygon into smaller pieces with small extended formulations. Joining them together will transfer this property to the original polygon.
 
 Now we will go on to define those smaller pieces, which we can handle well.
 
-\begin{definition}[Thin sequence]
-  % todo: Formulate + examples
+\begin{definition}[Turning angle]
+  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
-\begin{observation}[Splitting into thin sequences]\label{observation:splitting}
-  % todo: formulate + image
-\end{observation}
+% todo?: Image
 
-Based on Observation~\ref{observation:splitting} we choose to split the $n$-gon into $12$ distinct $pi/6$-thin sequences. Joining those (constantly many) sequences will not change the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}. \\
-Now we will go on to show that each sequence has extension complexity $O(n^{2/3})$.
+\begin{definition}[Correct sequence]
+  A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \textit{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
+\end{definition}
+
+\begin{definition}[Thin sequence]
+  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ is correct and, additionally, the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
+\end{definition}
+% todo: examples
+
+\begin{observation}[Splitting into thin sequences]\label{observation:splitting}
+  Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
+\end{observation}
+% todo: image picpic11.png
+% todo?: proof or gist: Collect vertices until you can no more (by thinness). Then start new set.
+
+Based on Observation~\ref{observation:splitting} we choose to split the $n$-gon into $12$ distinct $pi/6$-thin sequences. Joining those (constantly many) sequences will not change the bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
+
+Now we will go on to show that each $pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
 
 \begin{theorem}\label{theorem:subsequence}
   Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
@@ -48,11 +77,15 @@ Now we will go on to show that each sequence has extension complexity $O(n^{2/3}
 \end{corollary}
 % todo: proof (sketch)
 
-% todo: summarize idea
-\begin{theorem}\label{theorem:xc}
-  Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{\frac{2}{3}}$.
-\end{theorem}
-% todo: proof
+We can now prove the main result by joining the extended formulations for all $\pi/6$-thin sequences.
+
+\begin{proof}[Proof of \ref{theorem:xc}]
+  % todo
+\end{proof}
+
+
+
+\subsubsection{Building Small Extended Formulations}
 
 Before we can determine the subsequences in Theorem~\ref{theorem:subsequence}, we need to find a way to build those extended formulations.
 
@@ -129,7 +162,7 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
 \begin{lemma}[Lifting acute diagrams]
   A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
 \end{lemma}
-% todo: repeat or summarize proof
+% todo?: repeat or summarize proof
 
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
 
@@ -191,7 +224,11 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
   \end{align*}
 \end{proof}
 
-After defining this central lemma, we have to make a way to apply it to general polygons (see Remark~\ref{remark:pitfall}, why we can't do this until now).
+
+
+\subsubsection{Finding Good Subsequences}
+
+After defining this central theorem, we have to make a way to apply it to general polygons (see Remark~\ref{remark:pitfall}, why we can't do this until now).
 Therefore we formalize the notion of "good" sequences with respect to Theorem~\ref{theorem:glueing}.
 
 \begin{definition}[G-envelope]
@@ -207,28 +244,19 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
   % todo?: Lemma 41? Maybe not needed (depends on chapters 9 to 11 formulation)
 \end{lemma}
 
-Now we have to find a way to determine which seqeunces are actually \emph{G-good}.
+Now we have to find another way to determine which seqeunces are actually \emph{G-good}.
 \begin{lemma}\label{lemma:ray-good}
   % todo: Lemma 42: ray definition of G-good
 \end{lemma}
 % todo: prove it?
 
-Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that for a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$. In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
-
-The insights we need are: % todo: formulate/replace ""
-\begin{enumerate}
-  \item Corollary~\ref{corollary:acute-direction}: "building acute diagrams"
-  \item Lemma~\ref{lemma:glueing-reformulation}: "G-good reformulation of glueing simple extensions"
-  \item Lemma~\ref{lemma:ray-good}: "ray = good"
-\end{enumerate}
-
-We now need to define one more property of a sequence.
+We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
   % todo
 \end{definition}
 
-Now we can split our consideration into two cases:
+Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
   \item The original sequence has a large enough slanted subsequence.
   \item The original sequence does not have such a subsequence.
@@ -262,7 +290,7 @@ Lemma 49
   \end{itemize}
 \end{itemize}
 
-% todo: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself)
+% todo: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself), maybe only state Lemma 55, since it comes from direct computation, give an overview of Lemma 52
 % todo: formulate
 Theorem 57
 \begin{itemize}
@@ -286,9 +314,16 @@ Theorem 57
   \end{itemize}
 \end{itemize}
 
-% todo: Prove \ref{theorem:subsequence} or just give an overview of the proof
+Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that for a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$. In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
 
-% todo: Conclusion
+\begin{proof}[Proof of Theorem~\ref{theorem:subsequence}]
+  % todo: Prove or just give an overview of the proof
+\end{proof}
+
+
+
+\subsubsection{Conclusion and Summary}
+
 % todo: summarize everything again briefly: split into thin -> inductively extract "good" subsequences -> slanted or not, you can glue simple extensions together
 % todo?: possible improvements, applications? -> Use Theorem 28 otherwise? How to improve the bound by finding bigger subsequences (Theorem 28 is maxed out).
 
