@@ -1,10 +1,10 @@
 \subsection{Arbitrary Convex n-gons}
 % todo9: choose right fraction (\frac or "/") to look nice (ctrl+F)
 % todo5: add citations from original paper (to every definition, theorem, ...)
-% todo2: remove some statements based on how much of chapter 9 to 11 is used
 % todo3: Make sure all "cw" and "ccw" are replaced with full words. Also make sure all definitions are sound regarding cw/ccw.
 % todo3: Introduce orientation of slice (left, right, ...)
 % todo9: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
+% polish: Add proofs for Lemma 49 and Theorem 57
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
@@ -282,21 +282,9 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
 \end{definition}
 % todo4: Image of G-envelope
 
-% todo5?: remove this observation (when reformulation is removed)
-\begin{observation}
-  If the sequence $v$ as in Definition~\ref{definition:g-envelope} is cw-ordered, then $v_G$ is a cw-ordered sequence with $n-2\abs{G}$ vertices.
-\end{observation}
-
 \begin{definition}[G-good]
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
 \end{definition}
-
-% todo5?: remove reformulation, when it is not used in last lemmata
-Now that we have defined good seqeunces, we can reformulate Theorem~\ref{theorem:glueing} using them.
-
-\begin{lemma}\label{lemma:glueing-reformulation}
-  % todo5: Lemma 41. Maybe not needed (depends on chapters 9 to 11 formulation). Refer to \ref{theorem:glueing} then.
-\end{lemma}
 
 Now we find another way to determine which seqeunces are actually \emph{G-good}. Therefore we have to define the following:
 
@@ -309,6 +297,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
+% todo3?: insert Lemma 36 here
 \begin{proof}
   % todo3: outline or full proof (would need Lemma 36...)
 \end{proof}
@@ -319,76 +308,24 @@ We now need to define one more property of a sequence, by which we will split ou
   Let $v=(v_1,\ldots,v_t)$ be a thin cw-sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \textit{cw-slanted to} an angle $\beta$ with \textit{tolerance} $\delta$ if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
 \end{definition}
 % todo4: image
-% todo3?: add observations (going around, scattered)
 
 Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
   \item The original sequence has a large enough slanted subsequence.
   \item The original sequence does not have such a subsequence.
 \end{enumerate}
-We will show that for each case we can find a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will outline the proof.
+
+We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
+
+% todo6: give some overview of proof ideas
 
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
   Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither cw-slanted nor ccw-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
-\begin{proof}[Proof outline]
-  % todo2: formulate list
-  % todo2: you would at least need Lemma 48... Maybe you can prove by image?
-  \begin{itemize}
-    \item Pick $4\tau$ not ccw-slanted subsequences with $m$ vertices, which we'll index by $q$ and $4\tau$ not cw-slanted subseq.s with $m$ vertices between each.
-    \item For each subseq. find the points $i, \hat{\imath}, j, \hat{\jmath}$ and the set $\Delta$ of $2\delta$ $k$'s which break the slanted definition.
-    \item Assume w.l.o.g. that $\omega_q := ...$ lies left of half of each $\Delta_q$, since assumptions are symmetric for $v$.
-    \item Pick $2\tau$ subseq.s with this property.
-    \item Case 1: Half of those have at least half of the rays left
-    \begin{itemize}
-      \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray to the left.
-      \item Build $G$ out of those $\delta$ vertices, so the ray in \textbf{Lemma~48} is left and $\omega$ is right (by defining the point that preserves $\rho$ and $\omega$).
-      \item By Lemma 48 it is $G$-good when stretched
-      \item Apply Lemma 41 to this stretched seq.
-      \item Cut this stretched seq. back with $\tau+1$ cuts
-    \end{itemize}
-    \item Case 2: Half of those have at least half of the rays not left
-    \begin{itemize}
-      \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray not to the left.
-      \item The angle of those rays to the base is $>\alpha$, by $\beta \geq \alpha$, $\alpha$-thinness and unslantedness.
-      \item Because is is not left and in an $\alpha$-thin sequence, is has to leave through the interior of the base.
-      \item Lemma 42 (ray = good) shows it's $G$-good.
-      \item Apply Lemma 41 for the bound.
-      \item Add some arbitrary points to have a large enough subseq., which will influence $\xc$ at most linearily
-    \end{itemize}
-  \end{itemize}
-\end{proof}
-
-% todo2: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself), maybe only state Lemma 55, since it comes from direct computation, give an overview of Lemma 52
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
   Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is cw-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
-
-\begin{proof}
-  % todo2: formulate
-  % todo2: you would at least need Lemma 55 and Definition 56.
-  \begin{itemize}
-    \item Assumptions / Premises
-    \begin{itemize}
-      \item $n=8\delta^2$
-      \item $\pi/6$-thin (apply Lemma 55)
-      \item slanted angle $\pi/3$ (apply Lemma 55)
-      \item tolerance $2\delta$ (Have $2\delta$ points for $G$ envelope)
-    \end{itemize}
-    \item Bulid a cw-decreasing seq. out of every $4\delta^{th}$ points
-    \item Case 1: There are many points in this seq. -> Apply Corollary 52
-    \item Case 2: There are few points in this seq.
-    \begin{itemize}
-      \item Look at all sequences of every $4\delta^{th}$ point you didn't take in constructing. They are \emph{perfect} by construction.
-      \item Split them into length $8$ subseq. (also \emph{perfect}), from which there are at least $\frac{1}{4}\delta - h$
-      \item Every such subseq. has $5$ points, where the ray leaves through the base (Obs. 45, Lemma 55). 
-      \item Since you chose every $4\delta^{th}$ point, you can find another $4\delta - 2\delta - 1 = 2\delta - 1$ such rays.
-      \item All those seq.s are good by Lemma 42
-      \item Count vertices and apply Lemma 41 to get your estimate.
-    \end{itemize}
-  \end{itemize}
-\end{proof}
 
 Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.\\
 In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
@@ -422,14 +359,7 @@ Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m\i
 \newpage
 {\Huge \textbf{Notes}}
 
-Proofs worth repeating
-\begin{itemize}
-  \item Theorem 28
-  \item Lemma 42 (good = ray)?
-  \item Lemma 48?
-  \item Lemma 25 / Corollary 26?
-\end{itemize}
-
+% todo5: decide on examples
 Examples worth making/drawing
 \begin{itemize}
   \item all examples from source
@@ -442,18 +372,3 @@ Examples worth making/drawing
   \item Perfect sequence
   \item Proof of Lemma 49, Case 1
 \end{itemize}
-
-\begin{tabular}{| p{50mm} | p{100mm} |}
-  \hline
-  \multicolumn{2}{|c|}{\textbf{Main results per chapter}}\\ \hline
-  3. Preliminaries & Extension Complexity for union of polytopes \\ \hline
-  4. Acute polyhedra & There is an acute polyhedron for a polygon, where all main edges except one have fixed direction \\ \hline
-  5. Acute diagrams & There is an acute diagram for a polygon, where all main edges except one have fixed direction \\ \hline
-  6. Glueing acute extensions together & Skip vertices of a polygon by joining acute diagrams to get an extended formulation which represents the original polygon \\ \hline
-  7. Thin sequences & Splitting polygons is now a thing \& something about rays passing a horizontal line \\ \hline
-  8. Good sequences & good sequences let you apply Theorem 28, identify good sequence via ray passing through top \\ \hline
-  9. Extracting a slanted subsequence & When it's not slanted, it'll extend well (Lemma 49) \\ \hline
-  10. Decreasing slanted sequences & Get estimates of xc for slanted sequences \\ \hline
-  11. Extensions for slanted sequences & Subsequence of slanted sequence with good xc \\ \hline
-  12. Completing the proof & Split the polygon, iteratively extract a subsequence and bound xc (see chapter 11 for slanted, chapter 9 for not slanted) \\ \hline
-\end{tabular}
