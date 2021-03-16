@@ -1,6 +1,5 @@
 \subsection{Arbitrary Convex n-gons}
 % todo9: choose right fraction (\frac or "/") to look nice (ctrl+F)
-% todo5: add citations from original paper (to every definition, theorem, ...)
 % todo9: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
 % polish: Add proofs for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
@@ -19,14 +18,14 @@ The gist of the approach is this:
 
 \subsubsection{Main Result}
 
-\begin{theorem}\label{theorem:xc}
+\begin{theorem}[{\cite[Theorem 5]{shitov2020sublinear}}]\label{theorem:xc}
   Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{\frac{2}{3}}$.
 \end{theorem}
 
 Naturally, we need to gather more statements, before we can prove this theorem. 
 
 The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
-\begin{lemma}\label{lemma:union}
+\begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
   Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
@@ -55,7 +54,7 @@ If not stated otherwise, we assume the vertices of a correct sequence to be orde
 
 For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, meet on the same side of $v_1 \wedge v_n$.
 
-\begin{observation}[Splitting into thin sequences]\label{observation:splitting}
+\begin{observation}[Splitting into thin sequences, {\cite[Observation 30]{shitov2020sublinear}}]\label{observation:splitting}
   Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
 \end{observation}
 
@@ -68,7 +67,7 @@ Based on Observation~\ref{observation:splitting} we choose to split the original
 
 Now we will go on to show that each $pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
 
-\begin{theorem}\label{theorem:subsequence}
+\begin{theorem}[{\cite[Theorem 58]{shitov2020sublinear}}]\label{theorem:subsequence}
   Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.
 \end{theorem}
@@ -77,7 +76,7 @@ Proving this theorem is the objective of the rest of the paper. We preempted it 
 
 The following corollary is a direct result of it: 
 
-\begin{corollary}\label{corollary:subsequence}
+\begin{corollary}[{\cite[Corollary 59]{shitov2020sublinear}}]\label{corollary:subsequence}
   Let $v$ be a $\pi/6$-thin sequence with $n > 263\,000$ vertices. 
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{2/3}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{1/3}$.
 \end{corollary}
@@ -86,7 +85,7 @@ The following corollary is a direct result of it:
   Apply Theorem~\ref{theorem:subsequence} with $\tau=\left\lfloor (n/1032)^{1/3} \right\rfloor$, which gives the desired result for $n > 263\,000$.
 \end{proof}
 
-\begin{corollary}\label{corollary:thin-xc}
+\begin{corollary}[{\cite[Corollary 60]{shitov2020sublinear}}]\label{corollary:thin-xc}
   Let $v$ be a $\pi/6$-thin sequence. Then $\xc(v) \leq \frac{324}{\sqrt[3]{129}} n^{\frac{2}{3}}$.
 \end{corollary}
 
@@ -134,7 +133,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
 
 Now follows an important lemma, which allows us to construct an acute polyhedron for a given base, where all main edges but one have fixed direction with respect to the base.
 
-\begin{lemma}\label{lemma:acute-direction}
+\begin{lemma}[{\cite[Lemma 15]{shitov2020sublinear}}]\label{lemma:acute-direction}
   Let $V$ be a polygon with vertices $v_1,\dots,v_n$ and let $y_1,\dots,y_{n-1}$ be a set of inner points of $V$.
   Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$ \footnote{We use $x \wedge y$ to describe the line joining two points $x$ and $y$. It can also the intersection of two lines $x$ and $y$.}.
 \end{lemma}
@@ -144,7 +143,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \end{proof}
 % todo4?: image
 
-\begin{observation}\label{observation:acute-projection}
+\begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
   The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injecively into interior of $B$.
 \end{observation}
@@ -162,14 +161,14 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 
 We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
 
-\begin{corollary}\label{corollary:acute-direction}
+\begin{corollary}[{\cite[Corollary 26]{shitov2020sublinear}}]\label{corollary:acute-direction}
   Let $V$ be a polygon with vertices $v_1,\dots,v_n$ and let $y_1,\dots,y_{n-1}$ be a set of inner points of $V$.
   Then there is an acute diagram with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the main edge from $v_i$ lies on $v_i \wedge y_i$.
 \end{corollary}
 
 Since we have shown that every acute polyhedron has an acute diagram, we want to describe the properties of acute diagrams, which allow us to "lift" them into an acute polyhedron.
 
-\begin{lemma}[Properties of acute diagrams]\label{lemma:diagram-properties}
+\begin{lemma}[Properties of acute diagrams, {\cite[Lemma 19]{shitov2020sublinear}}]\label{lemma:diagram-properties}
   Let $\Delta$ be the acute diagram of an acute polyhedron $P$ with base $B$.
   Then $\Delta$ is a planar straight-line graph such that
 
@@ -188,7 +187,7 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
 
 We omit the proof, because we only lift polyhedra from diagrams, not the other way around. But that is what we show next:
 
-\begin{lemma}[Lifting acute diagrams]
+\begin{lemma}[Lifting acute diagrams, {\cite[Lemma 25]{shitov2020sublinear}}]
   A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
 \end{lemma}
 
@@ -294,7 +293,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 \end{definition}
 % todo4: image of ray
 
-\begin{lemma}\label{lemma:ray-good}
+\begin{lemma}[{\cite[Lemma 42]{shitov2020sublinear}}]\label{lemma:ray-good}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
