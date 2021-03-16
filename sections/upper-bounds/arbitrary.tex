@@ -4,6 +4,7 @@
 % todo: add citations from original paper (to every definition, theorem, ...)
 % todo: remove some statements based on how much of chapter 9 to 11 is used
 % todo: make sure all "cw" and "ccw" are replaced with full words.
+% todo: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
@@ -84,7 +85,7 @@ Proving this theorem is the objective of the rest of the paper. We preempted it 
   Use induction for $n > 263\,000$ and apply Corollary~\ref{corollary:subsequence} and Lemma~\ref{lemma:union} for the induction step.
 \end{proof}
 
-We can now prove the main result by joining the extended formulations for all $\pi/6$-thin sequences.
+We can now prove the main result.
 
 \begin{proof}[Proof outline of \ref{theorem:xc}]
   Using Observation~\ref{observation:splitting} we spilt the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
@@ -98,46 +99,58 @@ We can now prove the main result by joining the extended formulations for all $\
 
 Before we can determine the subsequences in Theorem~\ref{theorem:subsequence}, we need to find a way to build those extended formulations.
 
-The key idea here is to omit some vertices to obtain a simpler surrounding polygon. For this polygon we build extended formulations with respect to the omitted vertices. If we now "glue" those extended formulations together in a special way, we get an extended formulation for the original polygon with small extension complexity.
+The key idea here is to omit some vertices to obtain a simpler surrounding polygon. For this polygon we build specific 3-dimensional extended formulations with respect to the omitted vertices. If we now "glue" those extended formulations together in a special way, we get an extended formulation for the original polygon with small extension complexity.
 
-Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and \emph{acute diagrams}. These help us build the extensions for the (simple) surrounding polygon.
+Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and \emph{acute diagrams}. These help us build the extensions for the surrounding polygon.
 
-\begin{definition}[Acute Polyhedron]
+\begin{definition}[Acute Polyhedron]\label{definition:acute-polyhedron}
   Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its factes. If all other facets $F \neq B$ of $P$ 
   share an edge with $B$ and
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
-  then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$.
+  then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
 \end{definition}
-% todo: image of actue polyhedron and not acute polyhedron
+% todo: image of actue polyhedron and not acute polyhedron and image of main edges
 
 \begin{definition}[Main edge]
   An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
 \end{definition}
-% todo: image of main edges (merge with image before)
 
 \begin{lemma}
   Any base vertex of an acute polyhedron belongs to a unique main edge.
 \end{lemma}
-% todo: summarize proof
+
+\begin{proof}[Proof outline]
+  A base vertex $v$ with two main edges would be contained in three non-base faces. Since they have to include $v$ and a base edge by Definition~\ref{definition:acute-polyhedron}, two of them coincide on the base, which is impossible for acute polyhedra.
+\end{proof}
 
 Now follows an important lemma, which allows us to construct an acute polyhedron for a given base, where all main edges but one have fixed direction with respect to the base.
+
 \begin{lemma}\label{lemma:acute-direction}
   Let $V$ be a polygon with vertices $v_1,\dots,v_n$ and let $y_1,\dots,y_{n-1}$ be a set of inner points of $V$.
   Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$ \footnote{We use $x \wedge y$ to describe the line joining two points $x$ and $y$. It can also the intersection of two lines $x$ and $y$.}.
 \end{lemma}
-% todo: describe proof (go around building, make sure it does not contradict in the end, that's why you have to have one y less)
+
+\begin{proof}[Proof outline]
+  Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the base edge $v_{n-1} \wedge v_{n-2}$ and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}.
+\end{proof}
+% todo?: add image
 
 \begin{observation}\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
   The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injecively into interior of $B$.
 \end{observation}
 
+% todo?: remove
+\begin{proof}[Proof outline]
+  Follows by definition of acute polyhedra (acute angle) and convexity of~$P$.
+\end{proof}
+
 \begin{definition}[Acute diagram and lifting]
   Let $P$ be an acute polyhedron with base $B$ and $\pi$ like in Observation~\ref{observation:acute-projection}.
   The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
-% todo: add image of polyhedron, diagram and flow/orientation
+% todo: add image of polyhedron, diagram and ?flow/orientation?
 
 We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
 
@@ -146,7 +159,7 @@ We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
   Then there is an acute diagram with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the main edge from $v_i$ lies on $v_i \wedge y_i$.
 \end{corollary}
 
-Since we have shown that every acute polyhedron has an acute diagram, we want to describe the properties of acute diagrams, which allow us to lift them into an acute polyhedron.
+Since we have shown that every acute polyhedron has an acute diagram, we want to describe the properties of acute diagrams, which allow us to "lift" them into an acute polyhedron.
 
 \begin{lemma}[Properties of acute diagrams]\label{lemma:diagram-properties}
   Let $\Delta$ be the acute diagram of an acute polyhedron $P$ with base $B$.
@@ -164,14 +177,23 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
 
   (v) if a non-base arc $e$ of $\Delta$ separates faces $F$, $G$, then $e, e_F, e_G$ are concurrent.
 \end{lemma}
+% todo?: Why no proof?
 
-% todo: Explain flow?
-% todo: Summarize reasoning for lifting
+It shows that the relation holds the other way around:
 
 \begin{lemma}[Lifting acute diagrams]
   A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
 \end{lemma}
-% todo?: repeat or summarize proof
+
+\begin{proof}[Proof outline]
+  % todo: repeat or summarize proof
+
+  % Flow to s, which is a tree (outdeg = 1 for v!=s)
+  % Lambda(u) is consecutive
+  % there are at least two furthest nodes, which are consecutive
+  % The turning angle of that edge is less than pi
+  % Do induction: Find that triangle (with turning < pi), construct surrounding corner, build polyhedron by inductive assumption, cut that polyhedron by plane of triangle.
+\end{proof}
 
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
 
@@ -189,7 +211,10 @@ We can now focus on the main result of the first part, which allows us to build 
   
   $$\Rightarrow \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
-% todo: proof theorem 28
+
+\begin{proof}
+  % todo
+\end{proof}
 
 \begin{remark}\label{remark:pitfall}
   There is a subtle difference between Theorem~\ref{theorem:glueing} and Corollary~\ref{corollary:acute-direction}.
@@ -237,33 +262,53 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
 
 \subsubsection{Finding Good Subsequences}
 
-After defining this central theorem, we have to make a way to apply it to general polygons (see Remark~\ref{remark:pitfall}, why we can't do this until now).
+After defining this central theorem, we have to make a way to apply it to general polygons.\footnote{See Remark~\ref{remark:pitfall}, why we can't simply use Corollary~\ref{corollary:acute-direction}.}
 Therefore we formalize the notion of "good" sequences with respect to Theorem~\ref{theorem:glueing}.
 
-\begin{definition}[G-envelope]
-  % todo
+\begin{definition}[$t$-scattered subset]
+  Let $t, n \in \N$ and $G \subset \{1,\dots,n\}$. $G$ is called $t$\emph{-scattered} if for $g, g' \in G, g \neq g'$ we have $\abs{g-g'} \geq t$.
+\end{definition}
+
+\begin{definition}[G-envelope]\label{definition:g-envelope}
+  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. If $v=(v_1,\dots,v_n)$ is a thin sequence, then the $G$\emph{-envelope} of $v$ is the sequence $v_G$ obtained from $v$ by replacing the points $v_{g-1}, v_g, v_{g+1}$ with $$o_g:=(v_{g-2}\wedge v_{g-1})\wedge (v_{g+1}\wedge v_{g+2}),$$ for all $g\in G$.
 \end{definition}
 % todo: Image of G-envelope
 
+% todo?: remove
+\begin{observation}
+  If the sequence $v$ as in Definition~\ref{definition:g-envelope} is cw-ordered, then $v_G$ is a cw-ordered sequence with $n-2\abs{G}$ vertices.
+\end{observation}
+
 \begin{definition}[G-good]
-  % todo
+  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
 \end{definition}
 
+% todo?: remove
+Now that we have defined good seqeunces, we can reformulate Theorem~\ref{theorem:glueing} using them.
+
 \begin{lemma}\label{lemma:glueing-reformulation}
-  % todo?: Lemma 41? Maybe not needed (depends on chapters 9 to 11 formulation)
+  % todo: Lemma 41. Maybe not needed (depends on chapters 9 to 11 formulation). Refer to \ref{theorem:glueing} then.
 \end{lemma}
 
-Now we have to find another way to determine which seqeunces are actually \emph{G-good}.
+Now we find another way to determine which seqeunces are actually \emph{G-good}.
+% todo: Define ray
+
 \begin{lemma}\label{lemma:ray-good}
-  % todo: Lemma 42: ray definition of G-good
+  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
-% todo: prove it?
 
+\begin{proof}
+  % todo: outline or full proof
+\end{proof}
+
+% todo?: add new section
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
   % todo
 \end{definition}
+% todo: add image
+% todo?: add observations (going around, scattered)
 
 Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
@@ -272,61 +317,74 @@ Now we can split the search for a good subsequence into two cases:
 \end{enumerate}
 We will show that for each case we can find a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well.
 
-% todo: state Lemma 49
-% todo: formulate list
-Lemma 49
-\begin{itemize}
-  \item Pick $4\tau$ not ccw-slanted subsequence with $m$ vertices, which we'll index by $q$.
-  \item For each subseq. find the points $i, \hat{\imath}, j, \hat{\jmath}$ and the set $\Delta$ of $2\delta$ $k$'s which break the slanted definition.
-  \item Assume w.l.o.g. that $\omega_q := ...$ lies left of half of each $\Delta_q$, since assumptions are symmetric for $v$.
-  \item Pick $2\tau$ subseq.s with this property.
-  \item Case 1: Half of those have at least half of the rays left
+\begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
+  Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither cw-slanted nor ccw-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
+\end{lemma}
+
+\begin{proof}
+  % todo: formulate list
   \begin{itemize}
-    \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray to the left.
-    \item Build $G$ out of those $\delta$ vertices, so the ray in Lemma~48 is left and $\omega$ is right (by defining the point that preserves $\rho$ and $\omega$).
-    \item By Lemma 48 it is $G$-good when stretched
-    \item Apply Lemma 41 to this stretched seq.
-    \item Cut this stretched seq. back with $\tau+1$ cuts
+    \item Pick $4\tau$ not ccw-slanted subsequence with $m$ vertices, which we'll index by $q$.
+    \item For each subseq. find the points $i, \hat{\imath}, j, \hat{\jmath}$ and the set $\Delta$ of $2\delta$ $k$'s which break the slanted definition.
+    \item Assume w.l.o.g. that $\omega_q := ...$ lies left of half of each $\Delta_q$, since assumptions are symmetric for $v$.
+    \item Pick $2\tau$ subseq.s with this property.
+    \item Case 1: Half of those have at least half of the rays left
+    \begin{itemize}
+      \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray to the left.
+      \item Build $G$ out of those $\delta$ vertices, so the ray in Lemma~48 is left and $\omega$ is right (by defining the point that preserves $\rho$ and $\omega$).
+      \item By Lemma 48 it is $G$-good when stretched
+      \item Apply Lemma 41 to this stretched seq.
+      \item Cut this stretched seq. back with $\tau+1$ cuts
+    \end{itemize}
+    \item Case 2: Half of those have at least half of the rays not left
+    \begin{itemize}
+      \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray not to the left.
+      \item The angle of those rays to the base is $>\alpha$, by $\beta \geq \alpha$, $\alpha$-thinness and unslantedness.
+      \item Because is is not left and in an $\alpha$-thin sequence, is has to leave through the interior of the base.
+      \item Lemma 42 (ray = good) shows it's $G$-good.
+      \item Apply Lemma 41 for the bound.
+      \item Add some arbitrary points to have a large enough subseq., which will influence $\xc$ at most linearily
+    \end{itemize}
   \end{itemize}
-  \item Case 2: Half of those have at least half of the rays not left
-  \begin{itemize}
-    \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray not to the left.
-    \item The angle of those rays to the base is $>\alpha$, by $\beta \geq \alpha$, $\alpha$-thinness and unslantedness.
-    \item Because is is not left and in an $\alpha$-thin sequence, is has to leave through the interior of the base.
-    \item Lemma 42 (ray = good) shows it's $G$-good.
-    \item Apply Lemma 41 for the bound.
-    \item Add some arbitrary points to have a large enough subseq., which will influence $\xc$ at most linearily
-  \end{itemize}
-\end{itemize}
+\end{proof}
 
 % todo: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself), maybe only state Lemma 55, since it comes from direct computation, give an overview of Lemma 52
-% todo: formulate
-Theorem 57
-\begin{itemize}
-  \item Assumptions / Premises
-  \begin{itemize}
-    \item $n=8\delta^2$
-    \item $\pi/6$-thin (apply Lemma 55)
-    \item slanted angle $\pi/3$ (apply Lemma 55)
-    \item tolerance $2\delta$ (Have $2\delta$ points for $G$ envelope)
-  \end{itemize}
-  \item Bulid a cw-decreasing seq. out of every $4\delta^{th}$ points
-  \item Case 1: There are many points in this seq. -> Apply Corollary 52
-  \item Case 2: There are few points in this seq.
-  \begin{itemize}
-    \item Look at all sequences of every $4\delta^{th}$ point you didn't take in constructing. They are \emph{perfect} by construction.
-    \item Split them into length $8$ subseq. (also \emph{perfect}), from which there are at least $\frac{1}{4}\delta - h$
-    \item Every such subseq. has $5$ points, where the ray leaves through the base (Obs. 45, Lemma 55). 
-    \item Since you chose every $4\delta^{th}$ point, you can find another $4\delta - 2\delta - 1 = 2\delta - 1$ such rays.
-    \item All those seq.s are good by Lemma 42
-    \item Count vertices and apply Lemma 41 to get your estimate.
-  \end{itemize}
-\end{itemize}
+\begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
+  Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is cw-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
+\end{lemma}
 
-Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that for a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$. In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
+\begin{proof}
+  % todo: formulate
+  \begin{itemize}
+    \item Assumptions / Premises
+    \begin{itemize}
+      \item $n=8\delta^2$
+      \item $\pi/6$-thin (apply Lemma 55)
+      \item slanted angle $\pi/3$ (apply Lemma 55)
+      \item tolerance $2\delta$ (Have $2\delta$ points for $G$ envelope)
+    \end{itemize}
+    \item Bulid a cw-decreasing seq. out of every $4\delta^{th}$ points
+    \item Case 1: There are many points in this seq. -> Apply Corollary 52
+    \item Case 2: There are few points in this seq.
+    \begin{itemize}
+      \item Look at all sequences of every $4\delta^{th}$ point you didn't take in constructing. They are \emph{perfect} by construction.
+      \item Split them into length $8$ subseq. (also \emph{perfect}), from which there are at least $\frac{1}{4}\delta - h$
+      \item Every such subseq. has $5$ points, where the ray leaves through the base (Obs. 45, Lemma 55). 
+      \item Since you chose every $4\delta^{th}$ point, you can find another $4\delta - 2\delta - 1 = 2\delta - 1$ such rays.
+      \item All those seq.s are good by Lemma 42
+      \item Count vertices and apply Lemma 41 to get your estimate.
+    \end{itemize}
+  \end{itemize}
+\end{proof}
+
+Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$. In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
 
 \begin{proof}[Proof of Theorem~\ref{theorem:subsequence}]
-  % todo: Prove or just give an overview of the proof
+  We try to apply Lemma~\ref{lemma:unslanted-subseqence} with $\beta = \pi/3$, $\delta = 4\tau$ and $m = 8\delta^2 + 1$.
+
+  If Lemma~\ref{lemma:unslanted-subseqence} is applicable, $v$ contains a subsequence $u$ with $\abs{u} = (6+\delta)\tau = 4\tau^2 + 6\tau \geq 4\tau^2$ and $\xc(u) \leq 6\tau + \delta + 1 = 10\tau + 1 \leq 12\tau$.
+
+  If Lemma~\ref{lemma:unslanted-subseqence} isn't applicable, then $v$ has a subsequence, which is slanted to the angle $\pi/3$ with tolerance $2\delta$. According to Lemma~\ref{lemma:slanted-subsequence}, such a subsequence has a subsequence $u$ with $\abs{u} \geq 0.25\delta^2 = 4\tau^2$ and $\xc(u) \leq 3\delta = 12\tau$.
 \end{proof}
 
 
