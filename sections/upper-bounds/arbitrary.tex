@@ -1,5 +1,5 @@
 \subsection{Arbitrary Convex n-gons}
-% todo9: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
+% polish: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
 % polish: Add proofs for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
@@ -47,9 +47,7 @@ If not stated otherwise, we assume the vertices of a correct sequence to be orde
 \begin{definition}[Thin sequence]
   Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
-% todo4: image of thin seqeunce, not-thin sequence, thin seqeunce to one side
-
-% todo3: add that we normally look at clockwise sequences.
+% todo: image of thin seqeunce, not-thin sequence, thin seqeunce to one side
 
 For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, meet on the same side of $v_1 \wedge v_n$.
 
@@ -60,7 +58,7 @@ For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, me
 \begin{proof}[Proof outline]
   For each set, take as many vertices (in order) until thinness would be violated. Then begin a new set, which starts at least $2\pi/q$ further from the last -- so the $q$ sets cover the polygon.
 \end{proof}
-% todo4: image picpic11.png
+% todo: image picpic11.png
 
 Based on Observation~\ref{observation:splitting} we choose to split the original $n$-gon into $12$ distinct $\pi/6$-thin sequences. Joining those (constantly many) sequences will not change the asymptotical bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
 
@@ -116,7 +114,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
 \end{definition}
-% todo4: image of actue polyhedron and not acute polyhedron and image of main edges
+% todo: image of actue polyhedron and not acute polyhedron and image of main edges
 
 \begin{definition}[Main edge]
   An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
@@ -140,7 +138,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \begin{proof}[Proof outline]
   Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the base edge $v_{n-1} \wedge v_{n-2}$ and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}.
 \end{proof}
-% todo4?: image
+% todo?: image
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
@@ -156,7 +154,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
-% todo4: image of polyhedron, diagram
+% todo: image of polyhedron, diagram
 
 We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
 
@@ -195,7 +193,7 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
 
   Then we use induction on the number of nodes of the base of $\Delta$. The induction basis are the two exceptions from above, where one can easily construct an acute polyhedron.
 
-  % todo4: insert and reference image
+  % todo: insert and reference image
   For the induction step we find a triangle with base arc $e$ like above and "remove" it, by continuing the arcs next to it (see image todo). The continuation meets on the "outside" of~$e$, since $e$ has turning angle less than $\pi$. 
 
   From the induction hypotesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
@@ -217,10 +215,10 @@ We can now focus on the main result of the first part, which allows us to build 
   $$\Rightarrow \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
 
-% todo4: insert image example
+% todo: insert image example
 
 \begin{proof}
-  % todo3
+  todo
 \end{proof}
 
 \begin{remark}\label{remark:pitfall}
@@ -278,7 +276,7 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
 \begin{definition}[G-envelope]\label{definition:g-envelope}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. If $v=(v_1,\dots,v_n)$ is a thin sequence, then the $G$\emph{-envelope} of $v$ is the sequence $v_G$ obtained from $v$ by replacing the points $v_{g-1}, v_g, v_{g+1}$ with $$o_g:=(v_{g-2}\wedge v_{g-1})\wedge (v_{g+1}\wedge v_{g+2}),$$ for all $g\in G$.
 \end{definition}
-% todo4: Image of G-envelope
+% todo: Image of G-envelope
 
 \begin{definition}[G-good]
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
@@ -289,15 +287,14 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 \begin{definition}
   Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
 \end{definition}
-% todo4: image of ray
+% todo: image of ray
 
 \begin{lemma}[{\cite[Lemma 42]{shitov2020sublinear}}]\label{lemma:ray-good}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
-% todo3?: insert Lemma 36 here
 \begin{proof}
-  % todo3: outline or full proof (would need Lemma 36...)
+  todo: outline or full proof (requires Lemma 36...), use the image at least
 \end{proof}
 
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
@@ -307,7 +304,7 @@ We now need to define one more property of a sequence, by which we will split ou
 
   A \textit{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
 \end{definition}
-% todo4: image
+% todo: image
 
 Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
@@ -317,7 +314,7 @@ Now we can split the search for a good subsequence into two cases:
 
 We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
 
-% todo6: give some overview of proof ideas
+% polish: give some overview of proof ideas (sketches for Lemma 48 and 49)
 
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
   Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
@@ -349,26 +346,3 @@ Looking back at the key ideas, we see that Theorem~\ref{theorem:glueing} was use
 Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m\in\Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e. for which Theorem~\ref{theorem:glueing} is used asymptotically optimal. If we could find a subsequence with $m\in\Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:glueing} (asymptotically) optimal, we would achieve a final result of $\pc(n)\in O(n^{1/2})$, which would close the gap between lower and upper bound.
 
 
-
-
-
-
-
-
-
-\newpage
-{\Huge \textbf{Notes}}
-
-% todo5: decide on examples
-Examples worth making/drawing
-\begin{itemize}
-  \item all examples from source
-  \item Examples of acute polytope/diagram (main edges + orientation in most proofs)
-  \item Examples of thin sequences (one thin, one not thin and one thin with one side > 90 deg)
-  \item Ray $\rho$
-  \item G-envelope + G-good
-  \item Slanted sequences: angle $\beta$
-  \item Decreasing sequence?
-  \item Perfect sequence
-  \item Proof of Lemma 49, Case 1
-\end{itemize}
