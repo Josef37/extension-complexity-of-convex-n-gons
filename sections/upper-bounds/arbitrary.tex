@@ -377,22 +377,26 @@ We will show that for each case we can find a large enough subsequence, for whic
   \end{itemize}
 \end{proof}
 
-Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$. In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
+Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.\\
+In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
 
-\begin{proof}[Proof of Theorem~\ref{theorem:subsequence}]
+\begin{proof}[Proof outline of Theorem~\ref{theorem:subsequence}]
   We try to apply Lemma~\ref{lemma:unslanted-subseqence} with $\beta = \pi/3$, $\delta = 4\tau$ and $m = 8\delta^2 + 1$.
 
-  If Lemma~\ref{lemma:unslanted-subseqence} is applicable, $v$ contains a subsequence $u$ with $\abs{u} = (6+\delta)\tau = 4\tau^2 + 6\tau \geq 4\tau^2$ and $\xc(u) \leq 6\tau + \delta + 1 = 10\tau + 1 \leq 12\tau$.
+  If it is applicable, $v$ contains a subsequence with the desired properties.
 
-  If Lemma~\ref{lemma:unslanted-subseqence} isn't applicable, then $v$ has a subsequence, which is slanted to the angle $\pi/3$ with tolerance $2\delta$. According to Lemma~\ref{lemma:slanted-subsequence}, such a subsequence has a subsequence $u$ with $\abs{u} \geq 0.25\delta^2 = 4\tau^2$ and $\xc(u) \leq 3\delta = 12\tau$.
+  If it isn't applicable, $v$ has a subsequence $u$, which is slanted to the angle $\pi/3$ with tolerance $2\delta$. By Lemma~\ref{lemma:slanted-subsequence} $u$ contains a subsequence with the desired properties.
 \end{proof}
 
 
 
-\subsubsection{Conclusion and Summary}
+\subsubsection{Conclusion}
 
-% todo: summarize everything again briefly: split into thin -> inductively extract "good" subsequences -> slanted or not, you can glue simple extensions together
-% todo?: possible improvements, applications? -> Use Theorem 28 otherwise? How to improve the bound by finding bigger subsequences (Theorem 28 is maxed out).
+Now we have proved that $\pc(n) \in O(n^{2/3})$, which leaves us wondering, if this bound can be improved further, since the lower bound is $\pc(n) \in \Omega(n^{1/2})$.
+
+Looking back at the key ideas, we see that Theorem~\ref{theorem:glueing} was used optimally for each subsequence (see Observation~\ref{observation:limits-of-glueing}). If we wanted to improve the bound using this theorem, we would have to find larger subsequence, for which we can apply it.
+
+Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m\in\Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e. for which Theorem~\ref{theorem:glueing} is used asymptotically optimal. If we could find a subsequence with $m\in\Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:glueing} (asymptotically) optimal, we would achieve a final result of $\pc(n)\in O(n^{1/2})$, which would close the gap between lower and upper bound.
 
 
 
