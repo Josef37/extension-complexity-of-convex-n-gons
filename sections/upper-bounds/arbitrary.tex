@@ -1,10 +1,10 @@
 \subsection{Arbitrary Convex n-gons}
-% todo @ March 13 to 15
-% todo: choose right fraction (\frac or "/") to look nice (ctrl+F)
-% todo: add citations from original paper (to every definition, theorem, ...)
-% todo: remove some statements based on how much of chapter 9 to 11 is used
-% todo: make sure all "cw" and "ccw" are replaced with full words.
-% todo: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
+% todo9: choose right fraction (\frac or "/") to look nice (ctrl+F)
+% todo5: add citations from original paper (to every definition, theorem, ...)
+% todo2: remove some statements based on how much of chapter 9 to 11 is used
+% todo3: Make sure all "cw" and "ccw" are replaced with full words. Also make sure all definitions are sound regarding cw/ccw.
+% todo3: Introduce orientation of slice (left, right, ...)
+% todo9: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
@@ -33,10 +33,12 @@ The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1
 
 This lemma allows us to consider a partition of the polygon, since we can merge the extended formulations of those parts.
 
-Now we will go on to define those smaller parts, which we can handle well.
+Now we will go on to define those smaller parts, which we can handle well. We call them \emph{thin sequences}.
 
 \begin{definition}[Turning angle]
-  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. In other words, it is the amount the angle at $v$ deviates from $\pi$. The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
+  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
+  In other words, it is the amount the angle at $v$ deviates from $\pi$. \\
+  The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
 
 \begin{definition}[Correct sequence]
@@ -46,13 +48,20 @@ Now we will go on to define those smaller parts, which we can handle well.
 \begin{definition}[Thin sequence]
   Let $\alpha\in(0,\pi)$ and $n \geq 3$. A sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ is correct and, additionally, the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
-% todo?: motivation for meeting on the same side
+% todo4: image of thin seqeunce, not-thin sequence, thin seqeunce to one side
+
+% todo3: add that we normally look at clockwise sequences.
+
+For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, meet on the same side of $v_1 \wedge v_n$.
 
 \begin{observation}[Splitting into thin sequences]\label{observation:splitting}
   Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
 \end{observation}
-% todo: image picpic11.png
-% todo?: proof or gist: Collect vertices until you can no more (by thinness). Then start new set.
+
+\begin{proof}[Proof outline]
+  For each set, take as many vertices (in order) until thinness would be violated. Then begin a new set, which starts at least $2\pi/q$ further from the last -- so the $q$ sets cover the polygon.
+\end{proof}
+% todo4: image picpic11.png
 
 Based on Observation~\ref{observation:splitting} we choose to split the original $n$-gon into $12$ distinct $\pi/6$-thin sequences. Joining those (constantly many) sequences will not change the asymptotical bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
 
@@ -65,24 +74,23 @@ Now we will go on to show that each $pi/6$-thin sequence has extension complexit
 
 Proving this theorem is the objective of the rest of the paper. We preempted it to provide a better understanding of the results.
 
-% todo: explain motivation/idea
+The following corollary is a direct result of it: 
+
 \begin{corollary}\label{corollary:subsequence}
   Let $v$ be a $\pi/6$-thin sequence with $n > 263\,000$ vertices. 
-  Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{\frac{2}{3}}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{\frac{1}{3}}$.
+  Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36} n^{2/3}$ and $\xc(s) \leq \left( \frac{72}{43}n \right)^{1/3}$.
 \end{corollary}
 
 \begin{proof}[Proof outline]
   Apply Theorem~\ref{theorem:subsequence} with $\tau=\left\lfloor (n/1032)^{1/3} \right\rfloor$, which gives the desired result for $n > 263\,000$.
 \end{proof}
 
-% todo: explain idea (induction)
 \begin{corollary}\label{corollary:thin-xc}
   Let $v$ be a $\pi/6$-thin sequence. Then $\xc(v) \leq \frac{324}{\sqrt[3]{129}} n^{\frac{2}{3}}$.
 \end{corollary}
 
-% todo?: describe induction step in more detail
 \begin{proof}[Proof outline]
-  Use induction for $n > 263\,000$ and apply Corollary~\ref{corollary:subsequence} and Lemma~\ref{lemma:union} for the induction step.
+  Use induction for $n > 263\,000$ ($n \leq 263\,000$ is trivial) and apply Corollary~\ref{corollary:subsequence} and Lemma~\ref{lemma:union} for the induction step: $$\xc(\conv v) \leq \frac{324}{\sqrt[3]{129}} \left(n-\frac{n^{2/3}}{36}\right)^{2/3}+\left(\frac{72n}{43}\right)^{1/3} < \frac{324}{\sqrt[3]{129}}n^{2/3}$$
 \end{proof}
 
 We can now prove the main result.
@@ -109,7 +117,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
 \end{definition}
-% todo: image of actue polyhedron and not acute polyhedron and image of main edges
+% todo4: image of actue polyhedron and not acute polyhedron and image of main edges
 
 \begin{definition}[Main edge]
   An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
@@ -133,14 +141,13 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \begin{proof}[Proof outline]
   Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the base edge $v_{n-1} \wedge v_{n-2}$ and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}.
 \end{proof}
-% todo?: add image
+% todo4?: image
 
 \begin{observation}\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
   The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injecively into interior of $B$.
 \end{observation}
 
-% todo?: remove
 \begin{proof}[Proof outline]
   Follows by definition of acute polyhedra (acute angle) and convexity of~$P$.
 \end{proof}
@@ -150,7 +157,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
-% todo: add image of polyhedron, diagram and ?flow/orientation?
+% todo4: image of polyhedron, diagram
 
 We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
 
@@ -177,27 +184,26 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
 
   (v) if a non-base arc $e$ of $\Delta$ separates faces $F$, $G$, then $e, e_F, e_G$ are concurrent.
 \end{lemma}
-% todo?: Why no proof?
 
-It shows that the relation holds the other way around:
+We omit the proof, because we only lift polyhedra from diagrams, not the other way around. But that is what we show next:
 
 \begin{lemma}[Lifting acute diagrams]
   A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
 \end{lemma}
 
 \begin{proof}[Proof outline]
-  % todo: repeat or summarize proof
+  We can show that each diagram $\Delta$ has a triangle formed by two main arcs and one base arc $e$ with turning angle less than $\pi$ (expect in the cases, where $\Delta$ is a triangle or trapezoid). \footnote{In the original paper it is shown by defining a flow on the inner arcs of $\Delta$ towards a base vertex~$s$. For this flow we can find two consecutive "furthest" vertices, which therefore form a triangle. If the turning angle was too large, one can choose another $s$.}
 
-  % Flow to s, which is a tree (outdeg = 1 for v!=s)
-  % Lambda(u) is consecutive
-  % there are at least two furthest nodes, which are consecutive
-  % The turning angle of that edge is less than pi
-  % Do induction: Find that triangle (with turning < pi), construct surrounding corner, build polyhedron by inductive assumption, cut that polyhedron by plane of triangle.
+  Then we use induction on the number of nodes of the base of $\Delta$. The induction basis are the two exceptions from above, where one can easily construct an acute polyhedron.
+
+  % todo4: insert and reference image
+  For the induction step we find a triangle with base arc $e$ like above and "remove" it, by continuing the arcs next to it (see image todo). The continuation meets on the "outside" of~$e$, since $e$ has turning angle less than $\pi$. 
+
+  From the induction hypotesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
 \end{proof}
 
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
 
-% todo: insert image example
 \begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:glueing}
   Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subset V$ be a proper subset of all vertices. Fix $\delta \geq 1$. Assume
 
@@ -212,8 +218,10 @@ We can now focus on the main result of the first part, which allows us to build 
   $$\Rightarrow \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
 
+% todo4: insert image example
+
 \begin{proof}
-  % todo
+  % todo3
 \end{proof}
 
 \begin{remark}\label{remark:pitfall}
@@ -272,9 +280,9 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
 \begin{definition}[G-envelope]\label{definition:g-envelope}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. If $v=(v_1,\dots,v_n)$ is a thin sequence, then the $G$\emph{-envelope} of $v$ is the sequence $v_G$ obtained from $v$ by replacing the points $v_{g-1}, v_g, v_{g+1}$ with $$o_g:=(v_{g-2}\wedge v_{g-1})\wedge (v_{g+1}\wedge v_{g+2}),$$ for all $g\in G$.
 \end{definition}
-% todo: Image of G-envelope
+% todo4: Image of G-envelope
 
-% todo?: remove
+% todo5?: remove this observation (when reformulation is removed)
 \begin{observation}
   If the sequence $v$ as in Definition~\ref{definition:g-envelope} is cw-ordered, then $v_G$ is a cw-ordered sequence with $n-2\abs{G}$ vertices.
 \end{observation}
@@ -283,55 +291,59 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
 \end{definition}
 
-% todo?: remove
+% todo5?: remove reformulation, when it is not used in last lemmata
 Now that we have defined good seqeunces, we can reformulate Theorem~\ref{theorem:glueing} using them.
 
 \begin{lemma}\label{lemma:glueing-reformulation}
-  % todo: Lemma 41. Maybe not needed (depends on chapters 9 to 11 formulation). Refer to \ref{theorem:glueing} then.
+  % todo5: Lemma 41. Maybe not needed (depends on chapters 9 to 11 formulation). Refer to \ref{theorem:glueing} then.
 \end{lemma}
 
-Now we find another way to determine which seqeunces are actually \emph{G-good}.
-% todo: Define ray
+Now we find another way to determine which seqeunces are actually \emph{G-good}. Therefore we have to define the following:
+
+\begin{definition}
+  Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
+\end{definition}
+% todo4: image of ray
 
 \begin{lemma}\label{lemma:ray-good}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
 \begin{proof}
-  % todo: outline or full proof
+  % todo3: outline or full proof (would need Lemma 36...)
 \end{proof}
 
-% todo?: add new section
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
-  % todo
+  Let $v=(v_1,\ldots,v_t)$ be a thin cw-sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \textit{cw-slanted to} an angle $\beta$ with \textit{tolerance} $\delta$ if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
 \end{definition}
-% todo: add image
-% todo?: add observations (going around, scattered)
+% todo4: image
+% todo3?: add observations (going around, scattered)
 
 Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
   \item The original sequence has a large enough slanted subsequence.
   \item The original sequence does not have such a subsequence.
 \end{enumerate}
-We will show that for each case we can find a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well.
+We will show that for each case we can find a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will outline the proof.
 
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
   Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither cw-slanted nor ccw-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
-\begin{proof}
-  % todo: formulate list
+\begin{proof}[Proof outline]
+  % todo2: formulate list
+  % todo2: you would at least need Lemma 48... Maybe you can prove by image?
   \begin{itemize}
-    \item Pick $4\tau$ not ccw-slanted subsequence with $m$ vertices, which we'll index by $q$.
+    \item Pick $4\tau$ not ccw-slanted subsequences with $m$ vertices, which we'll index by $q$ and $4\tau$ not cw-slanted subseq.s with $m$ vertices between each.
     \item For each subseq. find the points $i, \hat{\imath}, j, \hat{\jmath}$ and the set $\Delta$ of $2\delta$ $k$'s which break the slanted definition.
     \item Assume w.l.o.g. that $\omega_q := ...$ lies left of half of each $\Delta_q$, since assumptions are symmetric for $v$.
     \item Pick $2\tau$ subseq.s with this property.
     \item Case 1: Half of those have at least half of the rays left
     \begin{itemize}
       \item Pick those $\tau$ subseq.s and for each the $\delta$ vertices with ray to the left.
-      \item Build $G$ out of those $\delta$ vertices, so the ray in Lemma~48 is left and $\omega$ is right (by defining the point that preserves $\rho$ and $\omega$).
+      \item Build $G$ out of those $\delta$ vertices, so the ray in \textbf{Lemma~48} is left and $\omega$ is right (by defining the point that preserves $\rho$ and $\omega$).
       \item By Lemma 48 it is $G$-good when stretched
       \item Apply Lemma 41 to this stretched seq.
       \item Cut this stretched seq. back with $\tau+1$ cuts
@@ -348,13 +360,14 @@ We will show that for each case we can find a large enough subsequence, for whic
   \end{itemize}
 \end{proof}
 
-% todo: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself), maybe only state Lemma 55, since it comes from direct computation, give an overview of Lemma 52
+% todo2: State Theorem 57 and explain the key idea behind it -> Trace Chapter 10 and 11 (draw sketches to all proofs for understanding them yourself), maybe only state Lemma 55, since it comes from direct computation, give an overview of Lemma 52
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
   Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is cw-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
 
 \begin{proof}
-  % todo: formulate
+  % todo2: formulate
+  % todo2: you would at least need Lemma 55 and Definition 56.
   \begin{itemize}
     \item Assumptions / Premises
     \begin{itemize}
