@@ -1,10 +1,9 @@
 \subsection{Arbitrary Convex n-gons}
 % todo9: choose right fraction (\frac or "/") to look nice (ctrl+F)
 % todo5: add citations from original paper (to every definition, theorem, ...)
-% todo3: Make sure all "cw" and "ccw" are replaced with full words. Also make sure all definitions are sound regarding cw/ccw.
-% todo3: Introduce orientation of slice (left, right, ...)
 % todo9: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
 % polish: Add proofs for Lemma 49 and Theorem 57
+% polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
@@ -45,8 +44,10 @@ Now we will go on to define those smaller parts, which we can handle well. We ca
   A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \textit{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
 \end{definition}
 
+If not stated otherwise, we assume the vertices of a correct sequence to be ordered \emph{clockwise}.
+
 \begin{definition}[Thin sequence]
-  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ is correct and, additionally, the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
+  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
 % todo4: image of thin seqeunce, not-thin sequence, thin seqeunce to one side
 
@@ -305,7 +306,9 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
-  Let $v=(v_1,\ldots,v_t)$ be a thin cw-sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \textit{cw-slanted to} an angle $\beta$ with \textit{tolerance} $\delta$ if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
+  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \textit{clockwise-slanted} to an angle $\beta$ with \textit{tolerance} $\delta$ if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
+
+  A \textit{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
 \end{definition}
 % todo4: image
 
@@ -320,11 +323,11 @@ We can show that for each case there is a large enough subsequence, for which Th
 % todo6: give some overview of proof ideas
 
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
-  Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither cw-slanted nor ccw-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
+  Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
-  Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is cw-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
+  Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is clockwise-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
 
 Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.\\
