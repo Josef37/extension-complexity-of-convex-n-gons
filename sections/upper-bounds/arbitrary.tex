@@ -1,6 +1,5 @@
 \subsection{Arbitrary Convex n-gons}
-% polish: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
-% polish: Add proofs for Lemma 49 and Theorem 57
+% polish: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
@@ -12,6 +11,9 @@ The gist of the approach is this:
   \item We prove this small extended formulation by iteratively finding a large enough subset of vertices in the slice, for which we can build a small extended formulation. Joining these subsets together will also preserve this property.
   \item We build the small extended formulation by building 3-dimensional extended formulations for a surrounding polygon. These are "glued" together resulting in an extended formulation for the original set of vertices.
 \end{enumerate}
+
+% polish: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
+% polish: refer to graph in appendix or insert it here
 
 
 
@@ -305,6 +307,7 @@ We now need to define one more property of a sequence, by which we will split ou
   A \textit{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
 \end{definition}
 % todo: image
+% todo: say, that we found no way to "see", if a seqeunce is slanted...
 
 Now we can split the search for a good subsequence into two cases:
 \begin{enumerate}
