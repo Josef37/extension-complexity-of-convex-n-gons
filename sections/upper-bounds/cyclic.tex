@@ -1,10 +1,38 @@
 \subsection{Cyclic n-gons}
-% todo @ March 16 to 18
 
+In this section we give an overview of \cite{kwan2020extension}, which proves -- among other things -- that $\xc(P) \in O(n^{1/2})$ for an $n$-gon $P$, whose vertices lie on a circle.
+
+The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
+
+One important insight is the "lampshade" argument, which the authors called this way because of the geometric interpretation. In the two-dimensional case, the simplified form can be interpreted like this:
+% todo: explain lampshade (arc with facets, seperated vertices, lampshade in the positive slack, slack vectors, convex combinations)
+
+The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has "asymptotically almost surely" extension complexity in $\Theta(n^{1/2})$.
+
+Since we focus on polygons in this paper, we will only cover the seperate, two-dimensional theorem, for whose derivation we will give an outline.
+
+\begin{definition}
+  A polygon is called \emph{cyclic}, if all its vertices lie on a common circle.
+\end{definition}
+
+\begin{theorem}[{\cite[Theorem 1.3]{kwan2020extension}}]
+  Let $P$ be a cyclic polygon with $n$ vertices.\\
+  Then $\xc(P) \leq 24\,n^{1/2}$.
+\end{theorem}
+
+The approach follows these steps:
+
+\begin{enumerate}
+  \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
+  \item Color these arcs with 14 distinct colors, such that two arcs of the same color are "well-separated".
+  \item Build a matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, s.t. the "lampshade" argument is applicable (i.e. the entries for vertices and factes of the same arc are zero).
+  \item Apply the "lampshade" argument and obtain the desired bound.
+\end{enumerate}
+
+Proof outline
 \begin{itemize}
-  \item overview of paper
-  \item What is the key idea?
-  \item coloring
-  \item intuition of rescaling rows
-  \item Higher-dimensional statements
+  \item Look at $M[V,F_c]$ separately for each color $c$ (try to bound its nonnegative rank by the number of arcs of that color)
+  \item Build the matrix $K$ (by rescaling rows, s.t. for the same index separated vertices have larger scaled slacks than local vertices, and subtracting vectors, s.t. "diagonal" = 0)
+  \item Bound the nonnegative rank of $K$ by "lampshade" argument (because diagonal = 0) 
+  \item Lampshade argument: Facets and vertices are seperated -> surround vertices with polygon of constantly many vertices, which lie on the "positive slack" of all facets -> Convex combine all seperated vertices + Build slack vector for lampshade vertices -> Matrix rows are convex combination of constantly many vectors -> nonnegative rank constant
 \end{itemize}
