@@ -5,25 +5,25 @@ In this section we give an overview of \cite{kwan2020extension}, which proves --
 The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
 
 % todo: image (from soure or 2-d)
-One important insight is the "lampshade" argument, which the authors called this way because of the geometric interpretation in three dimensions. In the two-dimensional case, the simplified form can be interpreted like this:
+One important insight is the "lampshade argument", which the authors called this way because of the geometric interpretation in three dimensions. In the two-dimensional case, the simplified form can be interpreted like this:
 
 Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of the slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
-The resaon for this is that we can enclose $V'$ inside a polygon $Q$, s.t. all vertices of $Q$ are on the "positive slack" side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a "polyhedral lampshade". One can always build such a polygon $Q$ with constantly many vertices .\\
+The resaon for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the "positive slack" side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a "polyhedral lampshade". One can always build such a polygon $Q$ with constantly many vertices .\\
 Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the vertices in $Q$.\\
-For every vertex $q$ of $Q$ consider the vector of slacks $u_q \in \R^{\abs{F'}}$ for all $f \in F'$, which is positive by construction of $Q$.\\
+For every vertex $q$ of $Q$ consider the vector $u_q \in \R^{\abs{F'}}$ of slacks for all $f \in F'$, which is positive by construction of $Q$.\\
 And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
 In other words, every row of $M[V',F']$ is a convex combination of these constantly many vectors $u_q$, which shows $\rank_+ M[V',F'] = O(1)$.
 
 The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove in \cite[Theorem 1.1]{shitov2020sublinear} that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has "asymptotically almost surely" extension complexity in $\Theta(n^{1/2})$.
 
-Since we focus on polygons in this paper, we will only cover the seperate, two-dimensional theorem, for whose derivation we will give an outline.
+Since we focus on polygons in this paper, we will only cover the separate, two-dimensional theorem, for whose derivation we will give an outline.
 
 \begin{definition}
   A polygon is called \emph{cyclic}, if all its vertices lie on a common circle.
 \end{definition}
 
 \begin{theorem}[{\cite[Theorem 1.3]{kwan2020extension}}]
-  Let $P$ be a cyclic polygon with $n$ vertices.\\
+  Let $P$ be a cyclic polygon with $n \geq 18^2$ vertices.\\
   Then $\xc(P) \leq 24\,n^{1/2}$.
 \end{theorem}
 
@@ -31,8 +31,8 @@ The approach follows these steps:
 
 \begin{enumerate}
   \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
-  \item Color these arcs with 14 distinct colors, such that two arcs of the same color are "well-separated".
-  \item Build a nonnegative matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, s.t. the entries for vertices and factes of the same arc are zero.
+  \item Color these arcs with constantly many colors, such that two arcs of the same color are "well-separated".
+  \item Build a nonnegative matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, such that the entries for vertices and factes of the same arc are zero.
   \item Apply the "lampshade argument" (in a more general form) for the rest and obtain the desired bound.
 \end{enumerate}
 
@@ -40,18 +40,19 @@ We will now go through these steps in more detail.
 
 Let $P$ be a cyclic polygon, $V$ its set of vertices and $F$ its set of facets.
 
-We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, s.t. each arc spans from one vertex to another vertex (including both) and contains at most $\lceil n^{1/2} \rceil$ facets, i.e. facets with both endpoints in the arc, and therefore at most $N := \lceil n^{1/2} \rceil\ + 1$ vertices.
+We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that each arc spans from one vertex to another vertex (including both) and contains at most $\lceil n^{1/2} \rceil$ facets, i.e. facets with both endpoints in the arc, and therefore at most $N := \lceil n^{1/2} \rceil\ + 1$ vertices.
 
 \begin{definition}[Well-separated]
-  We say that two arcs $X,X' \in \X$ with arc lengths $\varepsilon$, $\varepsilon'$ are \emph{well-separated} if the arc-distance between any two points $x \in X$ and $x' \in X'$ is at least $5 \min\{\varepsilon, \varepsilon'\}$.
+  We say that two arcs $X,X' \in \X$ with arc lengths $\varepsilon$,~$\varepsilon'$ are \emph{well-separated}, if the arc-distance between any two points $x \in X$ and $x' \in X'$ is at least $5 \min\{\varepsilon, \varepsilon'\}$.
 \end{definition}
 
 \begin{lemma}\label{lemma:arc-not-separated}
-  For every arc $X \in \X$, there are at most $13$ arcs $X' \in \X$, which are not well-seperated from $X$ and at least as long as $X$.
+  For every arc $X \in \X$, there are at most $13$ arcs $X' \in \X$, which are not well-separated from $X$ and at least as long as $X$.
 \end{lemma}
 
 \begin{proof}[Proof outline]
-  Simply count how many such arcs fit into the "not well-separated space".
+  Count how many such arcs fit into the "not well-separated space".\\
+  Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$. Since this number only changes a constant in the bound, we will go on with the original numbers.
 \end{proof}
 
 \begin{lemma}
@@ -59,36 +60,37 @@ We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, s.t. each 
 \end{lemma}
 
 \begin{proof}[Proof outline]
-  Order the arcs by decreasing length. By Lemma~\ref{lemma:arc-not-separated} there are at most $13$ arcs of at least the same length not well-seperated. These are also the only ones colored until now. So just pick a color (from a set of $14$ colors), which wasn't assigned to those at most $13$ arcs and proceed until all arcs are colored.
+  Order the arcs by decreasing length and color them in that order. For an arc $X$, there are -- by Lemma~\ref{lemma:arc-not-separated} -- at most $13$ arcs of at least the same length not well-separated. So just pick a color (from a set of $14$ colors), which wasn't assigned to those at most $13$ arcs and proceed until all arcs are colored.
 \end{proof}
 
-Now color the arcs in $\X$ with colors labelled by $c=1,\dots,14$. Define $\X_c$ as the set of arc with color $c$.
+Now color the arcs in $\X$ with colors labelled by $c=1,\dots,14$. Define $\X_c$ as the set of arcs with color $c$.
 
 We will now split the columns of the slack matrix M by color, i.e. into slices $M[V,F_c]$, where $F_c$ are all facets in arcs with color $c$.\\
 Later we can combine the results like this: $\rank_+M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c]$
 
-For an arc $X \in \X$ define $F^X$ or $V^X$ as the facets or vertices inside that arc. We also call a vertex $v$ local to a facet $f$, if $x \in V^X$ and $f \in F^X$, i.e. if they are in the same arc. \\
-Further we enumerate all vertices for each arc of color $c$, that is for each $X \in \X_c$ we define a bijection $\phi_X: V^X \to \{1,\dots,\abs{V^X}\}$. We define $\phi: V_c \to \{1,\dots,N\}$ as the union of all $V_X$ ($\phi$ is well-defined, since the $V_X \in V_c$ are disjoint).
+For an arc $X \in \X$ define $F^X$ or $V^X$ as the facets or vertices inside that arc. We also call a vertex $v$ \emph{local} to a facet $f$, if $x \in V^X$ and $f \in F^X$, i.e. if they are in the same arc.
+
+Further we enumerate all vertices for each arc of color $c$, that is for each $X \in \X_c$ we define a bijection $\phi_X: V^X \to \{1,\dots,\abs{V^X}\}$. We define $\phi: V_c \to \{1,\dots,N\}$ as the union of all $V_X$, which is well-defined, since the $V_X \in V_c$ are disjoint as they are well-separated.
 
 \begin{lemma}
-  $$\forall v \in V_c: \exists\,\alpha_v > 0: \forall X \in \X_c, f \in F^X, w \in V^X, \phi(v)=\phi(w): \alpha_v M_{v,f} \geq \alpha_w M_{w,f}$$
+  For all $v \in V_c$ there is $\alpha_v > 0$, such that for all $X \in \X_c$, $f \in F^X$, $w \in V^X$ with $\phi(v)=\phi(w)$ we have $\alpha_v M_{v,f} \geq \alpha_w M_{w,f}$.
 \end{lemma}
 
 In other words: For each vertex of color $c$ there is a scalar, such that the slack of the local vertex -- after scaling -- is the smallest for all vertices of the same index and color.
 % todo?: add comment about how this entry is the smallest in the column of scaled slack
 
 \begin{proof}[Proof outline]
+  % todo
   Find those scalars $\alpha_v$ by Lemma 10.2 (\textbf{only time circle is used}) and Lemma 10.3
   Mention: slack is representation dependent, lemma seems kind of reasonable for a circle
 \end{proof}
 
-For each $i \in \{1,\dots,N\}$ now define vectors $t^{(i)} \in \R^{\abs{F_c}}$.
-For each $X \in \X_c$, $f \in F_X$ we define
+For each $i \in \{1,\dots,N\}$ we define vectors $t^{(i)} \in \R^{\abs{F_c}}$. For each $X \in \X_c$, $f \in F_X$:
 \begin{equation*}
   t_f^{(i)} = 
   \begin{cases}
     0 &\text{if } i > \abs{V^X}\\
-    \alpha_v M_{v,f} &\text{else with } v = \phi_X^{-1}(i)
+    \alpha_v M_{v,f} &\text{else, with } v = \phi_X^{-1}(i)
   \end{cases}
 \end{equation*}
 So the vectors $t_f^{(i)}$ are the scaled slacks for the local vertices (regarding $f$) with index $i$.
@@ -101,18 +103,18 @@ Now we define the matrix $K \in \R^{\abs{V} \times \abs{F_c}}$, for which we wil
     M_{v,f} & \forall v \in V \setminus V_c
   \end{cases}
 \end{equation*}
-In other words, we manipulate the rows of $K$ with vertices of color $c$, by scaling them, s.t. for vertices with the same index the slack of the local vertex is smallest, and then subtracting the slack of the local vertex with the same index.
+In other words, we manipulate the rows of $K$ with vertices of color $c$, by scaling them, such that for vertices with the same index the slack of the local vertex is smallest, and then subtracting that slack of the local vertex with the same index.
 
-The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \in V^X$ and any facet $f \in F^X$, we have $K_{v,f} = 0$. So all entries of $M[V^X, F^X]$ are zero.
+The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \in V^X$ and any facet $f \in F^X$, we have $K_{v,f} = 0$. So all entries of $K[V^X, F^X]$ are zero, while $K$ is still nonnegative (that's why we had to scale all rows first).
 
 \begin{lemma}
-  The matirx $K$ has nonnegative entries and satisfies $\rank_+ K \leq 8\abs{\X_c}$.
+  The matrix $K$ has nonnegative entries and satisfies $\rank_+ K \leq 8\abs{\X_c}$.
 \end{lemma}
 
 \begin{proof}[Proof outline]
   % todo
 \end{proof}
 
-So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. So $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
+So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. Therefore $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
 
 Now we can conclude: $$\rank_+ M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c] \leq 8\abs{\X} + 14N \leq 22\,n^{1/2} + 36 \stackrel{(n \geq 18^2)}{\leq} 24\,n^{1/2}$$
