@@ -4,8 +4,15 @@ In this section we give an overview of \cite{kwan2020extension}, which proves --
 
 The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
 
-One important insight is the "lampshade" argument, which the authors called this way because of the geometric interpretation. In the two-dimensional case, the simplified form can be interpreted like this:
-% todo: explain lampshade (arc with facets, seperated vertices, lampshade in the positive slack, slack vectors, convex combinations)
+% todo: image (from soure or 2-d)
+One important insight is the "lampshade" argument, which the authors called this way because of the geometric interpretation in three dimensions. In the two-dimensional case, the simplified form can be interpreted like this:
+
+Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of the slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
+The resaon for this is that we can enclose $V'$ inside a polygon $Q$, s.t. all vertices of $Q$ are on the "positive slack" side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a "polyhedral lampshade". One can always build such a polygon $Q$ with constantly many vertices .\\
+Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the vertices in $Q$.\\
+For every vertex $q$ of $Q$ consider the vector of slacks $u_q \in \R^{\abs{F'}}$ for all $f \in F'$, which is positive by construction of $Q$.\\
+And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
+In other words, every row of $M[V',F']$ is a convex combination of these constantly many vectors $u_q$, which shows $\rank_+ M[V',F'] = O(1)$.
 
 The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has "asymptotically almost surely" extension complexity in $\Theta(n^{1/2})$.
 
@@ -25,12 +32,32 @@ The approach follows these steps:
 \begin{enumerate}
   \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
   \item Color these arcs with 14 distinct colors, such that two arcs of the same color are "well-separated".
-  \item Build a matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, s.t. the "lampshade" argument is applicable (i.e. the entries for vertices and factes of the same arc are zero).
-  \item Apply the "lampshade" argument and obtain the desired bound.
+  \item Build a matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, s.t. the entries for vertices and factes of the same arc are zero.
+  \item Apply the "lampshade" argument for the rest and obtain the desired bound.
 \end{enumerate}
 
-Proof outline
+We will now go through them in more detail.
+
+Let $P$ be a cyclic polygon, $V$ its set of vertices and $F$ its set of facets. We can assume w.l.o.g. that all vertices of $P$ lie on the unit circle around the origin.
+
+We divide the circle into $\lceil n^{1/2} \rceil$ arcs, s.t. each arc spans from one vertex to another vertex (including both) and contains at most $\lceil n^{1/2} \rceil$ facets, i.e. facets with both endpoints in the arc.
+
+\begin{definition}[Well-separated]
+  We say that two arcs $X$, $X'$ with arc lengths $\varepsilon$, $\varepsilon'$ are \emph{well-separated} if the arc-distance between any two points $x \in X$ and $x' \in X'$ is at least $5 \min\{\varepsilon, \varepsilon'\}$.
+\end{definition}
+
+\begin{lemma}
+  For every arc $X$, there are at most $13$ arcs, which are not well-seperated from $X$ and at least as long as $X$.
+\end{lemma}
+
+\begin{lemma}
+  We can color the arcs with at most 14 colors, s.t. arcs of the same color are well-separated.
+\end{lemma}
+
+% todo: formulate proof in more detail the outlined above, at least some noteworthy things like the definition of K, proof the 11.5, ...
 \begin{itemize}
+  \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
+  \item Color these arcs with 14 distinct colors, such that two arcs of the same color are "well-separated".
   \item Look at $M[V,F_c]$ separately for each color $c$ (try to bound its nonnegative rank by the number of arcs of that color)
   \item Build the matrix $K$ (by rescaling rows, s.t. for the same index separated vertices have larger scaled slacks than local vertices, and subtracting vectors, s.t. "diagonal" = 0)
   \item Bound the nonnegative rank of $K$ by "lampshade" argument (because diagonal = 0) 

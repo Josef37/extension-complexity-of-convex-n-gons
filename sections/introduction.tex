@@ -51,11 +51,11 @@ There are currently two main approaches for finding bounds for the extension com
 
 \begin{definition}[Nonnegative Rank]
   The \emph{nonnegative rank} of a nonnegative matrix $M \in \R^n \times \R^m$ is the smallest integer $k$, for which $M = TU$, where $T \in \R^n \times \R^k$ and $U \in \R^k \times \R^m$.
-  We define $rank_+(M) := k$.
+  We define $\rank_+(M) := k$.
 \end{definition}
 
 \begin{theorem}[see \cite{yannakakis1991expressing}]
-  Let $P$ be a polytope and $M$ a slack matrix of $P$. Then $\xc(P) = rank_+(M)$.
+  Let $P$ be a polytope and $M$ a slack matrix of $P$. Then $\xc(P) = \rank_+(M)$.
 \end{theorem}
 
 Because this document is focused on polygons, we briefly recall the history of bounds and conjectures for the extension complexity of $n$-gons:
