@@ -49,11 +49,12 @@ There are currently two main approaches for finding bounds for the extension com
   The entries of $M$ are defined as $m_{ij} = b_j - a_j v_i$, where $a_j$ is a row of $A$ and $v_i$ is a vertex of $P$.
 \end{definition}
 
-% todo: add alternate definition (sum of nonnegative matrices with ordinary rank one)
 \begin{definition}[Nonnegative Rank]
-  The \emph{nonnegative rank} of a nonnegative matrix $M \in \R^n \times \R^m$ is the smallest integer $k$, for which $M = TU$, where $T \in \R^n \times \R^k$ and $U \in \R^k \times \R^m$.
+  The \emph{nonnegative rank} of a nonnegative matrix $M \in \R_{\geq 0}^{n \times m}$ is the smallest integer $k$, for which $M = TU$, where $T \in \R_{\geq 0}^{n \times k}$ and $U \in \R_{\geq 0}^{k \times m}$ are nonnegative matrices.
   We define $\rank_+(M) := k$.
 \end{definition}
+
+The nonnegative rank of $M$ can also be defined as the minimum $r$ such that the matrix $M$ can be written as the sum of $r$ nonnegative matrices of (ordinary) rank $1$.
 
 \begin{theorem}[see \cite{yannakakis1991expressing}]
   Let $P$ be a polytope and $M$ a slack matrix of $P$. Then $\xc(P) = \rank_+(M)$.
@@ -79,7 +80,6 @@ This led the authors to propose, that this upper bound could also hold for gener
 
 \subsection{Overview of this Document}
 
-% cite papers
 In this paper we focus on the key ideas behind the discussed papers \cite{shitov2020sublinear,kwan2020extension}. We will make use of examples and skip technical details.
 
 In the first part we examine the results that led to the best known upper bounds. 
