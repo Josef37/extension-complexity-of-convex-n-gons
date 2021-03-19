@@ -1,7 +1,12 @@
+# built files
 *.pdf
-*.gz
+*.synctex.gz
+
+# auxiliary files
 *.aux
 *.bbl
 *.blg
 *.log
 *.toc
+*.out
+*.synctex(busy)
