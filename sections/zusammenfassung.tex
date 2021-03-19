@@ -1,15 +1,27 @@
 \section*{Zusammenfassung}
-% todo: formulate
+% polish: is this summary "summarizing" enough? Or is it too much an overview of contents without saying anything about the substance of contents?
 
-\begin{itemize}
-  \item Thema: "Extension complexity" konvexer Polygone
-  \item "Extension complexity" = "Erweiterungskomplexität": Polytop als lineare Abbildung eines höher-dimensionalen Polytops (heißt "Extended formulation" = "Erweiterte Formulierung"). Wie "komplex" ist dieses mindestens, also wie viele Flächen/Ungleichungen?
-  \item Besten bekannten Schranken ergeben $\pc(n) \in \Omega(n^{1/2}) \cup O(n^{2/3})$. Für zyklische Polygone lässt sich sogar $\xc(P) \in O(n^{1/2})$ zeigen.
-  \item Wir geben einen Überblick über die Beweise, die zu den Schranken führen und wie sie dazu führen (Fokus auf Zusammenhänge).
-  \item Wir beginnen mit $\pc(n) \in O(n^{2/3})$ und analysieren die Grenzen dieses Vorgehens.
-  \item Für $\xc(P) \in O(n^{1/2})$ für $P$ zyklisch, interpretieren wir den Beweis nur, da diese obere Schranke der unteren entspricht.
-  \item Wir vergleichen beide Vorgehensweisen und versuchen Ähnlichkeiten und Unterschiede auszuarbeiten.
-  \item Dann geben wir einen weiteren Beweis für die untere Schranke $\pc(n) \in \Omega(n^{1/2})$ für (zyklische) Polygone. 
-\end{itemize}
+Das Thema dieser Arbeit is die \emph{Extension Complexity} konvexer Polygone, was auf Deutsch so viel wie \emph{Erweiterungskomplexität} bedeutet. Die Idee dahinter ist, ein Polytop als lineare Abbildung eines höherdimensionalen Polytops darzustellen. Diese \emph{erweiterte Darstellung} nennt man \emph{Extended Formulation} und dessen \emph{Größe} ist die Anzahl der Facetten des höherdimensionalen Polytops.
+
+Die \emph{Erweiterungskomplexität} eines Polytops $P$ ist nun die kleinste Größe aller erweiterten Darstellungen eines Polytops und man bezeichnet diese mit $\xc(P)$.
+
+Wir behandeln in dieser Arbeit die besten bekannten Schranken dieser Erweiterungskomplexität $\xc(P)$ für konvexe Polygone. 
+
+Bisher ist bekannt, dass für ein konvexes Polygon $P$ mit $n$ Ecken, hier als $n$-Eck bezeichnet, $$\xc(P) \in \Omega(n^{1/2}) \cup O(n^{2/3})$$ gilt. Liegen alle Punkte von $P$ auf einem gemeinsamen Kreis, ist $P$ also \emph{zyklisch}, lässt sich die obere Schranke sogar zu $$\xc(P) \in O(n^{1/2})$$ verbessern.
+
+Wir geben in dieser Arbeit einen Überblick über die Beweise, die zu den oben genannten Schranken führen. Wir konzentrieren uns vor allem darauf, wie sie zu diesen Schranken führen und welche Grenzen diese Vorgehensweisen haben.
+
+Wir beginnen damit, den Beweis für $\xc(P) \in O(n^{2/3})$ für allgemeine $n$-Ecke $P$ darzustellen und dessen Grenzen aufzuzeigen.\\
+Das Vorgehen ist dort rein geometrischer Natur und versucht für jedes $n$-Eck eine Teilfolge~$u$ von Ecken zu finden, die groß genug ist (mit $m \in \Omega(n^{2/3})$ Ecken) und eine möglichst kleine Erweiterungskomplexität besitzt ($\xc(u) \in O(m^{1/2})$). Aus diesen Teilfolgen kann man dann iterativ zeigen, dass $\xc(P) \in O(n^{2/3})$ gilt.\\
+Ein zentraler Satz in diesem Vorgehen erlaubt uns einfache, dreidimensionale erweiterte Darstellungen eines vereinfachten Polygons zusammenzufügen, um eine erweiterte Darstellung unseres gewünschten Polygons zu erhalten. Wir zeigen, dass für ein passendes \mbox{$n$-Eck $P$} diese erweiterte Darstellung Größe $\Omega(n^{1/2})$ hat.
+
+Als nächstes geben wir einen Überblick über $\xc(P) \in O(n^{1/2})$ für zyklische $n$-Ecke $P$, wobei diese obere Schranke asymptotisch optimal ist.\\
+Das Vorgehen benutzt hier im Kern den linear-algebraischen Ansatz, der Eigenschaften gewisser Matrizen mit der Erweiterungskomplexität eines Polygons verbindet. 
+
+Anschließend vergleichen wir beide Vorgehensweisen und versuchen Ähnlichkeiten und Unterschiede auszuarbeiten, auch wenn die beiden Ansätze grundlegend verschieden sind. Wir wiederholen auch in asymptotischer Betrachtung, wie beide zu ihren Schranken gekommmen sind.
+
+Im letzten Abschnitt geben wir noch einen weiteren Beweis für $\xc(P) \in \Omega(n^{1/2})$ für zyklische $n$-Ecke, damit also auch für allgemeine $n$-Ecke. Wir verwenden dafür einen Satz, der uns erlaubt diese untere Schranke für eine Familie von Polygonen abhängig von ihrem gegenseitigen Abstand zu formulieren.
+
+Wir schließen die Arbeit mit einer Übersicht über aktuelle Vermutungen zur Erweiterungskomplexität von Polygonen $\xc(P)$.
 
 \newpage
