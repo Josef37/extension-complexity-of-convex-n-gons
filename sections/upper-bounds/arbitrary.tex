@@ -12,7 +12,7 @@ The gist of the approach is this:
   \item We build the small extended formulation by building 3-dimensional extended formulations for a surrounding polygon. These are "glued" together resulting in an extended formulation for the original set of vertices.
 \end{enumerate}
 
-% polish: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22
+% polish: Add connections to dependency graph: +28->25, -26->25, -26->19, +57->45, +36->22, check connections of 36
 % polish: refer to graph in appendix or insert it here
 
 
@@ -321,11 +321,29 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 % todo: image of ray
 
 \begin{lemma}[{\cite[Lemma 42]{shitov2020sublinear}}]\label{lemma:ray-good}
-  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a thin sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
+  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a $\pi/2$-thin\footnote{In the source $v$ is only required to be thin, but building "vertical" main edges in the proof is only guaranteed to work, if both angles at $v_1$ and $v_n$ are smaller than $\pi/2$. This does not change any futher proof, because this assumption is given, when this lemma gets applied.} sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
+% todo: image of proof idea (Figure 7)
+% todo: prove "This path can only leave through the interior of $\conv\{v_1,v_n\}$" by showing arcs meeting at a common point spawn another arc in the cone, which comes from extending the meeting arcs (by property (v))
+% polish: formulate "arc towards" more clearly
 \begin{proof}
-  todo: outline or full proof (requires Lemma 36...), use the image at least
+  To prove that $v$ is $G$-good, we build an acute diagram $\Delta$ whose base is the $G$-envelope $v_G$ of $v$ and show that the main edge passing from $$o_g := (v_{g-2} \wedge v_{g-1}) \wedge (v_{g+1} \wedge v_{g+2})$$ contains $v_g$ for each $g \in G$.
+
+  First we build an acute diagram $\Delta$ using Corollary~\ref{corollary:acute-direction} with base $v_G$ and\\
+  (1) for each $g \in G$ the main edge from $o_g$ goes towards $v_g$,\\
+  (2) for each $k \notin \{1,n,g-1,g,g+1\}$ the main edge from $v_k$ is orthogonal to $v_1 \wedge v_n$,\\
+  (3) the main edge from $v_n$ passes towards a point $u_0$ that lies sufficiently close to the middle of $\conv \{v_1,v_n\}$ in the interior of $\conv v$.
+
+  Now it remains to show that the edge passing from $o_g$ actually contains $v_g$. We will prove this by contradiction: Assume there is some $j \in G$, for which $v_j$ is not contained in the edge passing from $o_j$. That is, there is an edge in $\Delta$, which has its end point $e$ in the interior of $\conv \{o_j, v_j\}$, thus outside of $\conv v$.
+
+  \textit{Case 1.} There is a path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
+  This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc "towards" $v_1$ for decreasing $i$, because $v$ itself is convex.
+
+  \textit{Case 2.} There is \emph{no} path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
+  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (execpt the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$. So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
+
+  So it is proved that the edge passing from $o_g$ contains $v_g$ for all $g \in G$.
 \end{proof}
 
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
