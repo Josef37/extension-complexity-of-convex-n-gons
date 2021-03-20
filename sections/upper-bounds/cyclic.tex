@@ -4,8 +4,7 @@ In this section we give an overview of \cite{kwan2020extension}, which proves --
 
 The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
 
-% todo: image (from soure or 2-d)
-One important insight is the "lampshade argument", which the authors called this way because of the geometric interpretation in three dimensions. In the two-dimensional case, the simplified form can be interpreted like this:
+One important insight is the "lampshade argument", which the authors called this way because of the geometric interpretation in three dimensions (see Figure~\ref{fig:lampshade}). In the two-dimensional case, the simplified form can be interpreted like this:
 
 Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of the slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
 The resaon for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the "positive slack" side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a "polyhedral lampshade". One can always build such a polygon $Q$ with constantly many vertices .\\
@@ -13,6 +12,14 @@ Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the 
 For every vertex $q$ of $Q$ consider the vector $u_q \in \R^{\abs{F'}}$ of slacks for all $f \in F'$, which is positive by construction of $Q$.\\
 And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
 In other words, every row of $M[V',F']$ is a convex combination of these constantly many vectors $u_q$, which shows $\rank_+ M[V',F'] = O(1)$.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.7,trim={2.5cm 2cm 2.5cm 4cm},clip]{separation}
+  \includegraphics[scale=0.7,trim={0 2cm 0 4cm},clip]{shade}
+  \caption{Figure 2 from \cite{kwan2020extension}: On the left, a small patch of facets near the north pole is far away from a collection of vertices. On the right, a ``polyhedral lampshade'' encloses all the vertices in our collection, and lies entirely on the ``positive slack'' side of each of the facets in our patch.}
+  \label{fig:lampshade}
+\end{figure}
 
 The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove in \cite[Theorem 1.1]{shitov2020sublinear} that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has "asymptotically almost surely" extension complexity in $\Theta(n^{1/2})$.
 
