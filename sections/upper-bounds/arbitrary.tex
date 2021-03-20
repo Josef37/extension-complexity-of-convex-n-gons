@@ -218,9 +218,38 @@ We can now focus on the main result of the first part, which allows us to build 
 \end{theorem}
 
 % todo: insert image example
+% todo?: insert cutting example for \delta=1
 
+% polish: make eqref's and check last argument (pi(P') really is right by conv commuting on affine maps)
 \begin{proof}
-  todo
+  We are going to construct a polytope $\P'$ in $\R^2 \times \R^{\delta} = \{(x,y,z^1,\dots,z^{\delta})\}$ with at most $\abs{V}+\abs{S}+\delta$ facets, which is an extended formulation of $P$.
+
+  Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ (we assume that all diagrams are lifted into the upper half-space $z \geq 0$).
+
+  Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with $\abs{V}+\delta$ inequalities 
+  \begin{align*}
+    a_e x + b_e y + c_e &\geq \sum_{i=1}^{\delta} \varepsilon_e^i z,\\
+    z^i &\geq 0,
+  \end{align*}
+  where $e$ runs over all edges of $P$ and $i \in \{1,\dots,\delta\}$.
+
+  We have $\dim \P = \delta + 2$, i.e. it has full dimension, since we can find a point $(x,y)$ in the interior of $P$ and $\varepsilon > 0$, such that $(x,y,\varepsilon,\dots,\varepsilon)$ fullfills all inequalities strictly.
+
+  And from Observation~\ref{observation:acute-projection} we know $\pi(\P)=P$, where $\pi(x,y,z^1,\dots,z^{\delta}) = (x,y)$ is a projection.
+
+  For any $s = (x_s, y_s) \in S$, $\sigma_s := (x_s,y_s,0,\dots,0)$ is a vertex of $\P$, since it fullfills exactly $\delta + 2$ inequalities with equality, namely $z^i \geq 0$ and the two inequalities corresponding to the edges at $s$.
+
+  Therefore there are $\delta + 2$ rays passing from $\sigma_s$: Two corresponding to the edges at $s$ and $\delta$ of the form
+  \begin{equation}\label{eq:ray}
+    (x_s + \alpha_s^i t,y_s + \beta_s^i t,0,\dots,0,t,0,\dots,0), t \geq 0,
+  \end{equation}
+  where there are $i-1$ zeros before~$t$ and $(\alpha_s^i, \beta_s^i)$ is pointing from $s$ to $s^i$ (and scaled such that we don't need a factor for~$t$).
+
+  Now we define a half-space $H_s$, whose defining hyperplane is determined by the points $(x_{s'},y_{s'},0,\dots,0)$, $(x_{s''},y_{s''},0,\dots,0)$ and the $\delta$ points on \eqref{eq:ray}, which project to $s^i$ under $\pi$ (this hyperplane is well-defined, as all those points are linearly independent). The orientation of $H_s$ is set such that is does not include $\sigma_s$.
+
+  If we now cut $\P$ with $H_s$, we only cut the rays passing from $\sigma_s$ at the defining points. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by cutting. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
+
+  So we can define $\P' = \P \cap \bigcap_{s \in S} H_s$, which is given by $\abs{V}+\abs{S}+\delta$ inequalities, and conclude that $\pi(\P')$ is the desired polygon.
 \end{proof}
 
 \begin{remark}\label{remark:pitfall}
