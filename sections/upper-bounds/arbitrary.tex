@@ -50,6 +50,7 @@ If not stated otherwise, we assume the vertices of a correct sequence to be orde
 \end{definition}
 
 \begin{figure}[h]
+  \centering
   \includegraphics[width=\textwidth]{thin-seqeunce.png}
   \caption{Examples of thin and not-thin sequences: The sequence in the middle is the only one, which is \emph{not} thin.}
   \label{fig:thin-sequence}
@@ -126,11 +127,17 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
 \end{definition}
-% todo: image of actue polyhedron and not acute polyhedron and image of main edges
 
 \begin{definition}[Main edge]
   An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
 \end{definition}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{acute-polyhedron.png}
+  \caption{An acute polyhedron with main edges colored.}
+  \label{fig:acute-polyhedron}
+\end{figure}
 
 \begin{lemma}
   Any base vertex of an acute polyhedron belongs to a unique main edge.
