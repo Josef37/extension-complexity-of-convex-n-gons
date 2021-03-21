@@ -413,15 +413,16 @@ We now need to define one more property of a sequence, by which we will split ou
   A \textit{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
 \end{definition}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=100mm]{slanted.png}
   \caption{Points and angles used in the definition of slanted sequences.}
   \label{fig:slanted}
 \end{figure}
-% todo: say, that we found no way to "see", if a seqeunce is slanted...
 
-Now we can split the search for a good subsequence into two cases:
+Note that we couldn't come up with an intuitive understanding of slanted sequences. If $k$ goes around in clockwise direction, the measured angle decreases, so vertices failing the condition are consecutive starting after $\hat{\imath}$. And if one fixes $k$, $\hat{\jmath}$ and $j$, moving $i$ or $\hat{\imath}$ in clockwise direction will incrase the measured angle. But the same can't be done for $j$ and $\hat{\jmath}$. So this definition serves its purpose in the proofs, but doesn't provide more insight beyond that.
+
+Now we split the search for a good subsequence into two cases:
 \begin{enumerate}
   \item The original sequence has a large enough slanted subsequence.
   \item The original sequence does not have such a subsequence.
