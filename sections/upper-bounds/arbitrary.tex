@@ -180,7 +180,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
 
-% polish: use own image
+% todo: use own image
 \begin{figure}[h]
   \centering
   \includegraphics[width=70mm, trim=0 0 180 0, clip]{acute-diagram.png}
@@ -349,7 +349,13 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
 \begin{definition}[G-envelope]\label{definition:g-envelope}
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. If $v=(v_1,\dots,v_n)$ is a thin sequence, then the $G$\emph{-envelope} of $v$ is the sequence $v_G$ obtained from $v$ by replacing the points $v_{g-1}, v_g, v_{g+1}$ with $$o_g:=(v_{g-2}\wedge v_{g-1})\wedge (v_{g+1}\wedge v_{g+2}),$$ for all $g\in G$.
 \end{definition}
-% todo: Image of G-envelope
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=100mm]{g-envelope.png}
+  \caption{The $G$-envelope of the sequence in Figure~\ref{fig:ray-example} with $G=\{3,7\}$. \cite[Figure~6]{shitov2020sublinear}}
+  \label{fig:g-envelope}
+\end{figure}
 
 \begin{definition}[G-good]
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
