@@ -134,7 +134,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{acute-polyhedron.png}
+  \includegraphics[width=0.5\textwidth]{acute-polyhedron.png}
   \caption{An acute polyhedron with main edges colored.}
   \label{fig:acute-polyhedron}
 \end{figure}
@@ -154,10 +154,16 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$ \footnote{We use $x \wedge y$ to describe the line joining two points $x$ and $y$. It can also the intersection of two lines $x$ and $y$.}.
 \end{lemma}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{acute-construction.png}
+  \caption{The construction of Figure~\ref{fig:acute-polyhedron} in the proof of Lemma~\ref{lemma:acute-direction}.}
+  \label{fig:acute-construction}
+\end{figure}
+
 \begin{proof}[Proof outline]
   Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the base edge $v_{n-1} \wedge v_{n-2}$ and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}.
 \end{proof}
-% todo?: image
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
