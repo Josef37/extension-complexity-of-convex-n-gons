@@ -57,16 +57,16 @@ We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that 
   For every arc $X \in \X$, there are at most $13$ arcs $X' \in \X$, which are not well-separated from $X$ and at least as long as $X$.
 \end{lemma}
 
-\begin{proof}[Proof outline]
-  Count how many such arcs fit into the "not well-separated space".\\
-  Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$. Since this number only changes a constant in the bound, we will go on with the original numbers.
+\begin{proof}
+  We count how many such arcs fit into the "not well-separated space".\\
+  Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$ to $X$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$.\footnote{Our results in this proof differ from the source. But since this number only changes a constant in the bound, we will go on with the original numbers.} 
 \end{proof}
 
 \begin{lemma}
   We can color the arcs in $\X$ with at most 14 colors, such that arcs of the same color are well-separated.
 \end{lemma}
 
-\begin{proof}[Proof outline]
+\begin{proof}
   Order the arcs by decreasing length and color them in that order. For an arc $X$, there are -- by Lemma~\ref{lemma:arc-not-separated} -- at most $13$ arcs of at least the same length not well-separated. So just pick a color (from a set of $14$ colors), which wasn't assigned to those at most $13$ arcs and proceed until all arcs are colored.
 \end{proof}
 
@@ -79,16 +79,30 @@ For an arc $X \in \X$ define $F^X$ or $V^X$ as the facets or vertices inside tha
 
 Further we enumerate all vertices for each arc of color $c$, that is for each $X \in \X_c$ we define a bijection $\phi_X: V^X \to \{1,\dots,\abs{V^X}\}$. We define $\phi: V_c \to \{1,\dots,N\}$ as the union of all $V_X$, which is well-defined, since the $V_X \in V_c$ are disjoint as they are well-separated.
 
-\begin{lemma}
+\begin{lemma}\label{lemma:alphas}
   For all $v \in V_c$ there is $\alpha_v > 0$, such that for all $X \in \X_c$, $f \in F^X$, $w \in V^X$ with $\phi(v)=\phi(w)$ we have $\alpha_v M_{v,f} \geq \alpha_w M_{w,f}$.
 \end{lemma}
 
 In other words: For each vertex of color $c$ there is a scalar, such that the slack of the local vertex -- after scaling -- is the smallest for all vertices of the same index and color.
 
 \begin{proof}[Proof outline]
-  % todo
-  Find those scalars $\alpha_v$ by Lemma 10.2 (\textbf{only time circle is used}) and Lemma 10.3
-  Mention: slack is representation dependent, lemma seems kind of reasonable for a circle
+  We can split our considerations by $\phi$, that is we can find $\alpha_v > 0$ separately for each set of vertices $v \in V_c$ with the same index $\phi(v)$.
+
+  Let's fix some index $i \in \{1,\dots,N\}$. Now order all arcs $X$ of color $c$ with at least $i$ vertices decreasing by arc-length as $X_1,\dots,X_m$. Label each vertex $v \in V^{X_j}$ corresponding to $X_j$ with index $i = \phi(v)$ with $v_j$.
+
+  Look at the submatrix $M \left[ \{v_1, \dots, v_m\},F^{X_1} \cup \dots \cup F^{X_m} \right]$ of the slack matrix, which we will treat kind of like a square matrix with one entry being $M \left[ \{v_j\},F^{X_j} \right]$.
+
+  For each $j \in \{1,\dots,m\}$ and $f \in (F^{X_1} \cup \dots \cup F^{X_m}) \setminus F^{X_j}$ we have $M_{v_j, f} > 0$, since $v_j$ cannot be a vertex of $f$, since all $X_k$ disjoint as they are well-separated.
+
+  Further for each $j \in \{1,\dots,m\}$, $k \in \{1,\dots,j-1\}$, $f \in F^{X_j}$ and $g \in (F^{X_1} \cup \dots \cup F^{X_{j-1}})$ we have $M_{v_j,f}M_{v_k,g} \leq M_{v_j,g}M_{v_k,f}$. \\
+  To show this, first observe that $X_j$ is the shortest of the regarded arcs. If we denote its length with $\varepsilon$, it has arc-distance at least $5\varepsilon$ of every arc $X_k$, because they are well-separated and ordered by decreasing length.\\
+  The gist of the proof is following. Since $M$ is representation dependent, reformulate it as a ratio of distances:
+  $$\frac{d(v_j,f)}{d(v_k,f)} \leq \frac{d(v_j,g)}{d(v_k,g)}$$
+  This can be done, since $M_{v_k,g} = 0$ verifies the statement and $M_{v_k,f} > 0$ as they are well-separated.\\
+  The idea is now this: Because $v_j$ is local to $f$, but $v_k$ and $g$ are relatively far away (at least $5\varepsilon$ in arc-distance), $d(v_j,f)$ is much smaller than $d(v_k,f)$ and $d(v_j,g)$. $d(v_k,g)$ may be large, but then we can argue -- using the triangle inequality -- that then also one of $d(v_k,f)$ or $d(v_j,g)$ has to be large.\\
+  Remark that this is the \emph{only place we use that $P$ is cyclic}.
+
+  After those two properties of $M$ are proved, we can apply a technical lemma, which gives the factors $\alpha_{v_1}, \dots, \alpha_{v_m}$, such that $\alpha_{v_i} M_{v_i,f} \leq \alpha_{v_j} M_{v_j,f}$ for all $f \in F^{X_i}$.
 \end{proof}
 
 For each $i \in \{1,\dots,N\}$ we define vectors $t^{(i)} \in \R^{\abs{F_c}}$. For each $X \in \X_c$, $f \in F_X$:
@@ -113,14 +127,53 @@ In other words, we manipulate the rows of $K$ with vertices of color $c$, by sca
 
 The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \in V^X$ and any facet $f \in F^X$, we have $K_{v,f} = 0$. So all entries of $K[V^X, F^X]$ are zero, while $K$ is still nonnegative (that's why we had to scale all rows first).
 
-\begin{lemma}
+\begin{lemma}\label{lemma:rank-of-K}
   The matrix $K$ has nonnegative entries and satisfies $\rank_+ K \leq 8\abs{\X_c}$.
 \end{lemma}
 
-\begin{proof}[Proof outline]
-  % todo
+For the proof we need the generalized "lampshade argument", how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
+
+% todo: simplify notation (don't repeat it)
+% todo: make parallelity of cases clearer
+\begin{lemma}\label{lemma:shitov-lampshade}
+  Let $P$ be a polygon, and let $V$ and $F$ be the sets of vertices and facets (edges) of $P$, respectively. Let $X \subseteq V$ be a set of consecutive vertices of $P$, and let $F' \subseteq F$ be the set of facets of $P$ with both endpoints in $X$.
+
+  Let $M$ be a slack matrix of the polytope $P$, with rows indexed by $V$ and columns indexed by $F$. Let $M'$ be a matrix with rows indexed by $V\setminus X$ and columns indexed by $F'$, such that the following condition holds for each vertex $v\in V\setminus X$:
+  \begin{itemize}
+      \item[($\star$)] there are a vertex $x_v\in X$ and real numbers $\alpha_v>0$ and $\beta_v\geq 0$ such that $M_{v,f}'=\alpha_v M_{v,f}-\beta_v M_{x_v,f}$ for all $f\in F'$.
+  \end{itemize}
+  Then, if all the entries of $M'$ are nonnegative, we have $\rank_+ M'\le 8$.
+\end{lemma}
+
+\begin{proof}[Proof outline of Lemma~\ref{lemma:rank-of-K}]
+  We partition $K$ into submatrices $K[V,F^X]$ for $X \in \X_c$ and show that each of those slices has nonnegative rank at most $8$.
+
+  We know $K[V^X,F^X] = 0$ by definition of $K$. So it suffices to consider $K[V \setminus V^X, F^X]$. Now there are three possibilities for this submatrix:
+
+  \begin{itemize}
+    \item If $v$ is not colored $c$, i.e. $v \notin V_c$, then $K_{v,f} = M_{v_f}$ for all $f \in F^X$.
+    \item Else $v$ is colored $c$, i.e. $v \in V_c$, and $K_{v,f} = \alpha_v M_{v,f} - t_f^{(\phi(v))}$ for all $f \in F^X$:
+    \begin{itemize}
+      \item If the index $\phi(v)$ of $v$ is larger then $\abs{V^X}$ (the number of vertices in $X$), then $K_{v,f} = \alpha_v M_{v,f}$ for all $f \in F^X$, because $t_f^{(\phi(v))} = 0$.
+      \item Else $K_{v,f} = \alpha_v M_{v,f} - \alpha_{x_v} M_{x_v,f}$ for all $f \in F^X$, where $x_v \in V^X$ with $\phi(x_v) = \phi(v)$ is the vertex local to $f$ with the same index as $v$.
+    \end{itemize}
+  \end{itemize}
+
+  From this we can see that $K[V \setminus V^X, F^X]$ is nonnegative by the choice of $\alpha_v$ in Lemma~\ref{lemma:alphas}.
+
+  To show $\rank_+ K[V \setminus V^X, F^X] \leq 8$ we apply Lemma~\ref{lemma:shitov-lampshade} for each case with $V^X$ as our set of consecutive vertices ($F^X$ is the set of facets with both endpoints in $V^X$).\\
+  We have to choose $\alpha_v$, $\beta_v$ and $x_v$ for each vertex $v \in V \setminus V^X$.
+
+  \begin{itemize}
+    \item $v \notin V_c$: $\alpha_v = 1$, $\beta_v = 0$ and $x_v \in V^X$ arbitrary.
+    \item $v \in V_c$ and $\phi(v) > \abs{V^X}$: $\alpha_v$ already defined, $\beta_v = 0$ and $x_v \in V^X$ arbitrary.
+    \item $v \in V_c$ and $\phi(v) \leq \abs{V^X}$: $\alpha_v$ already defined, choose $x_v \in V^X$ with $\phi(x_v) = \phi(v)$ like above and set $\beta_v = \alpha_{x_v}$.
+  \end{itemize}
+
+  By Lemma~\ref{lemma:shitov-lampshade} and $K[V^X,F^X] = 0$ we can conclude\\
+  $\rank_+ K[V,F^X] = \rank_+ K[V \setminus V^X,F^X] \leq 8$.
 \end{proof}
 
 So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. Therefore $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
 
-Now we can conclude: $$\rank_+ M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c] \leq 8\abs{\X} + 14N \leq 22\,n^{1/2} + 36 \stackrel{(n \geq 18^2)}{\leq} 24\,n^{1/2}$$
+Now we can summarize: $$\rank_+ M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c] \leq 8\abs{\X} + 14N \leq 22\,n^{1/2} + 36 \stackrel{(n \geq 18^2)}{\leq} 24\,n^{1/2}$$
