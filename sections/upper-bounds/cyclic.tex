@@ -133,35 +133,35 @@ The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \i
 
 For the proof we need the generalized "lampshade argument", how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
 
-% todo: simplify notation (don't repeat it)
-% todo: make parallelity of cases clearer
 \begin{lemma}\label{lemma:shitov-lampshade}
-  Let $P$ be a polygon, and let $V$ and $F$ be the sets of vertices and facets (edges) of $P$, respectively. Let $X \subseteq V$ be a set of consecutive vertices of $P$, and let $F' \subseteq F$ be the set of facets of $P$ with both endpoints in $X$.
+  Let $P$ be a polygon, and let $V$, $F$ and $M$ be defined like above. 
+  
+  Let $X \subseteq V$ be a set of consecutive vertices of $P$, and let $F' \subseteq F$ be the set of facets of $P$ with both endpoints in $X$.
 
-  Let $M$ be a slack matrix of the polytope $P$, with rows indexed by $V$ and columns indexed by $F$. Let $M'$ be a matrix with rows indexed by $V\setminus X$ and columns indexed by $F'$, such that the following condition holds for each vertex $v\in V\setminus X$:
-  \begin{itemize}
-      \item[($\star$)] there are a vertex $x_v\in X$ and real numbers $\alpha_v>0$ and $\beta_v\geq 0$ such that $M_{v,f}'=\alpha_v M_{v,f}-\beta_v M_{x_v,f}$ for all $f\in F'$.
-  \end{itemize}
+  Let $M'$ be a matrix with rows indexed by $V\setminus X$ and columns indexed by $F'$, such that the following condition holds for each vertex $v\in V\setminus X$:
+  
+  There are real numbers $\alpha_v>0$, $\beta_v\geq 0$ and a vertex $x_v\in X$ such that $M_{v,f}'=\alpha_v M_{v,f}-\beta_v M_{x_v,f}$ for all $f\in F'$.
+
   Then, if all the entries of $M'$ are nonnegative, we have $\rank_+ M'\le 8$.
 \end{lemma}
 
-\begin{proof}[Proof outline of Lemma~\ref{lemma:rank-of-K}]
-  We partition $K$ into submatrices $K[V,F^X]$ for $X \in \X_c$ and show that each of those slices has nonnegative rank at most $8$.
+We will not prove this lemma here. But remark, that it does not require $P$ to be cyclic.
 
-  We know $K[V^X,F^X] = 0$ by definition of $K$. So it suffices to consider $K[V \setminus V^X, F^X]$. Now there are three possibilities for this submatrix:
+% todo: make parallelity of cases clearer
+\begin{proof}[Proof outline of Lemma~\ref{lemma:rank-of-K}]
+  We partition $K$ into submatrices $K[V,F^X]$ for $X \in \X_c$ and show that each of those $\abs{\X_c}$ slices has nonnegative rank at most $8$.
+
+  We know $K[V^X,F^X] = 0$ by definition of $K$. So it suffices to consider $K[V \setminus V^X, F^X]$. Now there are three possibilities for rows of this submatrix:
 
   \begin{itemize}
-    \item If $v$ is not colored $c$, i.e. $v \notin V_c$, then $K_{v,f} = M_{v_f}$ for all $f \in F^X$.
-    \item Else $v$ is colored $c$, i.e. $v \in V_c$, and $K_{v,f} = \alpha_v M_{v,f} - t_f^{(\phi(v))}$ for all $f \in F^X$:
-    \begin{itemize}
-      \item If the index $\phi(v)$ of $v$ is larger then $\abs{V^X}$ (the number of vertices in $X$), then $K_{v,f} = \alpha_v M_{v,f}$ for all $f \in F^X$, because $t_f^{(\phi(v))} = 0$.
-      \item Else $K_{v,f} = \alpha_v M_{v,f} - \alpha_{x_v} M_{x_v,f}$ for all $f \in F^X$, where $x_v \in V^X$ with $\phi(x_v) = \phi(v)$ is the vertex local to $f$ with the same index as $v$.
-    \end{itemize}
+    \item If $v \notin V_c$, then $K_{v,f} = M_{v_f}$ for all $f \in F^X$.
+    \item If $v \in V_c$ and $\phi(v) > \abs{V^X}$, then $K_{v,f} = \alpha_v M_{v,f}$ for all $f \in F^X$, because $t_f^{(\phi(v))} = 0$.
+    \item If $v \in V_c$ and $\phi(v) \leq \abs{V^X}$, then $K_{v,f} = \alpha_v M_{v,f} - \alpha_{x_v} M_{x_v,f}$ for all $f \in F^X$, where $x_v \in V^X$ with $\phi(x_v) = \phi(v)$ is the vertex local to $f$ with the same index as $v$.
   \end{itemize}
 
   From this we can see that $K[V \setminus V^X, F^X]$ is nonnegative by the choice of $\alpha_v$ in Lemma~\ref{lemma:alphas}.
 
-  To show $\rank_+ K[V \setminus V^X, F^X] \leq 8$ we apply Lemma~\ref{lemma:shitov-lampshade} for each case with $V^X$ as our set of consecutive vertices ($F^X$ is the set of facets with both endpoints in $V^X$).\\
+  To show $\rank_+ K[V \setminus V^X, F^X] \leq 8$ we apply Lemma~\ref{lemma:shitov-lampshade} for each of the above cases with $V^X$ as our set of consecutive vertices ($F^X$ is the set of facets with both endpoints in $V^X$).\\
   We have to choose $\alpha_v$, $\beta_v$ and $x_v$ for each vertex $v \in V \setminus V^X$.
 
   \begin{itemize}
@@ -170,7 +170,7 @@ For the proof we need the generalized "lampshade argument", how it was originall
     \item $v \in V_c$ and $\phi(v) \leq \abs{V^X}$: $\alpha_v$ already defined, choose $x_v \in V^X$ with $\phi(x_v) = \phi(v)$ like above and set $\beta_v = \alpha_{x_v}$.
   \end{itemize}
 
-  By Lemma~\ref{lemma:shitov-lampshade} and $K[V^X,F^X] = 0$ we can conclude\\
+  By Lemma~\ref{lemma:shitov-lampshade} and $K[V^X,F^X] = 0$ we can conclude:\\
   $\rank_+ K[V,F^X] = \rank_+ K[V \setminus V^X,F^X] \leq 8$.
 \end{proof}
 
