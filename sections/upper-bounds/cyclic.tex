@@ -147,7 +147,6 @@ For the proof we need the generalized "lampshade argument", how it was originall
 
 We will not prove this lemma here. But remark, that it does not require $P$ to be cyclic.
 
-% todo: make parallelity of cases clearer
 \begin{proof}[Proof outline of Lemma~\ref{lemma:rank-of-K}]
   We partition $K$ into submatrices $K[V,F^X]$ for $X \in \X_c$ and show that each of those $\abs{\X_c}$ slices has nonnegative rank at most $8$.
 
@@ -161,7 +160,7 @@ We will not prove this lemma here. But remark, that it does not require $P$ to b
 
   From this we can see that $K[V \setminus V^X, F^X]$ is nonnegative by the choice of $\alpha_v$ in Lemma~\ref{lemma:alphas}.
 
-  To show $\rank_+ K[V \setminus V^X, F^X] \leq 8$ we apply Lemma~\ref{lemma:shitov-lampshade} for each of the above cases with $V^X$ as our set of consecutive vertices ($F^X$ is the set of facets with both endpoints in $V^X$).\\
+  To show $\rank_+ K[V \setminus V^X, F^X] \leq 8$ we apply Lemma~\ref{lemma:shitov-lampshade} for each of the above cases with $V^X$ as our set of consecutive vertices.\\
   We have to choose $\alpha_v$, $\beta_v$ and $x_v$ for each vertex $v \in V \setminus V^X$.
 
   \begin{itemize}
@@ -171,7 +170,7 @@ We will not prove this lemma here. But remark, that it does not require $P$ to b
   \end{itemize}
 
   By Lemma~\ref{lemma:shitov-lampshade} and $K[V^X,F^X] = 0$ we can conclude:\\
-  $\rank_+ K[V,F^X] = \rank_+ K[V \setminus V^X,F^X] \leq 8$.
+  $\rank_+ K[V,F^X] = \rank_+ K[V \setminus V^X,F^X] \leq 8$
 \end{proof}
 
 So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. Therefore $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
