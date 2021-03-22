@@ -19,7 +19,7 @@ First we list the general similarities of both approaches:
   \cite{kwan2020extension} splits the polygon into $O(n^{1/2})$ arcs containing $O(n^{1/2})$ vertices. But here they are treated as a whole.
 
   \item There is some notion of enclosing vertices in both.\\
-  \cite{shitov2020sublinear} requires an envelope around vertices in its central theorem \ref{theorem:glueing}. It is used to build an extended formulation for this specific polygon.
+  \cite{shitov2020sublinear} requires an envelope around vertices in its central theorem \ref{theorem:glueing}. It is used to build an extended formulation for this specific polygon.\\
   \cite{kwan2020extension} uses a "lampshade argument", which builds a polygon around vertices away from a set of facets, to show that a slice of the slack matrix has constant nonnegative rank.
 \end{itemize}
 
@@ -31,8 +31,8 @@ Even though some ideas are common to both methods, they are more different than 
   \cite{kwan2020extension} uses the linear-algebraic strategy using slack matrices for its main reasoning. But lemmata are often proved geometrically. The approach has the advantage that transformation on the slack matrix, which don't alter the nonnegative rank, can not always be represented geometrically.
 
   \item There is another difference in how they treat subsets of vertices:\\
-  \cite{shitov2020sublinear} iteratively extracts a large subsequence with small extension complexity (ignore all other vertices).
-  \cite{kwan2020extension} splits its consideration by color, but always handles either the dependencies to all other vertices or facets. 
+  \cite{shitov2020sublinear} iteratively extracts a large subsequence with small extension complexity (ignoring all other vertices).\\
+  \cite{kwan2020extension} splits its consideration by constantly many colors, but always handles the dependencies to either all other vertices or all other facets. 
 \end{itemize}
 
 We go on analyzing numerically how each approach ends up with its asymptotical bound.
@@ -53,7 +53,7 @@ $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
   \item putting together $\rank_+ M \in O(\abs{\X} + n^{1/2}) = O(n^{1/2})$
 \end{itemize}
 
-Finally we have a look, how each procedure can be altered to be used in the other's setting:
+Finally we have a look at, how each procedure can be altered to be used in the other's setting:
 
 \begin{itemize}
   \item How is the circle property used? Can the approach be generalised (replace circle distance with edge distance)?\\
