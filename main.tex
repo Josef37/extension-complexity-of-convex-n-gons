@@ -9,10 +9,10 @@
 
 \documentclass[a4paper,12pt]{article}
 
-\usepackage{mathtools}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{bbm}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman, english]{babel}
+
+\usepackage{mathtools, amssymb, amsthm, bbm}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \graphicspath{ {./assets/} }
@@ -39,7 +39,9 @@
 
 \input{sections/preface}
 
-\input{sections/zusammenfassung}
+\begin{otherlanguage}{ngerman} 
+  \input{sections/zusammenfassung}
+\end{otherlanguage}
 
 \tableofcontents
 \newpage
