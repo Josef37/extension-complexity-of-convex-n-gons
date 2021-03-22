@@ -6,7 +6,7 @@ In this section we provide yet another proof for $\pc(n) \in \Omega(n^{1/2})$.
 
 After the proof is done, we will explain the key concepts of the applied theorem and show how to apply it in general.
 
-The central piece of the proof is Theorem~1 from \cite{averkov2016maximum}, which we adopt for the case of linear extended formulations (the original also allowed semidefinite ones).
+The central piece of the proof is \cite[Theorem~1]{averkov2016maximum}, which we adopt for the case of linear extended formulations (the original also allowed semidefinite ones).
 
 We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mid \norm{x} \leq 1 \}$ to be the $d$-dimensional unit ball.
 
@@ -14,17 +14,17 @@ We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mi
 
 \subsection{Introducing the Applied Theorem}
 
-Frist we have to define the \emph{Hausdorff distance} of two non-empty compact sets $X,Y \subseteq \R^d$, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
+Frist we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
 
 \begin{figure}[h]
   \centering
   \includegraphics[height=55mm]{Hausdorff_distance.png}
-  \caption{Hausdorff distance example \cite{rocchini2007hausdorff}}
+  \caption{Hausdorff distance example. \cite{rocchini2007hausdorff}}
   \label{fig:hausdorff}
 \end{figure}
 
 \begin{definition}[Hausdorff distance]
-  The \emph{Hausdorff distance} with respect to the Euclidean norm is defined by $$ \dist_H(X,Y) := \max \left\{ \adjustlimits \sup_{x \in X} \inf_{y \in Y} \norm{x-y}, \adjustlimits \sup_{y \in Y} \inf_{x \in X} \norm{x-y} \right\} .$$
+  The \emph{Hausdorff distance} of two non-empty compact sets $X, Y \subseteq \R^d$ is defined by $$ \dist_H(X,Y) := \max \left\{ \adjustlimits \sup_{x \in X} \inf_{y \in Y} \norm{x-y}, \adjustlimits \sup_{y \in Y} \inf_{x \in X} \norm{x-y} \right\} .$$
 \end{definition}
 
 \begin{theorem}[{\cite[Theorem 1]{averkov2016maximum}}, adopted]\label{theorem:family}
@@ -72,7 +72,7 @@ Frist we have to define the \emph{Hausdorff distance} of two non-empty compact s
     B &= \frac{\log_2 \abs{\P_n}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P_n} \right)}\\
     &\geq \frac{n \log_2 n}{16 \left(1 + \log_2 (n^4 / \pi^2) + 1 + \log_2 n + \log_2 \log_2 n \right)}\\
     &= \frac{n \log_2 n}{16 \left(2 - 2 \log_2 \pi + 5 \log_2 n + \log_2 \log_2 n \right)}\\
-    &\geq \frac{n}{16*6}
+    &\geq \frac{n}{16 \cdot 6}
   \end{align*}
 
   For the last inequality we used $2 - 2 \log_2 \pi \leq 0$ and $\frac{5 \log_2 n + \log_2 \log_2 n}{\log_2 n} \leq 6$ for $n \geq 1$.
@@ -84,22 +84,22 @@ Frist we have to define the \emph{Hausdorff distance} of two non-empty compact s
 
 \subsection{Key Idea of Theorem~\ref{theorem:family}}
 
-The central idea of \ref{theorem:family} is to encode the extended formulations. Then one counts how many extended formulations fit into the containing volume, since those formulations are separated themselves.
+The central idea of Theorem~\ref{theorem:family} is to encode the extended formulations. Then one counts how many extended formulations fit into the containing volume, since those formulations are separated themselves.
 
 Here is a short outline of the proof:
 \begin{enumerate}
-  \item Each extended formulation can be normalized, i.e. $P = \varphi(Q) + t$ with $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
-  \item Each polytope $P_i \in \P$ ($P_i = \varphi_i(Q_i) + t_i$, $Q_i = \{ x \in \R^{n_i} \mid A_ix \leq \mathbbm{1} \}$) is encoded trough $P_i \mapsto (A_i, \varphi_i, t_i)$.\\
-  From now on everything takes place in the encoding vector spaces $\mathcal{V^n}$, where $n$ is the dimension of the extended formulation.
+  \item Each extended formulation can be normalized, i.e. $P = \varphi(Q) + t$ with\\ $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
+  \item Each polytope $P_i \in \P$, where $P_i = \varphi_i(Q_i) + t_i$ and $Q_i = \{ x \in \R^{n_i} \mid A_ix \leq \mathbbm{1} \}$), is encoded trough $P_i \mapsto (A_i, \varphi_i, t_i)$.\\
+  From now on everything takes place in the encoding vector spaces $\mathcal{V}^n$, where $n$ is the dimension of the extended formulation.
   \item The encodings are partitioned into sets $W_i$ by the dimension of $Q_i$.
   \item The distance between two encodings $w, w' \in W_i$ can be bounded by $\norm{w - w'} \geq \Delta$.
-  \item The overall space required can be bounded by $\norm{w} \leq 3\rho n^2 \forall w \in W_i$.
+  \item The overall space required can be bounded by $\norm{w} \leq 3\rho n^2, \forall w \in W_i$.
   \item One creates small balls around each encoding with radius $\Delta/2$ and a ball containing all small balls with radius $3\rho n^2 + \Delta/2$ around the origin.
   \item By comparing volumes, one can bound $\abs{W_i}$ from above depending on $\rho$, $\Delta$, $m$ and~$d$.
   \item These bounds are joined together for all $W_i$ and solved for $m$.
 \end{enumerate}
 
-The lower bounding of $\xc$ ($\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$) is achieved by inverting the implication: 
+The lower bounding of $\xc$, i.e. $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication: 
 $$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
 
 This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a familiy $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
