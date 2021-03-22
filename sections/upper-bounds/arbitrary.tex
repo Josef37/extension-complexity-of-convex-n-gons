@@ -2,13 +2,13 @@
 % polish: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
-In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$ for arbitrary $n$-gons. 
-We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so we can highlight the reasoning more clearly.
+In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$. 
+We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof "backwards", presenting  the results first, since in doing so, we can highlight the reasoning more clearly.
 
-The gist of the approach is this: 
+The gist of the approach is as follows: 
 \begin{enumerate}
   \item We cut the polygon into smaller slices, for which we can provide small extended formulations. Joining these together preserves this property.
-  \item We prove this small extended formulation by iteratively finding a large enough subset of vertices in the slice, for which we can build a small extended formulation. Joining these subsets together will also preserve this property.
+  \item We prove this small extended formulation by iteratively finding a large enough subset of vertices in the slice, for which we can build a small extended formulation. Joining these subsets together will again preserve this property.
   \item We build the small extended formulation by building 3-dimensional extended formulations for a surrounding polygon. These are "glued" together resulting in an extended formulation for the original set of vertices.
 \end{enumerate}
 
@@ -24,29 +24,28 @@ In Appendix~\ref{sec:dependency-graph} we added a graphical representation of th
 
 Naturally, we need to gather more statements, before we can prove this theorem. 
 
-The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that $\xc$ behaves well for unions of polytopes:
+The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
 \begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
-  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
+  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
-This lemma allows us to consider a partition of the polygon, since we can merge the extended formulations of those parts.
+This lemma allows us to consider a polygon in parts, when estimating its extension complexity, since we can bound the total complexity by the sum of its parts.
 
-Now we will go on to define those smaller parts, which we can handle well. We call them \emph{thin sequences}.
+Now we will go on to define those smaller parts, which we can handle well.
 
 \begin{definition}[Turning angle]
-  If $P\subset\R^2$ is a polygon, then the \textit{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
-  In other words, it is the amount the angle at $v$ deviates from $\pi$. \\
-  The \textit{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
+  If $P\subset\R^2$ is a polygon, then the \emph{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
+  In other words, it is the amount the angle at $v$ deviates from a straigt line. \\
+  The \emph{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
 
 \begin{definition}[Correct sequence]
-  A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \textit{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
+  A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \emph{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
+  If not stated otherwise, we assume the vertices of a correct sequence to be ordered \emph{clockwise}.
 \end{definition}
 
-If not stated otherwise, we assume the vertices of a correct sequence to be ordered \emph{clockwise}.
-
 \begin{definition}[Thin sequence]
-  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence $v=(v_1,\ldots,v_n)$ is called $\alpha$\textit{-thin} if $v$ the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \textit{thin} if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
+  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence ${v=(v_1,\ldots,v_n)}$ is called \emph{$\alpha$-thin}, if the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \emph{thin}, if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
 
 \begin{figure}[h]
@@ -70,12 +69,12 @@ For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, me
 \end{figure}
 
 \begin{proof}[Proof outline]
-  For each set, take as many vertices (in order) until thinness would be violated. Then begin a new set, which starts at least $2\pi/q$ further from the last -- so the $q$ sets cover the polygon.
+  For each set, take as many vertices (in order) until the $2\pi/q$-thinness would be violated. Then begin a new set, which starts at least $2\pi/q$ further from the last -- so at most $q$ sets cover the polygon's vertices.
 \end{proof}
 
 Based on Observation~\ref{observation:splitting} we choose to split the original $n$-gon into $12$ distinct $\pi/6$-thin sequences. Joining those (constantly many) sequences will not change the asymptotical bound for the extension complexity of the original polygon in light of Lemma~\ref{lemma:union}.
 
-Now we will go on to show that each $pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
+Now we will go on to show that each $\pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
 
 \begin{theorem}[{\cite[Theorem 58]{shitov2020sublinear}}]\label{theorem:subsequence}
   Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
@@ -105,7 +104,7 @@ The following corollary is a direct result of it:
 
 We can now prove the main result.
 
-\begin{proof}[Proof outline of \ref{theorem:xc}]
+\begin{proof}[Proof outline of Theorem~\ref{theorem:xc}]
   Using Observation~\ref{observation:splitting} we spilt the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
 
   We apply Lemma~\ref{lemma:union} and Corollary~\ref{corollary:thin-xc} and get $$\xc(P)\leq\frac{324}{\sqrt[3]{129}}\left(\sum\limits_{i=1}^{12}n_i^{2/3}\right)\leq\frac{324}{\sqrt[3]{129}}\left(12\left(\frac{n}{12}\right)^{2/3}\right) < 147\,n^{2/3} .$$
@@ -161,8 +160,9 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   \label{fig:acute-construction}
 \end{figure}
 
-\begin{proof}[Proof outline]
-  Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the base edge $v_{n-1} \wedge v_{n-2}$ and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}.
+% polish: remove hand-wavy footnote?
+\begin{proof}[Proof outline (see Figure~\ref{fig:acute-construction})]
+  Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the line $v_{n-1} \wedge v_{n-2}$  defined by a base edge and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed.\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is "inside" of $V$.}
 \end{proof}
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
@@ -175,11 +175,12 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \end{proof}
 
 \begin{definition}[Acute diagram and lifting]
-  Let $P$ be an acute polyhedron with base $B$ and $\pi$ like in Observation~\ref{observation:acute-projection}.
+  Let $P$ be an acute polyhedron with base~$B$ and $\pi$ like in Observation~\ref{observation:acute-projection}.
   The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
 
+% polish: get image closer...
 \begin{figure}[h]
   \centering
   \includegraphics[width=70mm]{acute-diagram.png}
@@ -239,7 +240,7 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining ("glueing") simple extensions for a surrounding polygon.
 
 \begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:glueing}
-  Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subset V$ be a proper subset of all vertices. Fix $\delta \geq 1$. Assume
+  Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subseteq V$ be a subset of all vertices. Fix $\delta \geq 1$. Assume
 
   (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$,
 
@@ -249,7 +250,7 @@ We can now focus on the main result of the first part, which allows us to build 
 
   (iv) for any $i \in \{1,\dots,\delta\}$ there exists and acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$. 
   
-  $$\Rightarrow \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
+  $$\Rightarrow \ \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
 
 \begin{figure}[h]
@@ -261,13 +262,13 @@ We can now focus on the main result of the first part, which allows us to build 
 
 % todo?: insert cutting example for \delta=1
 
-% polish: make eqref's and check last argument (pi(P') really is right by conv commuting on affine maps)
+% polish: check last argument (pi(P') really is right by conv commuting on affine maps)
 \begin{proof}
   We are going to construct a polytope $\P'$ in $\R^2 \times \R^{\delta} = \{(x,y,z^1,\dots,z^{\delta})\}$ with at most $\abs{V}+\abs{S}+\delta$ facets, which is an extended formulation of $P$.
 
-  Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ (we assume that all diagrams are lifted into the upper half-space $z \geq 0$).
+  Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ for all edges $e$ of $P$ (we assume that all diagrams are lifted into the upper half-space $z \geq 0$).
 
-  Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with $\abs{V}+\delta$ inequalities 
+  Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with the following $\abs{V}+\delta$ inequalities 
   \begin{align*}
     a_e x + b_e y + c_e &\geq \sum_{i=1}^{\delta} \varepsilon_e^i z,\\
     z^i &\geq 0,
@@ -282,13 +283,13 @@ We can now focus on the main result of the first part, which allows us to build 
 
   Therefore there are $\delta + 2$ rays passing from $\sigma_s$: Two corresponding to the edges at $s$ and $\delta$ of the form
   \begin{equation}\label{eq:ray}
-    (x_s + \alpha_s^i t,y_s + \beta_s^i t,0,\dots,0,t,0,\dots,0), t \geq 0,
+    (x_s + \alpha_s^i\,t,y_s + \beta_s^i\,t,0,\dots,0,t,0,\dots,0), t \geq 0,
   \end{equation}
   where there are $i-1$ zeros before~$t$ and $(\alpha_s^i, \beta_s^i)$ is pointing from $s$ to $s^i$ (and scaled such that we don't need a factor for~$t$).
 
   Now we define a half-space $H_s$, whose defining hyperplane is determined by the points $(x_{s'},y_{s'},0,\dots,0)$, $(x_{s''},y_{s''},0,\dots,0)$ and the $\delta$ points on \eqref{eq:ray}, which project to $s^i$ under $\pi$ (this hyperplane is well-defined, as all those points are linearly independent). The orientation of $H_s$ is set such that is does not include $\sigma_s$.
 
-  If we now cut $\P$ with $H_s$, we only cut the rays passing from $\sigma_s$ at the defining points. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by cutting. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
+  If we now cut $\P$ with $H_s$, we only cut the rays passing from $\sigma_s$ at the defining points of $H_s$. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by cutting. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
 
   So we can define $\P' = \P \cap \bigcap_{s \in S} H_s$, which is given by $\abs{V}+\abs{S}+\delta$ inequalities, and conclude that $\pi(\P')$ is the desired polygon.
 \end{proof}
@@ -296,7 +297,7 @@ We can now focus on the main result of the first part, which allows us to build 
 \begin{remark}\label{remark:pitfall}
   There is a subtle difference between Theorem~\ref{theorem:glueing} and Corollary~\ref{corollary:acute-direction}.
 
-  In the theorem we assume that "the segment between $s$ and $s^i$ is a \textbf{subset} of the main edge", but in the corollary we construct a diagram for which "the main edge from $v_i$ lies on $v_i \wedge y_i$", implying that $y_i$ can lie outside the main edge. 
+  In the theorem we assume that "the segment between $s$ and $s^i$ is a \emph{subset} of the main edge", but in the corollary we construct a diagram for which "the main edge from $v_i$ lies on $v_i \wedge y_i$", implying that $y_i$ can lie outside the main edge. 
 
   So we can't just apply Theorem~\ref{theorem:glueing} to any choice of points fulfilling (i)-(iii).
 \end{remark}
@@ -307,7 +308,7 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
   Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended fromulation for $P$ with size $\Omega(\sqrt{n})$.
 \end{observation}
 \begin{proof}
-  We set $P = \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
+  We set $P := \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
   \begin{equation}\label{eq:limit-n}
     n \leq (v-s) + s(2+\delta) = v + s(1+\delta).
   \end{equation}
@@ -316,21 +317,21 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
   \begin{equation*}
     \delta \geq \frac{n-v}{s} - 1
   \end{equation*}
-  We now define $\delta := (n-v)/s$ as the minimal possible value for given $n$, $v$ and $s$, since the size of the extended formulation increases with $\delta$. This way we can define $$f_n(v,s) := v + s + \delta = v + s + \frac{n-v}{s}$$ as the size of the extended formulation for given $v$ and $s$.
+  We now define $\delta := (n-v)/s$ as the minimal possible value\footnote{For simplicity, we skip the case, where $(n-v)/s - 1$ is integer. The difference would only be $-1$ in the final result.} for given $n$, $v$ and $s$, since the size of the extended formulation increases with $\delta$. This way we can define $$f_n(v,s) := v + s + \delta = v + s + \frac{n-v}{s}$$ as the size of the extended formulation for given $v$ and $s$.
 
-  $$\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s+1$ according to the assumptions of Theorem~\ref{theorem:glueing}.
+  $$\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s$ according to the assumptions of Theorem~\ref{theorem:glueing}.
   \begin{align*}
-    f_n(s+1, s) &= (s+1) + s + \frac{n-(s+1)}{s} \\
-    &= 2s + \frac{n-1}{s}\\
-    \frac{\partial}{\partial s} f_n(s+1,s) &= 2 - \frac{n-1}{s^2} \Rightarrow s_{min} := \sqrt{\frac{1}{2}(n-1)} \\
-    \frac{\partial^2}{\partial^2 s} f_n(s+1,s) &= \frac{2(n-1)}{s^3} > 0
+    f_n(s, s) &= s + s + \frac{n-s}{s} \\
+    &= 2s + \frac{n}{s} - 1\\
+    \frac{\partial}{\partial s} f_n(s,s) &= 2 - \frac{n}{s^2} \Rightarrow s_{min} := \sqrt{\frac{n}{2}} \\
+    \frac{\partial^2}{\partial^2 s} f_n(s,s) &= \frac{2n}{s^3} > 0
   \end{align*}
 
-  This shows that $f_n$ has a minimum at $s_{min}$ with $v_{min}=s_{min}+1$.
+  This shows that $f_n$ has a minimum at $s_{min} = \sqrt{n/2}$ with $v_{min}=s_{min}$.
 
-  Finally we can find the minimal value for $f_n$.
+  Finally we can find the minimal value for $f_n$:
   \begin{align*}
-    f_n(s_{min}+1, s_{min}) = 2\sqrt{2(n-1)}
+    f_n(s_{min}, s_{min}) = 2\sqrt{2n} - 1
   \end{align*}
 \end{proof}
 
@@ -351,7 +352,7 @@ Therefore we formalize the notion of "good" sequences with respect to Theorem~\r
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=100mm]{g-envelope.png}
+  \includegraphics[width=120mm]{g-envelope.png}
   \caption{The $G$-envelope of the sequence in Figure~\ref{fig:ray-example} with $G=\{3,7\}$. \cite[Figure~6]{shitov2020sublinear}}
   \label{fig:g-envelope}
 \end{figure}
@@ -394,7 +395,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
   (2) for each $k \notin \{1,n,g-1,g,g+1\}$ the main edge from $v_k$ is orthogonal to $v_1 \wedge v_n$,\\
   (3) the main edge from $v_n$ passes towards a point $u_0$ that lies sufficiently close to the middle of $\conv \{v_1,v_n\}$ in the interior of $\conv v$.
 
-  Now it remains to show that the edge passing from $o_g$ actually contains $v_g$. We will prove this by contradiction: Assume there is some $j \in G$, for which $v_j$ is not contained in the edge passing from $o_j$. That is, there is an edge in $\Delta$, which has its end point $e$ in the interior of $\conv \{o_j, v_j\}$, thus outside of $\conv v$.
+  Now it remains to show that the edge passing from $o_g$ actually contains $v_g$. We will prove this by contradiction: Assume there is some $j \in G$, for which $v_j$ is not contained in the edge passing from $o_j$. That is, there is an edge in $\Delta$, which has its endpoint $e$ in the interior of $\conv \{o_j, v_j\}$, thus outside of $\conv v$.
 
   \textit{Case 1.} There is a path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
   This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc "towards" $v_1$ for decreasing $i$, because $v$ itself is convex.
@@ -408,9 +409,9 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
-  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \textit{clockwise-slanted} to an angle $\beta$ with \textit{tolerance} $\delta$ if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
+  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
 
-  A \textit{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
+  A \emph{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with "clockwise" replaced with "counterclockwise".
 \end{definition}
 
 \begin{figure}[h]
@@ -437,7 +438,7 @@ We can show that for each case there is a large enough subsequence, for which Th
 \end{lemma}
 
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
-  Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is clockwise-slanted to the angle $\pi/3$ with tolerance $2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
+  Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is clockwise-slanted to the angle $\pi/3$ with tolerance~$2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
 
 Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.\\
