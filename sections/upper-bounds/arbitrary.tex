@@ -1,5 +1,5 @@
 \subsection{Arbitrary Convex n-gons}
-% polish: Add proof outlines for Lemma 49 and Theorem 57
+% polish?: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$. 
@@ -435,11 +435,11 @@ Now we split the search for a good subsequence into two cases:
 We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
 
 % polish: give some overview of proof ideas (sketches for Lemma 48 and 49)
-
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
   Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
+% polish: give some overview of proof ideas
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
   Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is clockwise-slanted to the angle $\pi/3$ with tolerance~$2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
