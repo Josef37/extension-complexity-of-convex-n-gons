@@ -4,10 +4,10 @@ In this section we give an overview of \cite{kwan2020extension}, which proves --
 
 The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
 
-One important insight is the "lampshade argument", which the authors called this way because of the geometric interpretation in three dimensions (see Figure~\ref{fig:lampshade}). In the two-dimensional case, the simplified form can be interpreted like this:
+One important insight is the ``lampshade argument'', which the authors called this way because of the geometric interpretation in three dimensions (see Figure~\ref{fig:lampshade}). In the two-dimensional case, the simplified form can be interpreted like this:
 
 Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of a slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
-The resaon for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the "positive slack" side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a "polyhedral lampshade" and one can always build such a polygon $Q$ with constantly many vertices .\\
+The resaon for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the ``positive slack'' side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a ``polyhedral lampshade'' and one can always build such a polygon $Q$ with constantly many vertices .\\
 Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the vertices in $Q$.\\
 For every vertex $q$ of $Q$ consider the vector $u_q \in \R^{\abs{F'}}$ of slacks for all $f \in F'$, which is positive by construction of $Q$.\\
 And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
@@ -21,7 +21,7 @@ In other words, every row of $M[V',F']$ is a convex combination of these constan
   \label{fig:lampshade}
 \end{figure}
 
-The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove in \cite[Theorem 1.1]{shitov2020sublinear} that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has "asymptotically almost surely" extension complexity in $\Theta(n^{1/2})$.
+The authors of the paper developed this argument even for higher dimensions, since the other theorems provide results for higher-dimensional polytopes. For example, they prove in \cite[Theorem 1.1]{shitov2020sublinear} that a polytope $P \in \R^d$ as the convex hull of $n$ random points on the $(d-1)$-dimensional unit sphere has ``asymptotically almost surely'' extension complexity in $\Theta(n^{1/2})$.
 
 Since we focus on polygons in this paper, we will only cover the separate, two-dimensional theorem, for whose derivation we will give an outline.
 
@@ -38,9 +38,9 @@ The approach follows these steps:
 
 \begin{enumerate}
   \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
-  \item Color these arcs with constantly many colors, such that two arcs of the same color are "well-separated".
+  \item Color these arcs with constantly many colors, such that two arcs of the same color are ``well-separated''.
   \item Build a nonnegative matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, such that the entries for vertices and factes of the same arc are zero.
-  \item Apply the "lampshade argument" (in a more general form) for the rest of this matrix and obtain the desired bound.
+  \item Apply the ``lampshade argument'' (in a more general form) for the rest of this matrix and obtain the desired bound.
 \end{enumerate}
 
 We will now go through these steps in more detail.
@@ -58,7 +58,7 @@ We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that 
 \end{lemma}
 
 \begin{proof}
-  We count how many such arcs fit into the "not well-separated space".\\
+  We count how many such arcs fit into the ``not well-separated space''.\\
   Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$ to $X$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$.\footnote{Our results in this proof differ from the source. But since this number only changes a constant in the bound, we will go on with the original numbers.} 
 \end{proof}
 
@@ -115,7 +115,7 @@ For each $i \in \{1,\dots,N\}$ we define vectors $t^{(i)} \in \R^{\abs{F_c}}$. F
 \end{equation*}
 So the vectors $t_f^{(i)}$ are the scaled slacks for the local vertices (regarding $f$) with index $i$.
 
-Now we define the matrix $K \in \R^{\abs{V} \times \abs{F_c}}$, for which we will later apply the (general) "lampshade argument". For all $f \in F_c$ we define:
+Now we define the matrix $K \in \R^{\abs{V} \times \abs{F_c}}$, for which we will later apply the (general) ``lampshade argument''. For all $f \in F_c$ we define:
 \begin{equation*}
   K_{v,f} = 
   \begin{cases}
@@ -131,7 +131,7 @@ The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \i
   The matrix $K$ has nonnegative entries and satisfies $\rank_+ K \leq 8\abs{\X_c}$.
 \end{lemma}
 
-For the proof we need the generalized "lampshade argument", how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
+For the proof we need the generalized ``lampshade argument'', how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
 
 \begin{lemma}\label{lemma:shitov-lampshade}
   Let $P$ be a polygon, and let $V$, $F$ and $M$ be defined like above. 

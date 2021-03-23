@@ -11,8 +11,8 @@ To describe a regular hexagon with linear inequalities, 6 of these are required.
   \label{fig:hexagon}
 \end{figure}
 
-This is the key idea behind extended formulations. Simplifing the representation of polygons by projecting simpler (higher-dimensional) polytopes "down" to the desired polytope.
-One can think of this operation as "compressing" the representation. This mental image is inspired by the fact, that regular $n$-gons (i.e. polygons with $n$ vertices), only require $O(\log(n))$ inequalities in their compressed form (see \cite{kaibel2010constructing}).
+This is the key idea behind extended formulations. Simplifing the representation of polygons by projecting simpler (higher-dimensional) polytopes ``down'' to the desired polytope.
+One can think of this operation as ``compressing'' the representation. This mental image is inspired by the fact, that regular $n$-gons (i.e. polygons with $n$ vertices), only require $O(\log(n))$ inequalities in their compressed form (see \cite{kaibel2010constructing}).
 
 This intuition is formalized like this:
 
@@ -25,7 +25,7 @@ This intuition is formalized like this:
   The \emph{extension complexity} of a polytope $P$ is the smallest possible size of an extended formulation of $P$. It is usually denoted with $\xc(P)$.
 \end{definition}
 
-Polytopes with a small extension complexity can be "compressed" very well with extended formulations.
+Polytopes with a small extension complexity can be ``compressed'' very well with extended formulations.
 Such simplified formulations can be used for building faster algorithms for hard linear programs \cite{yannakakis1991expressing}, which seems to be a driving reason for the popularity of research in extended formulations.
 
 
@@ -37,7 +37,7 @@ The application of extended formulations for solving hard linear problems seems 
   \item The results for the \emph{matching polytope} are even worse: In contrast to the polynomial-time algorithm for solving this problem \cite{ford1956maximal}, there is no polynomial-size extended formulation \cite{rothvoss2017matching}.
 \end{itemize}
 
-So the study of polyons has importance as a benchmark for extened formulations in general (Braun and Pokutta called this "prototypical importance" in \cite{braun2015matching}).
+So the study of polyons has importance as a benchmark for extened formulations in general (Braun and Pokutta called this ``prototypical importance'' in \cite{braun2015matching}).
 That's why current research focuses on finding good bounds for the extension complexity, rather than developing algorithms for constructing such extensions.
 
 There are currently two main approaches for finding bounds for the extension complexity: The first one is the natural geometric approach. The second one is a linear-algebraic approach based on a remarkable result of Yannakakis in \cite{yannakakis1991expressing}, which we'll recall briefly:

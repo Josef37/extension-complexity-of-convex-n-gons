@@ -19,7 +19,7 @@ First we list the general similarities of both approaches:
 
   \item There is some notion of enclosing vertices in both.\\
   \cite{shitov2020sublinear} requires an envelope around vertices in its central theorem \ref{theorem:glueing}. It is used to build an extended formulation for this specific polygon.\\
-  \cite{kwan2020extension} uses a "lampshade argument", which builds a polygon around vertices away from a set of facets, to show that a slice of the slack matrix has constant nonnegative rank.
+  \cite{kwan2020extension} uses a ``lampshade argument'', which builds a polygon around vertices away from a set of facets, to show that a slice of the slack matrix has constant nonnegative rank.
 \end{itemize}
 
 Even though some ideas are common to both methods, they are more different than similar:
@@ -46,9 +46,9 @@ $\xc(P) \in O(n^{2/3})$ for arbitrary $n$-gons $P$ in \cite{shitov2020sublinear}
 $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
 \begin{itemize}
   \item We split the circle into $\abs{\X} \in O(n^{1/2})$ arcs.
-  \item We split the slack matrix into $O(1)$ "color columns".
+  \item We split the slack matrix into $O(1)$ ``color columns''.
   \item From these we build a matrix $K$ with $\rank_+ K \in O(\abs{\X_c})$, where $\X_c$ are the arcs of color $c$.
-  \item Each "color column" in the slack matrix has $\rank_+ M[V,F_c] \in O(\abs{\X_c} + n^{1/2})$.
+  \item Each ``color column'' in the slack matrix has $\rank_+ M[V,F_c] \in O(\abs{\X_c} + n^{1/2})$.
   \item Joining these columns results in $\rank_+ M \in O(\abs{\X} + n^{1/2}) = O(n^{1/2})$.
 \end{itemize}
 
