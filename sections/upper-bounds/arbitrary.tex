@@ -48,7 +48,7 @@ Now we will go on to define those smaller parts, which we can handle well.
   Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence ${v=(v_1,\ldots,v_n)}$ is called \emph{$\alpha$-thin}, if the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \emph{thin}, if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{thin-seqeunce.png}
   \caption{Examples of thin and not-thin sequences: The sequence in the middle is the only one, which is \emph{not} thin.}
@@ -61,7 +61,7 @@ For thin sequences, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, me
   Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
 \end{observation}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=80mm]{polygon-splitting.png}
   \caption{Splitting the vertices of a polygon into thin sequences. \cite[Figure 4]{shitov2020sublinear}}
@@ -131,7 +131,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
   An edge $e$ of an acute polyhedron with base $B$ is called \emph{main}, if exactly one endpoint of $e$ lies on $B$.
 \end{definition}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{acute-polyhedron.png}
   \caption{An acute polyhedron with main edges colored.}
@@ -153,7 +153,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$ \footnote{We use $x \wedge y$ to describe the line joining two points $x$ and $y$. It can also the intersection of two lines $x$ and $y$.}.
 \end{lemma}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{acute-construction.png}
   \caption{The construction of Figure~\ref{fig:acute-polyhedron} in the proof of Lemma~\ref{lemma:acute-direction}.}
@@ -181,7 +181,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \end{definition}
 
 % polish: get image closer...
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=70mm]{acute-diagram.png}
   \caption{The acute diagram of Figure~\ref{fig:acute-polyhedron} with colored main edges.}
@@ -225,7 +225,7 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
 
   Then we use induction on the number of nodes of the base of $\Delta$. The induction basis are the two exceptions from above, where one can easily construct an acute polyhedron.
 
-  \begin{figure}[h]
+  \begin{figure}[ht]
     \centering
     \includegraphics[width=100mm]{lifting-proof.png}
     \caption{The inductive step in the proof of Lemma~\ref{lemma:lifting}. \cite[Figure 2]{shitov2020sublinear}}
@@ -253,7 +253,7 @@ We can now focus on the main result of the first part, which allows us to build 
   $$\Rightarrow \ \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{glueing-theorem.png}
   \caption{An application of Theorem~\ref{theorem:glueing}: Two acute diagrams confirm that the $14$-gon on the right has $\xc$ at most $10$. \cite[Figure 3]{shitov2020sublinear}}
@@ -350,7 +350,7 @@ Therefore we formalize the notion of ``good'' sequences with respect to Theorem~
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. If $v=(v_1,\dots,v_n)$ is a thin sequence, then the $G$\emph{-envelope} of $v$ is the sequence $v_G$ obtained from $v$ by replacing the points $v_{g-1}, v_g, v_{g+1}$ with $$o_g:=(v_{g-2}\wedge v_{g-1})\wedge (v_{g+1}\wedge v_{g+2}),$$ for all $g\in G$.
 \end{definition}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{g-envelope.png}
   \caption{The $G$-envelope of the sequence in Figure~\ref{fig:ray-example} with $G=\{3,7\}$. \cite[Figure~6]{shitov2020sublinear}}
@@ -367,7 +367,7 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
   Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
 \end{definition}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{ray-example.png}
   \caption{Rays $\rho(v,1,2,3,4,5)$ and $\rho(v,3,5,7,8,9)$. \cite[Figure 5]{shitov2020sublinear}}
@@ -378,7 +378,7 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a $\pi/2$-thin\footnote{In the source $v$ is only required to be thin, but building ``vertical'' main edges in the proof is only guaranteed to work, if both angles at $v_1$ and $v_n$ are smaller than $\pi/2$. This does not change any further proof, because this assumption is given, when this lemma gets applied.} sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{ray-good.png}
   \caption{An instance of Lemma~\ref{lemma:ray-good} with $n=12$ and $G=\{3,7,10\}$. \cite[Figure 7]{shitov2020sublinear}}
@@ -417,7 +417,7 @@ We now need to define one more property of a sequence, by which we will split ou
   A \emph{counterclockwise-slanted} sequence is a counterclockwise sequence, if the above definition holds with ``clockwise'' replaced with ``counterclockwise''.
 \end{definition}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=100mm]{slanted.png}
   \caption{Points and angles used in the definition of slanted sequences.}
