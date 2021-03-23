@@ -1,6 +1,5 @@
 \subsection{Comparison}
-% todo: formulate and cite claims
-\textbf{This subsection is not finished yet.}
+% todo: cite claims
 
 In this section we compare the results and approach from \cite{shitov2020sublinear} and \cite{kwan2020extension} by working out general similarities or differences. We further look at how both bounds are achieved numerically (in an asymptotic view). In the end we examine how the proofs could be altered to use them in the other's setting.
 
@@ -39,19 +38,22 @@ We go on analyzing numerically how each approach ends up with its asymptotical b
 
 $\xc(P) \in O(n^{2/3})$ for arbitrary $n$-gons $P$ in \cite{shitov2020sublinear}:
 \begin{itemize}
-  \item subsequence $u$ with $m \in O(n^{2/3})$ vertices;
-  \item extension complexity $\xc(u) \in O(m^{1/2}) = O(n^{1/3})$;
-  \item iteration results in $\xc(P) \in O(n^{2/3})$
+  \item There is a subsequence $u$ with $m \in O(n^{2/3})$ vertices for every $n$-gon, for which the main theorem can be applied asymptotically optimal.
+  \item It provides the bound $\xc(u) \in O(m^{1/2}) = O(n^{1/3})$ for the extension complexity of that subseqence. 
+  \item Iteratively extracting such a subseqence $u$ proves the bound $\xc(P) \in O(n^{2/3})$.
 \end{itemize}
 
 $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
 \begin{itemize}
-  \item number of colors in $O(1)$;
-  \item $\abs{\X} \in O(n^{1/2})$ arcs;
-  \item for each color $\rank_+ K \in O(\abs{\X_c})$;
-  \item each color column in slack has $\rank_+ M[V,F_c] \in O(\abs{\X_c} + n^{1/2})$;
-  \item putting together $\rank_+ M \in O(\abs{\X} + n^{1/2}) = O(n^{1/2})$
+  \item We split the circle into $\abs{\X} \in O(n^{1/2})$ arcs.
+  \item We split the slack matrix into $O(1)$ "color columns".
+  \item From these we build a matrix $K$ with $\rank_+ K \in O(\abs{\X_c})$, where $\X_c$ are the arcs of color $c$.
+  \item Each "color column" in the slack matrix has $\rank_+ M[V,F_c] \in O(\abs{\X_c} + n^{1/2})$.
+  \item Joining these columns results in $\rank_+ M \in O(\abs{\X} + n^{1/2}) = O(n^{1/2})$.
 \end{itemize}
+
+% todo: formulate comparing settings
+\textbf{This comparison is not finished yet.}
 
 Finally we have a look at, how each procedure can be altered to be used in the other's setting:
 

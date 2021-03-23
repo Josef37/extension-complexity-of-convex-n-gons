@@ -385,7 +385,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
   \label{fig:ray-good}
 \end{figure}
 
-% todo: prove "This path can only leave through the interior of $\conv\{v_1,v_n\}$" by showing arcs meeting at a common point spawn another arc in the cone, which comes from extending the meeting arcs (by property (v))
+% polish: formulate prove for "This path can only leave through the interior of $\conv\{v_1,v_n\}$" better: Extract it or something
 % polish: formulate "arc towards" more clearly
 \begin{proof}
   To prove that $v$ is $G$-good, we build an acute diagram $\Delta$ whose base is the $G$-envelope $v_G$ of $v$ and show that the main edge passing from $$o_g := (v_{g-2} \wedge v_{g-1}) \wedge (v_{g+1} \wedge v_{g+2})$$ contains $v_g$ for each $g \in G$.
@@ -401,7 +401,10 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
   This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc "towards" $v_1$ for decreasing $i$, because $v$ itself is convex.
 
   \textit{Case 2.} There is \emph{no} path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
-  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (execpt the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$. So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
+  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (execpt the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$
+  % for any intersection (call it $I$) $f$ leftmost, $g$ is rightmost, $f_l$ and $f_r$ are left and right base edges, then we have $f_l$ and $g_r$ concurrent to outgoing arc $h$, by convexity it meets outside $v$, which fixes $h$ inside the cone spanned by $f$ and $g$. Therefore it can only go in direction of the interior of $\conv\{v_1,v_n\}$.
+  (Two intersecting arcs $f$, $g$ are concurrent with the base edges $f'$, $f''$ and $g'$, $g''$. Assume they are the outermost arcs at this intersection point. Then the outgoing arc is concurrent with $f'$ and $g''$, which always fixes it between the continuations of $f$ and $g$ by the convexity of $v$).
+  So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
 
   So it is proved that the edge passing from $o_g$ contains $v_g$ for all $g \in G$.
 \end{proof}
