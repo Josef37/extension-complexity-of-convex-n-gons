@@ -2,7 +2,7 @@
 % polish: Think about multi-dimensional proof
 % polish: Think about better bound for non-cyclic polygons
 
-In this section we provide yet another proof for $\pc(n) \in \Omega(n^{1/2})$.
+In this section we prove that there is a polygon $P$ with $\xc(P) \in \Omega(n^{1/2})$.
 
 After the proof is done, we will explain the key concepts of the applied theorem and show how to apply it in general.
 
@@ -40,7 +40,7 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 \subsection{Proof of Lower Bound}
 
 \begin{corollary}\label{corollary:lower-bound}
-  $\pc(n) \in \Omega(\sqrt{n})$
+  There exists a (cyclic) polygon $P$ with $\xc(P) \in \Omega(\sqrt{n})$.
 \end{corollary}
 \begin{proof}
   To apply \ref{theorem:family} we have to pick a family of polytopes $\P$. Then we have to determine $\rho$ and $\Delta$ and bound $\log_2 \abs{\P}$ from below and $\log_2 \log_2 \abs{\P}$ from above.
@@ -77,7 +77,7 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
   For the last inequality we used $2 - 2 \log_2 \pi \leq 0$ and $\frac{5 \log_2 n + \log_2 \log_2 n}{\log_2 n} \leq 6$ for $n \geq 1$.
 
-  Therefore we can conclude $$\pc(n) \geq \max \{\xc(P) \mid P \in \P_n\} \stackrel{\text{(Th. \ref{theorem:family})}}{\geq} \sqrt{B} \geq \frac{1}{12} \sqrt{n} .$$
+  Therefore we can conclude $$\max \{\xc(P) \mid P \in \P_n\} \stackrel{\text{(Th. \ref{theorem:family})}}{\geq} \sqrt{B} \geq \frac{1}{12} \sqrt{n} .$$
 \end{proof}
 
 

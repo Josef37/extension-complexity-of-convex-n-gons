@@ -2,7 +2,7 @@
 % polish: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
-In this section we give a detailed overview of \cite{shitov2020sublinear}, which proofs $\pc(n) \in O(n^{2/3})$. 
+In this section we give a detailed overview of \cite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$. 
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof ``backwards'', presenting  the results first, since in doing so, we can highlight the reasoning more clearly.
 
 The gist of the approach is as follows: 
@@ -459,10 +459,10 @@ In light of \ref{observation:limits-of-glueing} this subsequence makes optimal u
 
 \subsubsection{Conclusion}
 
-Now we have proved that $\pc(n) \in O(n^{2/3})$, which leaves us wondering, if this bound can be improved further, since the lower bound is $\pc(n) \in \Omega(n^{1/2})$.
+Now we have proved that $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$, which leaves us wondering, if this bound can be improved further, since the lower bound is $\xc(P) \in \Omega(n^{1/2})$ for some $n$-gon $P$.
 
 Looking back at the key ideas, we see that Theorem~\ref{theorem:glueing} was used optimally for each subsequence (see Observation~\ref{observation:limits-of-glueing}). If we wanted to improve the bound using this theorem, we would have to find larger subsequence, for which we can apply it.
 
-Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m\in\Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e. for which Theorem~\ref{theorem:glueing} is used asymptotically optimal. If we could find a subsequence with $m\in\Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:glueing} (asymptotically) optimal, we would achieve a final result of $\pc(n)\in O(n^{1/2})$, which would close the gap between lower and upper bound.
+Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m \in \Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e. for which Theorem~\ref{theorem:glueing} is used asymptotically optimal. If we could find a subsequence with $m \in \Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:glueing} (asymptotically) optimal, we would achieve a final result of $\xc(P) \in O(n^{1/2})$ for any $n$-gon $P$, which would close the gap between lower and upper bound.
 
 
