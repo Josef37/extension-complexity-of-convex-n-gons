@@ -14,7 +14,7 @@ We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mi
 
 \subsection{Introducing the Applied Theorem}
 
-Frist we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
+First we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
 
 \begin{figure}[h]
   \centering
@@ -43,9 +43,9 @@ Frist we have to define the \emph{Hausdorff distance} of two compact sets, which
   $\pc(n) \in \Omega(\sqrt{n})$
 \end{corollary}
 \begin{proof}
-  To apply \ref{theorem:family} we have to pick a familiy of polytopes $\P$. Then we have to determine $\rho$ and $\Delta$ and bound $\log_2 \abs{\P}$ from below and $\log_2 \log_2 \abs{\P}$ from above.
+  To apply \ref{theorem:family} we have to pick a family of polytopes $\P$. Then we have to determine $\rho$ and $\Delta$ and bound $\log_2 \abs{\P}$ from below and $\log_2 \log_2 \abs{\P}$ from above.
 
-  So we choose $n^2$ fixed points evenly on the unit circle (so they would form a regular polygon). Let $\P_n$ be the familiy of polygons, where each polygon has $n$ vertices chosen from the $n^2$ points on the unit circle.
+  So we choose $n^2$ fixed points evenly on the unit circle (so they would form a regular polygon). Let $\P_n$ be the family of polygons, where each polygon has $n$ vertices chosen from the $n^2$ points on the unit circle.
 
   Then $\rho = 1$, since all polygons are contained in the unit circle.
 
@@ -102,4 +102,4 @@ Here is a short outline of the proof:
 The lower bounding of $\xc$, i.e. $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication: 
 $$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
 
-This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a familiy $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
+This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a family $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.

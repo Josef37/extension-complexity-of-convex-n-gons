@@ -1,4 +1,4 @@
-\subsection{Arbitrary Convex n-gons}
+\subsection{Arbitrary Convex $n$-gons}
 % polish: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
@@ -24,7 +24,7 @@ In Appendix~\ref{sec:dependency-graph} we added a graphical representation of th
 
 Naturally, we need to gather more statements, before we can prove this theorem. 
 
-The starting point is the following lemma, adpopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
+The starting point is the following lemma, adopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
 \begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
   Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
@@ -35,7 +35,7 @@ Now we will go on to define those smaller parts, which we can handle well.
 
 \begin{definition}[Turning angle]
   If $P\subset\R^2$ is a polygon, then the \emph{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
-  In other words, it is the amount the angle at $v$ deviates from a straigt line. \\
+  In other words, it is the amount the angle at $v$ deviates from a straight line. \\
   The \emph{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
 
@@ -55,7 +55,7 @@ Now we will go on to define those smaller parts, which we can handle well.
   \label{fig:thin-sequence}
 \end{figure}
 
-For thin seqeunces, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, meet on the same side of $v_1 \wedge v_n$.
+For thin sequences, all lines $v_i \wedge v_j$, where $\{i,j\} \neq \{1,n\}$, meet on the same side of $v_1 \wedge v_n$.
 
 \begin{observation}[Splitting into thin sequences, {\cite[Observation 30]{shitov2020sublinear}}]\label{observation:splitting}
   Let $P$ be a convex polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or else a set that forms a $2\pi/q$-thin sequence.
@@ -121,7 +121,7 @@ The key idea here is to omit some vertices to obtain a simpler surrounding polyg
 Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and \emph{acute diagrams}. These help us build the extensions for the surrounding polygon.
 
 \begin{definition}[Acute Polyhedron]\label{definition:acute-polyhedron}
-  Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its factes. If all other facets $F \neq B$ of $P$ 
+  Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its facets. If all other facets $F \neq B$ of $P$ 
   share an edge with $B$ and
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
@@ -167,7 +167,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
-  The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injecively into interior of $B$.
+  The orthogonal projection $\pi$ of $P$ onto the plane containing $B$ maps the non-base points of an acute polyhedron injectively into interior of $B$.
 \end{observation}
 
 \begin{proof}[Proof outline]
@@ -234,7 +234,7 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
 
   For the induction step we find a triangle with base arc $e$ like above and ``remove'' it, by continuing the arcs next to it (see Figure~\ref{fig:lifting-proof}). The continuation meets on the ``outside'' of~$e$, since $e$ has turning angle less than $\pi$. 
 
-  From the induction hypotesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
+  From the induction hypothesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
 \end{proof}
 
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining (``glueing'') simple extensions for a surrounding polygon.
@@ -275,11 +275,11 @@ We can now focus on the main result of the first part, which allows us to build 
   \end{align*}
   where $e$ runs over all edges of $P$ and $i \in \{1,\dots,\delta\}$.
 
-  We have $\dim \P = \delta + 2$, i.e. it has full dimension, since we can find a point $(x,y)$ in the interior of $P$ and $\varepsilon > 0$, such that $(x,y,\varepsilon,\dots,\varepsilon)$ fullfills all inequalities strictly.
+  We have $\dim \P = \delta + 2$, i.e. it has full dimension, since we can find a point $(x,y)$ in the interior of $P$ and $\varepsilon > 0$, such that $(x,y,\varepsilon,\dots,\varepsilon)$ fulfills all inequalities strictly.
 
   And from Observation~\ref{observation:acute-projection} we know $\pi(\P)=P$, where $\pi(x,y,z^1,\dots,z^{\delta}) = (x,y)$ is a projection.
 
-  For any $s = (x_s, y_s) \in S$, $\sigma_s := (x_s,y_s,0,\dots,0)$ is a vertex of $\P$, since it fullfills exactly $\delta + 2$ inequalities with equality, namely $z^i \geq 0$ and the two inequalities corresponding to the edges at $s$.
+  For any $s = (x_s, y_s) \in S$, $\sigma_s := (x_s,y_s,0,\dots,0)$ is a vertex of $\P$, since it fulfills exactly $\delta + 2$ inequalities with equality, namely $z^i \geq 0$ and the two inequalities corresponding to the edges at $s$.
 
   Therefore there are $\delta + 2$ rays passing from $\sigma_s$: Two corresponding to the edges at $s$ and $\delta$ of the form
   \begin{equation}\label{eq:ray}
@@ -305,7 +305,7 @@ We can now focus on the main result of the first part, which allows us to build 
 To understand Theorem~\ref{theorem:glueing} better, we will now look at the limits it has in application. This observation is aside from the main argument, so feel free to skip it.
 
 \begin{observation}[Limits of Theorem~{\ref{theorem:glueing}}]\label{observation:limits-of-glueing}
-  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended fromulation for $P$ with size $\Omega(\sqrt{n})$.
+  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended formulation for $P$ with size $\Omega(\sqrt{n})$.
 \end{observation}
 \begin{proof}
   We set $P := \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
@@ -361,7 +361,7 @@ Therefore we formalize the notion of ``good'' sequences with respect to Theorem~
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
 \end{definition}
 
-Now we find another way to determine which seqeunces are actually \emph{G-good}. Therefore we have to define the following:
+Now we find another way to determine which sequences are actually \emph{G-good}. Therefore we have to define the following:
 
 \begin{definition}
   Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
@@ -375,7 +375,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
 \end{figure}
 
 \begin{lemma}[{\cite[Lemma 42]{shitov2020sublinear}}]\label{lemma:ray-good}
-  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a $\pi/2$-thin\footnote{In the source $v$ is only required to be thin, but building ``vertical'' main edges in the proof is only guaranteed to work, if both angles at $v_1$ and $v_n$ are smaller than $\pi/2$. This does not change any futher proof, because this assumption is given, when this lemma gets applied.} sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
+  Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. Assume $v=(v_1,\dots,v_n)$ is a $\pi/2$-thin\footnote{In the source $v$ is only required to be thin, but building ``vertical'' main edges in the proof is only guaranteed to work, if both angles at $v_1$ and $v_n$ are smaller than $\pi/2$. This does not change any further proof, because this assumption is given, when this lemma gets applied.} sequence such that, for all $g\in G$, the ray $\rho(v, g-2,g-1,g,g+1,g+2)$ leaves $\conv v$ through the relative interior of the edge $\conv\{v_1, v_n\}$. Then $v$ is $G$-good.
 \end{lemma}
 
 \begin{figure}[h]
@@ -401,7 +401,7 @@ Now we find another way to determine which seqeunces are actually \emph{G-good}.
   This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc ``towards'' $v_1$ for decreasing $i$, because $v$ itself is convex.
 
   \textit{Case 2.} There is \emph{no} path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
-  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (execpt the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$
+  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (except the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$
   % for any intersection (call it $I$) $f$ leftmost, $g$ is rightmost, $f_l$ and $f_r$ are left and right base edges, then we have $f_l$ and $g_r$ concurrent to outgoing arc $h$, by convexity it meets outside $v$, which fixes $h$ inside the cone spanned by $f$ and $g$. Therefore it can only go in direction of the interior of $\conv\{v_1,v_n\}$.
   (Two intersecting arcs $f$, $g$ are concurrent with the base edges $f'$, $f''$ and $g'$, $g''$. Assume they are the outermost arcs at this intersection point. Then the outgoing arc is concurrent with $f'$ and $g''$, which always fixes it between the continuations of $f$ and $g$ by the convexity of $v$).
   So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
@@ -414,7 +414,7 @@ We now need to define one more property of a sequence, by which we will split ou
 \begin{definition}[Slanted sequence]
   Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
 
-  A \emph{counterclockwise-slanted} seqeunce is a counterclockwise sequence, if the above definition holds with ``clockwise'' replaced with ``counterclockwise''.
+  A \emph{counterclockwise-slanted} sequence is a counterclockwise sequence, if the above definition holds with ``clockwise'' replaced with ``counterclockwise''.
 \end{definition}
 
 \begin{figure}[h]
@@ -424,7 +424,7 @@ We now need to define one more property of a sequence, by which we will split ou
   \label{fig:slanted}
 \end{figure}
 
-Note that we couldn't come up with an intuitive understanding of slanted sequences. If $k$ goes around in clockwise direction, the measured angle decreases, so vertices failing the condition are consecutive starting after $\hat{\imath}$. And if one fixes $k$, $\hat{\jmath}$ and $j$, moving $i$ or $\hat{\imath}$ in clockwise direction will incrase the measured angle. But the same can't be done for $j$ and $\hat{\jmath}$. So this definition serves its purpose in the proofs, but doesn't provide more insight beyond that.
+Note that we couldn't come up with an intuitive understanding of slanted sequences. If $k$ goes around in clockwise direction, the measured angle decreases, so vertices failing the condition are consecutive starting after $\hat{\imath}$. And if one fixes $k$, $\hat{\jmath}$ and $j$, moving $i$ or $\hat{\imath}$ in clockwise direction will increase the measured angle. But the same can't be done for $j$ and $\hat{\jmath}$. So this definition serves its purpose in the proofs, but doesn't provide more insight beyond that.
 
 Now we split the search for a good subsequence into two cases:
 \begin{enumerate}

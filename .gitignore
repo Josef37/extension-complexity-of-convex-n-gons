@@ -10,3 +10,6 @@
 *.toc
 *.out
 *.synctex(busy)
+
+# VSCode settings
+.vscode

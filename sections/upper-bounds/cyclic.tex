@@ -1,4 +1,4 @@
-\subsection{Cyclic n-gons}
+\subsection{Cyclic $n$-gons}
 
 In this section we give an overview of \cite{kwan2020extension}, which proves -- among other things -- that $\xc(P) \in O(n^{1/2})$ for an $n$-gon $P$ with vertices on a common circle.
 
@@ -7,7 +7,7 @@ The approach in this paper differs form \cite{shitov2020sublinear}, since it use
 One important insight is the ``lampshade argument'', which the authors called this way because of the geometric interpretation in three dimensions (see Figure~\ref{fig:lampshade}). In the two-dimensional case, the simplified form can be interpreted like this:
 
 Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of a slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
-The resaon for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the ``positive slack'' side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a ``polyhedral lampshade'' and one can always build such a polygon $Q$ with constantly many vertices .\\
+The reason for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the ``positive slack'' side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a ``polyhedral lampshade'' and one can always build such a polygon $Q$ with constantly many vertices .\\
 Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the vertices in $Q$.\\
 For every vertex $q$ of $Q$ consider the vector $u_q \in \R^{\abs{F'}}$ of slacks for all $f \in F'$, which is positive by construction of $Q$.\\
 And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
@@ -39,7 +39,7 @@ The approach follows these steps:
 \begin{enumerate}
   \item Split the circle into arcs, containing approximately $n^{1/2}$ facets each.
   \item Color these arcs with constantly many colors, such that two arcs of the same color are ``well-separated''.
-  \item Build a nonnegative matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, such that the entries for vertices and factes of the same arc are zero.
+  \item Build a nonnegative matrix deduced from the slack matrix by rescaling rows and adding approximately $n^{1/2}$ vectors, such that the entries for vertices and facets of the same arc are zero.
   \item Apply the ``lampshade argument'' (in a more general form) for the rest of this matrix and obtain the desired bound.
 \end{enumerate}
 

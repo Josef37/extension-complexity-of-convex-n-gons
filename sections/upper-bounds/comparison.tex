@@ -14,7 +14,7 @@ First we list the general similarities of both approaches:
 
 \begin{itemize}
   \item Both follow the strategy of splitting the polygon into smaller slices.\\
-  \cite{shitov2020sublinear} spilts the original polygon into $12$ slices, each $\pi/6$-thin, which are treated separately.\\
+  \cite{shitov2020sublinear} splits the original polygon into $12$ slices, each $\pi/6$-thin, which are treated separately.\\
   \cite{kwan2020extension} splits the polygon into $O(n^{1/2})$ arcs containing $O(n^{1/2})$ vertices. But here they are treated as a whole.
 
   \item There is some notion of enclosing vertices in both.\\
@@ -39,8 +39,8 @@ We go on analyzing numerically how each approach ends up with its asymptotical b
 $\xc(P) \in O(n^{2/3})$ for arbitrary $n$-gons $P$ in \cite{shitov2020sublinear}:
 \begin{itemize}
   \item There is a subsequence $u$ with $m \in O(n^{2/3})$ vertices for every $n$-gon, for which the main theorem can be applied asymptotically optimal.
-  \item It provides the bound $\xc(u) \in O(m^{1/2}) = O(n^{1/3})$ for the extension complexity of that subseqence. 
-  \item Iteratively extracting such a subseqence $u$ proves the bound $\xc(P) \in O(n^{2/3})$.
+  \item It provides the bound $\xc(u) \in O(m^{1/2}) = O(n^{1/3})$ for the extension complexity of that subsequence. 
+  \item Iteratively extracting such a subsequence $u$ proves the bound $\xc(P) \in O(n^{2/3})$.
 \end{itemize}
 
 $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
@@ -58,7 +58,7 @@ $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
 Finally we have a look at, how each procedure can be altered to be used in the other's setting:
 
 \begin{itemize}
-  \item How is the circle property used? Can the approach be generalised (replace circle distance with edge distance)?\\
+  \item How is the circle property used? Can the approach be generalized (replace circle distance with edge distance)?\\
   The circle ensures there are scaling factors $\alpha_v$, such that the local vertex has the smallest slack of any vertices of the same index and color
   \item Is there a way to adopt a proof to the other case? Try Shitov's work on cyclic polygons. And try the other way around (you may have to use thin slices, too).
 \end{itemize}
