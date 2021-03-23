@@ -2,7 +2,7 @@
 
 \subsection{Extension Complexity}
 
-To describe a regular hexagon with linear inequalities, 6 of these are required. However by projecting a 3-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, one can describe the same polygon\footnote{We define a polygon to be a 2-dimensional polytope, i.e. it is convex.} with 5 linear inequalities, see Figure~\ref{fig:hexagon}. 
+To describe a regular hexagon with linear inequalities, 6 of these are required. However, by projecting a 3-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, one can describe the same polygon\footnote{We define a polygon to be a 2-dimensional polytope, i.e.\ it is convex.} with 5 linear inequalities, see Figure~\ref{fig:hexagon}. 
 
 \begin{figure}[ht]
   \centering
@@ -11,14 +11,14 @@ To describe a regular hexagon with linear inequalities, 6 of these are required.
   \label{fig:hexagon}
 \end{figure}
 
-This is the key idea behind extended formulations. Simplifing the representation of polygons by projecting simpler (higher-dimensional) polytopes ``down'' to the desired polytope.
-One can think of this operation as ``compressing'' the representation. This mental image is inspired by the fact, that regular $n$-gons (i.e. polygons with $n$ vertices), only require $O(\log(n))$ inequalities in their compressed form (see \cite{kaibel2010constructing}).
+This is the key idea behind extended formulations. Simplifying the representation of polygons by projecting simpler (higher-dimensional) polytopes ``down'' to the desired polytope.
+One can think of this operation as ``compressing'' the representation. This mental image is inspired by the fact, that regular $n$-gons (i.e.\ polygons with $n$ vertices), only require $O(\log(n))$ inequalities in their compressed form (see \cite{kaibel2010constructing}).
 
 This intuition is formalized like this:
 
 \begin{definition}[Extended Formulation]
   Let $P$ be a $d$-dimensional polytope, $Q$ an $m$-dimensional polytope and $\pi:\R^d \to \R^m$ a linear projection.
-  The pair $(Q,\pi)$ is called an \emph{extended formulation} of $P$, if $\pi(Q)=P$. The \emph{size} of $(Q,\pi)$ is defined as the number of factes of $Q$.
+  The pair $(Q,\pi)$ is called an \emph{extended formulation} of $P$, if $\pi(Q)=P$. The \emph{size} of $(Q,\pi)$ is defined as the number of facets of $Q$.
 \end{definition}
 
 \begin{definition}[Extension Complexity]
@@ -37,7 +37,7 @@ The application of extended formulations for solving hard linear problems seems 
   \item The results for the \emph{matching polytope} are even worse: In contrast to the polynomial-time algorithm for solving this problem \cite{ford1956maximal}, there is no polynomial-size extended formulation \cite{rothvoss2017matching}.
 \end{itemize}
 
-So the study of polyons has importance as a benchmark for extened formulations in general (Braun and Pokutta called this ``prototypical importance'' in \cite{braun2015matching}).
+So the study of polygons has importance as a benchmark for extended formulations in general (Braun and Pokutta called this ``prototypical importance'' in \cite{braun2015matching}).
 That's why current research focuses on finding good bounds for the extension complexity, rather than developing algorithms for constructing such extensions.
 
 There are currently two main approaches for finding bounds for the extension complexity: The first one is the natural geometric approach. The second one is a linear-algebraic approach based on a remarkable result of Yannakakis in \cite{yannakakis1991expressing}, which we'll recall briefly:
@@ -61,11 +61,11 @@ The nonnegative rank of $M$ can also be defined as the minimum $r$, such that th
 
 Because this document is focused on polygons, we briefly recall the history of bounds and conjectures for the extension complexity of $n$-gons:
 
-Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N,\,\pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called \emph{polygon complexity}, i.e. the largest extension complexity for a polygon of size~$n$.
+Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N,\,\pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called \emph{polygon complexity}, i.e.\ the largest extension complexity for a polygon of size~$n$.
 
 The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done many times -- for example by the authors of \cite{fiorini2012extended} using a counting argument. In this paper we will provide another approach to proving this lower bound. 
 
-But the upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by Shitov \cite{shitov2014upper} and Padrol \& Pfeifle \cite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their prove was the fact that $\pc(7)=6$, i.e. each heptagon has extension complexity at most 6.
+But the upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by Shitov \cite{shitov2014upper} and Padrol \& Pfeifle \cite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their proof was the fact that $\pc(7)=6$, i.e.\ each heptagon has extension complexity at most 6.
 
 Because of missing improvements it was conjectured, that $\pc(n) \in \Theta(n)$ in \cite{fiorini2012extended}. This was falsified by Shitov by proving $\pc(n) \in o(n)$ in \cite{shitov2014sublinear}. He later improved the upper bound to $\pc(n) \in O(n^{2/3})$ in \cite{shitov2020sublinear}, which is the best known bound so far.
 
@@ -73,7 +73,7 @@ In summary, this is currently known about the polygon complexity:
 $$\pc(n) \in \Omega(n^{1/2}) \cap O(n^{2/3})$$
 
 There is another recent paper \cite{kwan2020extension}, which focuses on cyclic polygons\footnote{A polygon is called cyclic, if all its vertices lie on a circle.}. The authors proved that $\xc(P) \in O(n^{1/2})$ for all cyclic $n$-gons. 
-This led the authors to propose, that this upper bound could also hold for general $n$-gons, since "cyclic polygons seem to represent quite a diverse cross-section of the space of all polygons".
+This led the authors to propose, that this upper bound could also hold for general $n$-gons, since ``cyclic polygons seem to represent quite a diverse cross-section of the space of all polygons''.
 
 
 

@@ -12,7 +12,7 @@ The gist of the approach is as follows:
   \item We build the small extended formulation by building 3-dimensional extended formulations for a surrounding polygon. These are ``glued'' together resulting in an extended formulation for the original set of vertices.
 \end{enumerate}
 
-In Appendix~\ref{sec:dependency-graph} we added a graphical representation of the dependencies in the proofs of \cite{shitov2014sublinear}. It may be of help understanding how the statements lead to the main result or how some statements are connected.
+In Appendix~\ref{sec:dependency-graph} we added a graphical representation of the dependencies in the proofs of \cite{shitov2014sublinear}. It may be of help in understanding how the statements lead to the main result or how some statements are connected.
 
 
 
@@ -26,7 +26,7 @@ Naturally, we need to gather more statements, before we can prove this theorem.
 
 The starting point is the following lemma, adopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
 \begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
-  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point \footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
+  Let $P$ and $Q$ be polytopes in $\R^d$ -- each different from a point\footnote{In regards to polygons, one is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.}. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
 This lemma allows us to consider a polygon in parts, when estimating its extension complexity, since we can bound the total complexity by the sum of its parts.
@@ -105,7 +105,7 @@ The following corollary is a direct result of it:
 We can now prove the main result.
 
 \begin{proof}[Proof outline of Theorem~\ref{theorem:xc}]
-  Using Observation~\ref{observation:splitting} we spilt the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
+  Using Observation~\ref{observation:splitting} we split the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
 
   We apply Lemma~\ref{lemma:union} and Corollary~\ref{corollary:thin-xc} and get $$\xc(P)\leq\frac{324}{\sqrt[3]{129}}\left(\sum\limits_{i=1}^{12}n_i^{2/3}\right)\leq\frac{324}{\sqrt[3]{129}}\left(12\left(\frac{n}{12}\right)^{2/3}\right) < 147\,n^{2/3} .$$
 \end{proof}
@@ -124,7 +124,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
   Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its facets. If all other facets $F \neq B$ of $P$ 
   share an edge with $B$ and
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
-  then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$ \footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}.
+  then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$.\footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}
 \end{definition}
 
 \begin{definition}[Main edge]
@@ -237,9 +237,9 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
   From the induction hypothesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
 \end{proof}
 
-We can now focus on the main result of the first part, which allows us to build small extended formulations by combining (``glueing'') simple extensions for a surrounding polygon.
+We can now focus on the main result of the first part, which allows us to build small extended formulations by combining (``gluing'') simple extensions for a surrounding polygon.
 
-\begin{theorem}[Glueing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:glueing}
+\begin{theorem}[Gluing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:gluing}
   Let $P$ be a polygon with vertex set $V$ and $\emptyset \neq S \subseteq V$ be a subset of all vertices. Fix $\delta \geq 1$. Assume
 
   (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$,
@@ -255,9 +255,9 @@ We can now focus on the main result of the first part, which allows us to build 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=120mm]{glueing-theorem.png}
-  \caption{An application of Theorem~\ref{theorem:glueing}: Two acute diagrams confirm that the $14$-gon on the right has $\xc$ at most $10$. \cite[Figure 3]{shitov2020sublinear}}
-  \label{fig:glueing-theorem}
+  \includegraphics[width=120mm]{gluing-theorem.png}
+  \caption{An application of Theorem~\ref{theorem:gluing}: Two acute diagrams confirm that the $14$-gon on the right has $\xc$ at most $10$. \cite[Figure 3]{shitov2020sublinear}}
+  \label{fig:gluing-theorem}
 \end{figure}
 
 % todo?: insert cutting example for \delta=1
@@ -275,13 +275,13 @@ We can now focus on the main result of the first part, which allows us to build 
   \end{align*}
   where $e$ runs over all edges of $P$ and $i \in \{1,\dots,\delta\}$.
 
-  We have $\dim \P = \delta + 2$, i.e. it has full dimension, since we can find a point $(x,y)$ in the interior of $P$ and $\varepsilon > 0$, such that $(x,y,\varepsilon,\dots,\varepsilon)$ fulfills all inequalities strictly.
+  We have $\dim \P = \delta + 2$, i.e.\ it has full dimension, since we can find a point $(x,y)$ in the interior of $P$ and $\varepsilon > 0$, such that $(x,y,\varepsilon,\dots,\varepsilon)$ fulfills all inequalities strictly.
 
   And from Observation~\ref{observation:acute-projection} we know $\pi(\P)=P$, where $\pi(x,y,z^1,\dots,z^{\delta}) = (x,y)$ is a projection.
 
   For any $s = (x_s, y_s) \in S$, $\sigma_s := (x_s,y_s,0,\dots,0)$ is a vertex of $\P$, since it fulfills exactly $\delta + 2$ inequalities with equality, namely $z^i \geq 0$ and the two inequalities corresponding to the edges at $s$.
 
-  Therefore there are $\delta + 2$ rays passing from $\sigma_s$: Two corresponding to the edges at $s$ and $\delta$ of the form
+  Therefore, there are $\delta + 2$ rays passing from $\sigma_s$: Two corresponding to the edges at $s$ and $\delta$ of the form
   \begin{equation}\label{eq:ray}
     (x_s + \alpha_s^i\,t,y_s + \beta_s^i\,t,0,\dots,0,t,0,\dots,0), t \geq 0,
   \end{equation}
@@ -295,20 +295,20 @@ We can now focus on the main result of the first part, which allows us to build 
 \end{proof}
 
 \begin{remark}\label{remark:pitfall}
-  There is a subtle difference between Theorem~\ref{theorem:glueing} and Corollary~\ref{corollary:acute-direction}.
+  There is a subtle difference between Theorem~\ref{theorem:gluing} and Corollary~\ref{corollary:acute-direction}.
 
-  In the theorem we assume that "the segment between $s$ and $s^i$ is a \emph{subset} of the main edge", but in the corollary we construct a diagram for which ``the main edge from $v_i$ lies on $v_i \wedge y_i$'', implying that $y_i$ can lie outside the main edge. 
+  In the theorem we assume that ``the segment between $s$ and $s^i$ is a \emph{subset} of the main edge'', but in the corollary we construct a diagram for which ``the main edge from $v_i$ lies on $v_i \wedge y_i$'', implying that $y_i$ can lie outside the main edge. 
 
-  So we can't just apply Theorem~\ref{theorem:glueing} to any choice of points fulfilling (i)-(iii).
+  So we can't just apply Theorem~\ref{theorem:gluing} to any choice of points fulfilling (i)-(iii).
 \end{remark}
 
-To understand Theorem~\ref{theorem:glueing} better, we will now look at the limits it has in application. This observation is aside from the main argument, so feel free to skip it.
+To understand Theorem~\ref{theorem:gluing} better, we will now look at the limits it has in application. This observation is aside from the main argument, so feel free to skip it.
 
-\begin{observation}[Limits of Theorem~{\ref{theorem:glueing}}]\label{observation:limits-of-glueing}
-  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:glueing} we obtain an extended formulation for $P$ with size $\Omega(\sqrt{n})$.
+\begin{observation}[Limits of Theorem~{\ref{theorem:gluing}}]\label{observation:limits-of-gluing}
+  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:gluing} we obtain an extended formulation for $P$ with size $\Omega(\sqrt{n})$.
 \end{observation}
 \begin{proof}
-  We set $P := \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:glueing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:glueing} for our choice of $v$, $s$ and $\delta$. Then
+  We set $P := \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:gluing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:gluing} for our choice of $v$, $s$ and $\delta$. Then
   \begin{equation}\label{eq:limit-n}
     n \leq (v-s) + s(2+\delta) = v + s(1+\delta).
   \end{equation}
@@ -319,7 +319,7 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
   \end{equation*}
   We now define $\delta := (n-v)/s$ as the minimal possible value\footnote{For simplicity, we skip the case, where $(n-v)/s - 1$ is integer. The difference would only be $-1$ in the final result.} for given $n$, $v$ and $s$, since the size of the extended formulation increases with $\delta$. This way we can define $$f_n(v,s) := v + s + \delta = v + s + \frac{n-v}{s}$$ as the size of the extended formulation for given $v$ and $s$.
 
-  $$\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s$ according to the assumptions of Theorem~\ref{theorem:glueing}.
+  $$\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s$ according to the assumptions of Theorem~\ref{theorem:gluing}.
   \begin{align*}
     f_n(s, s) &= s + s + \frac{n-s}{s} \\
     &= 2s + \frac{n}{s} - 1\\
@@ -329,7 +329,7 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
 
   This shows that $f_n$ has a minimum at $s_{min} = \sqrt{n/2}$ with $v_{min}=s_{min}$.
 
-  Finally we can find the minimal value for $f_n$:
+  Finally, we can find the minimal value for $f_n$:
   \begin{align*}
     f_n(s_{min}, s_{min}) = 2\sqrt{2n} - 1
   \end{align*}
@@ -340,7 +340,7 @@ To understand Theorem~\ref{theorem:glueing} better, we will now look at the limi
 \subsubsection{Finding Good Subsequences}
 
 After defining this central theorem, we have to make a way to apply it to general polygons.\footnote{See Remark~\ref{remark:pitfall}, why we can't simply use Corollary~\ref{corollary:acute-direction}.}
-Therefore we formalize the notion of ``good'' sequences with respect to Theorem~\ref{theorem:glueing}.
+Therefore, we formalize the notion of ``good'' sequences with respect to Theorem~\ref{theorem:gluing}.
 
 \begin{definition}[$t$-scattered subset]
   Let $t, n \in \N$ and $G \subset \{1,\dots,n\}$. $G$ is called $t$\emph{-scattered} if for $g, g' \in G, g \neq g'$ we have $\abs{g-g'} \geq t$.
@@ -361,7 +361,7 @@ Therefore we formalize the notion of ``good'' sequences with respect to Theorem~
   Assume $n\geq 5$ is an integer and $G\subset\{3,4,\dots,n-2\}$ is a $3$-scattered subset. A thin sequence $v=(v_1,\dots,v_n)$ is called $G$\emph{-good} if there is an acute diagram with the base $\conv v_G$ such that, for any $g\in G$, the main edge passing from $o_g$ \emph{contains} $v_g$.
 \end{definition}
 
-Now we find another way to determine which sequences are actually \emph{G-good}. Therefore we have to define the following:
+Now we find another way to determine which sequences are actually \emph{G-good}. Therefore, we have to define the following:
 
 \begin{definition}
   Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
@@ -412,7 +412,7 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
-  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geqslant 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leqslant i<\hat{\imath}<\hat{\jmath}<j\leqslant t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
+  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geq 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<\hat{\jmath}<j\leq t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
 
   A \emph{counterclockwise-slanted} sequence is a counterclockwise sequence, if the above definition holds with ``clockwise'' replaced with ``counterclockwise''.
 \end{definition}
@@ -432,11 +432,11 @@ Now we split the search for a good subsequence into two cases:
   \item The original sequence does not have such a subsequence.
 \end{enumerate}
 
-We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:glueing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
+We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:gluing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
 
 % polish: give some overview of proof ideas (sketches for Lemma 48 and 49)
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
-  Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geqslant 2\alpha$. Assume $v=(v_1,\ldots,v_n)$ is an $\alpha$-thin sequence such that any its subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
+  Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geq 2\alpha$. Assume $v=(v_1,\dots,v_n)$ is an $\alpha$-thin sequence such that any subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
 % polish: give some overview of proof ideas
@@ -445,7 +445,7 @@ We can show that for each case there is a large enough subsequence, for which Th
 \end{lemma}
 
 Now we have all building blocks to tackle proving Theorem~\ref{theorem:subsequence}, which states that a $\pi/6$-thin sequence $v$ with $n = 1024\tau^3 + 8\tau$ vertices it contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.\\
-In light of \ref{observation:limits-of-glueing} this subsequence makes optimal use of Theorem~\ref{theorem:glueing} in an asymptotical way.
+In light of \ref{observation:limits-of-gluing} this subsequence makes optimal use of Theorem~\ref{theorem:gluing} in an asymptotical way.
 
 \begin{proof}[Proof outline of Theorem~\ref{theorem:subsequence}]
   We try to apply Lemma~\ref{lemma:unslanted-subseqence} with $\beta = \pi/3$, $\delta = 4\tau$ and $m = 8\delta^2 + 1$.
@@ -459,10 +459,10 @@ In light of \ref{observation:limits-of-glueing} this subsequence makes optimal u
 
 \subsubsection{Conclusion}
 
-Now we have proved that $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$, which leaves us wondering, if this bound can be improved further, since the lower bound is $\xc(P) \in \Omega(n^{1/2})$ for some $n$-gon $P$.
+Now we have proved that $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$, which leaves us wondering if this bound can be improved further, since the lower bound is $\xc(P) \in \Omega(n^{1/2})$ for some $n$-gon $P$.
 
-Looking back at the key ideas, we see that Theorem~\ref{theorem:glueing} was used optimally for each subsequence (see Observation~\ref{observation:limits-of-glueing}). If we wanted to improve the bound using this theorem, we would have to find larger subsequence, for which we can apply it.
+Looking back at the key ideas, we see that Theorem~\ref{theorem:gluing} was used optimally for each subsequence (see Observation~\ref{observation:limits-of-gluing}). If we wanted to improve the bound using this theorem, we would have to find larger subsequence, for which we can apply it.
 
-Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m \in \Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e. for which Theorem~\ref{theorem:glueing} is used asymptotically optimal. If we could find a subsequence with $m \in \Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:glueing} (asymptotically) optimal, we would achieve a final result of $\xc(P) \in O(n^{1/2})$ for any $n$-gon $P$, which would close the gap between lower and upper bound.
+Theorem~\ref{theorem:subsequence} shows that we can find a subsequence with $m \in \Omega(n^{2/3})$ vertices with extension complexity in $O(m^{1/2})$, i.e.\ for which Theorem~\ref{theorem:gluing} is used asymptotically optimal. If we could find a subsequence with $m \in \Theta(n)$ vertices, for which we can apply Theorem~\ref{theorem:gluing} (asymptotically) optimal, we would achieve a final result of $\xc(P) \in O(n^{1/2})$ for any $n$-gon $P$, which would close the gap between lower and upper bound.
 
 

@@ -12,7 +12,7 @@ We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mi
 
 \subsection{Introducing the Applied Theorem}
 
-First we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of "the longest distance you can be forced to travel from a point in one of the two sets to the other set". See Figure~\ref{fig:hausdorff} for an example.
+First we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of ``the longest distance you can be forced to travel from a point in one of the two sets to the other set''. See Figure~\ref{fig:hausdorff} for an example.
 
 \begin{figure}[ht]
   \centering
@@ -47,12 +47,12 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
   Then $\rho = 1$, since all polygons are contained in the unit circle.
 
-  For two distinct polygons $P, P' \in \P_n$ one of them has a vertex $v$, which the other one does not have. W.l.o.g $v \notin P, v \in P'$. So $\dist_H(P,P') \geq \inf_{p \in P} \norm{v-p} \geq d_{min}$ (see Figure~\ref{fig:distance} for the definition of $d_{min}$).
+  For two distinct polygons $P, P' \in \P_n$ one of them has a vertex $v$, which the other one does not have. W.l.o.g.\ $v \notin P, v \in P'$. So $\dist_H(P,P') \geq \inf_{p \in P} \norm{v-p} \geq d_{min}$ (see Figure~\ref{fig:distance} for the definition of $d_{min}$).
 
   \begin{figure}[ht]
     \centering
     \includegraphics[height=55mm]{Minimal_Hausdorff_distance.png}
-    \caption{Definition of $d_{min}$}
+    \caption{Definition of $d_{min}$.}
     \label{fig:distance}
   \end{figure}
 
@@ -63,7 +63,7 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
   For the estimate we used $\cos(x) \geq 1 - \frac{x^2}{2!}$, which arises from the power series for cosine.
 
-  Since each polygon in $\P_n$ is defined by $n$ points, chosen from a set of $n^2$ points, $\abs{\P_n} = \binom{n^2}{n}$. Therefore $n^n = \left( \frac{n^2}{n} \right)^n \leq \abs{\P_n} \leq \left( n^2 \right)^n = n^{2n}$. $\log_2 \abs{\P_n} \geq n \log_2 n$ and $\log_2 \log_2 \abs{\P_n} \leq \log_2 (2n \log_2 n) = 1 + \log_2 n + \log_2 \log_2 n$.
+  Since each polygon in $\P_n$ is defined by $n$ points, chosen from a set of $n^2$ points, $\abs{\P_n} = \binom{n^2}{n}$. Therefore, $n^n = \left( \frac{n^2}{n} \right)^n \leq \abs{\P_n} \leq \left( n^2 \right)^n = n^{2n}$. $\log_2 \abs{\P_n} \geq n \log_2 n$ and $\log_2 \log_2 \abs{\P_n} \leq \log_2 (2n \log_2 n) = 1 + \log_2 n + \log_2 \log_2 n$.
 
   Now we can calculate $B$ from Theorem~\ref{theorem:family}:
   \begin{align*}
@@ -75,7 +75,7 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
   For the last inequality we used $2 - 2 \log_2 \pi \leq 0$ and $\frac{5 \log_2 n + \log_2 \log_2 n}{\log_2 n} \leq 6$ for $n \geq 1$.
 
-  Therefore we can conclude $$\max \{\xc(P) \mid P \in \P_n\} \stackrel{\text{(Th. \ref{theorem:family})}}{\geq} \sqrt{B} \geq \frac{1}{12} \sqrt{n} .$$
+  Therefore, we can conclude $$\max \{\xc(P) \mid P \in \P_n\} \stackrel{\text{(Th. \ref{theorem:family})}}{\geq} \sqrt{B} \geq \frac{1}{12} \sqrt{n} .$$
 \end{proof}
 
 
@@ -86,7 +86,7 @@ The central idea of Theorem~\ref{theorem:family} is to encode the extended formu
 
 Here is a short outline of the proof:
 \begin{enumerate}
-  \item Each extended formulation can be normalized, i.e. $P = \varphi(Q) + t$ with\\ $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
+  \item Each extended formulation can be normalized, i.e.\ $P = \varphi(Q) + t$ with\\ $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
   \item Each polytope $P_i \in \P$, where $P_i = \varphi_i(Q_i) + t_i$ and $Q_i = \{ x \in \R^{n_i} \mid A_ix \leq \mathbbm{1} \}$), is encoded trough $P_i \mapsto (A_i, \varphi_i, t_i)$.\\
   From now on everything takes place in the encoding vector spaces $\mathcal{V}^n$, where $n$ is the dimension of the extended formulation.
   \item The encodings are partitioned into sets $W_i$ by the dimension of $Q_i$.
@@ -97,7 +97,7 @@ Here is a short outline of the proof:
   \item These bounds are joined together for all $W_i$ and solved for $m$.
 \end{enumerate}
 
-The lower bounding of $\xc$, i.e. $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication: 
+The lower bounding of $\xc$, i.e.\ $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication: 
 $$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
 
 This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a family $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.

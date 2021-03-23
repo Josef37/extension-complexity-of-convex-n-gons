@@ -2,18 +2,18 @@
 
 In this section we give an overview of \cite{kwan2020extension}, which proves -- among other things -- that $\xc(P) \in O(n^{1/2})$ for an $n$-gon $P$ with vertices on a common circle.
 
-The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless we will try to compare both in the next subsection.
+The approach in this paper differs form \cite{shitov2020sublinear}, since it uses the linear-algebraic method utilizing slack matrices. Nonetheless, we will try to compare both in the next subsection.
 
 One important insight is the ``lampshade argument'', which the authors called this way because of the geometric interpretation in three dimensions (see Figure~\ref{fig:lampshade}). In the two-dimensional case, the simplified form can be interpreted like this:
 
 Given a polygon $P$, consider a set of consecutive facets $F'$ and the set of vertices $V'$, which are not endpoints of $F'$. Then if we consider the $V' \times F'$ submatrix $M[V',F']$ of a slack matrix $M$, we have $\rank_+ M[V',F'] = O(1)$.\\
-The reason for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the ``positive slack'' side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a ``polyhedral lampshade'' and one can always build such a polygon $Q$ with constantly many vertices .\\
+The reason for this is that we can enclose $V'$ inside a polygon $Q$, such that all vertices of $Q$ are on the ``positive slack'' side of $F'$ (meaning $Q$ and $P$ lie on the same side of every $f \in F'$). This polygon $Q$ can be thought of as a ``polyhedral lampshade'' and one can always build such a polygon $Q$ with constantly many vertices.\\
 Since $Q$ encloses $V'$, every vertex $v \in V'$ is a convex combination of the vertices in $Q$.\\
 For every vertex $q$ of $Q$ consider the vector $u_q \in \R^{\abs{F'}}$ of slacks for all $f \in F'$, which is positive by construction of $Q$.\\
-And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (in regards to $F'$) from those $u_q$.\\
+And since the slack function is affine-linear, one can convex combine the slack vectors for all $v \in V'$ (regarding $F'$) from those $u_q$.\\
 In other words, every row of $M[V',F']$ is a convex combination of these constantly many vectors $u_q$, which shows $\rank_+ M[V',F'] = O(1)$.
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[scale=0.7,trim={2.5cm 2cm 2.5cm 4cm},clip]{separation}
   \includegraphics[scale=0.7,trim={0 2cm 0 4cm},clip]{shade}
@@ -47,7 +47,7 @@ We will now go through these steps in more detail.
 
 Let $P$ be a cyclic polygon, $V$ its set of vertices and $F$ its set of facets.
 
-We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that each arc spans from one vertex to another vertex (including both) and contains at most $\lceil n^{1/2} \rceil$ facets, i.e. facets with both endpoints in the arc, and therefore at most $N := \lceil n^{1/2} \rceil\ + 1$ vertices.
+We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that each arc spans from one vertex to another vertex (including both) and contains at most $\lceil n^{1/2} \rceil$ facets, i.e.\ facets with both endpoints in the arc, and therefore at most $N := \lceil n^{1/2} \rceil\ + 1$ vertices.
 
 \begin{definition}[Well-separated]
   We say that two arcs $X,X' \in \X$ with arc lengths $\varepsilon$,~$\varepsilon'$ are \emph{well-separated}, if the arc-distance between any two points $x \in X$ and $x' \in X'$ is at least $5 \min\{\varepsilon, \varepsilon'\}$.
@@ -70,14 +70,14 @@ We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that 
   Order the arcs by decreasing length and color them in that order. For an arc $X$, there are -- by Lemma~\ref{lemma:arc-not-separated} -- at most $13$ arcs of at least the same length not well-separated. So just pick a color (from a set of $14$ colors), which wasn't assigned to those at most $13$ arcs and proceed until all arcs are colored.
 \end{proof}
 
-Now color the arcs in $\X$ with colors labelled by $c=1,\dots,14$. Define $\X_c$ as the set of arcs with color $c$.
+Now color the arcs in $\X$ with colors labeled by $c=1,\dots,14$. Define $\X_c$ as the set of arcs with color $c$.
 
-We will now split the columns of the slack matrix M by color, i.e. into slices $M[V,F_c]$, where $F_c$ are all facets in arcs with color $c$.\\
+We will now split the columns of the slack matrix M by color, i.e.\ into slices $M[V,F_c]$, where $F_c$ are all facets in arcs with color $c$.\\
 Later we can combine the results like this: $\rank_+M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c]$
 
-For an arc $X \in \X$ define $F^X$ or $V^X$ as the facets or vertices inside that arc. We also call a vertex $v$ \emph{local} to a facet $f$, if $x \in V^X$ and $f \in F^X$, i.e. if they are in the same arc.
+For an arc $X \in \X$ define $F^X$ or $V^X$ as the facets or vertices inside that arc. We also call a vertex $v$ \emph{local} to a facet $f$, if $x \in V^X$ and $f \in F^X$, i.e.\ if they are in the same arc.
 
-Further we enumerate all vertices for each arc of color $c$, that is for each $X \in \X_c$ we define a bijection $\phi_X: V^X \to \{1,\dots,\abs{V^X}\}$. We define $\phi: V_c \to \{1,\dots,N\}$ as the union of all $V_X$, which is well-defined, since the sets $V_X \in V_c$ are disjoint as they are well-separated.
+Further, we enumerate all vertices for each arc of color $c$, that is for each $X \in \X_c$ we define a bijection $\phi_X: V^X \to \{1,\dots,\abs{V^X}\}$. We define $\phi: V_c \to \{1,\dots,N\}$ as the union of all $V_X$, which is well-defined, since the sets $V_X \in V_c$ are disjoint as they are well-separated.
 
 \begin{lemma}\label{lemma:alphas}
   For all $v \in V_c$ there is $\alpha_v > 0$, such that for all $X \in \X_c$, $f \in F^X$, $w \in V^X$ with $\phi(v)=\phi(w)$ we have $\alpha_v M_{v,f} \geq \alpha_w M_{w,f}$.
@@ -94,7 +94,7 @@ In other words: For each vertex of color $c$ there is a scalar, such that for ea
 
   For each $j \in \{1,\dots,m\}$ and $f \in (F^{X_1} \cup \dots \cup F^{X_m}) \setminus F^{X_j}$ we have $M_{v_j, f} > 0$, since $v_j$ cannot be a vertex of $f$, because all $X_k$ disjoint as they are well-separated.
 
-  Further for each $j \in \{1,\dots,m\}$, $k \in \{1,\dots,j-1\}$, $f \in F^{X_j}$ and $g \in F^{X_1} \cup \dots \cup F^{X_{j-1}}$ we have $M_{v_j,f}M_{v_k,g} \leq M_{v_j,g}M_{v_k,f}$. \\
+  Further, for each $j \in \{1,\dots,m\}$, $k \in \{1,\dots,j-1\}$, $f \in F^{X_j}$ and $g \in F^{X_1} \cup \dots \cup F^{X_{j-1}}$ we have $M_{v_j,f}M_{v_k,g} \leq M_{v_j,g}M_{v_k,f}$. \\
   To show this, first observe that $X_j$ is the shortest of the regarded arcs. If we denote its length with $\varepsilon$, it has arc-distance at least $5\varepsilon$ of every arc $X_k$, because they are well-separated and ordered by decreasing length.\\
   The gist of the proof is following. Since $M$ is representation dependent, reformulate it as a ratio of distances:
   $$\frac{d(v_j,f)}{d(v_k,f)} \leq \frac{d(v_j,g)}{d(v_k,g)}$$
@@ -173,6 +173,6 @@ We will not prove this lemma here. But remark, that it does not require $P$ to b
   By Lemma~\ref{lemma:shitov-lampshade} and $K[V^X,F^X] = 0$ we can conclude: $$\rank_+ K[V,F^X] = \rank_+ K[V \setminus V^X,F^X] \leq 8$$
 \end{proof}
 
-So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. Therefore $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
+So there are $8\,\abs{\X_c}$ nonnegative vectors, such that each row of $K$ can be written as nonnegative linear combination of them. So together with the $N$ vectors $t^{(i)}$ we can write every row of $M[V,F_c]$ as a nonnegative linear combination of $8\,\abs{\X_c} + N$ vectors. Therefore, $\rank_+ M[V,F_c] \leq 8\,\abs{\X_c} + N$.
 
 Now we can summarize: $$\rank_+ M \leq \sum_{c=1}^{14} \rank_+ M[V,F_c] \leq 8\abs{\X} + 14N \leq 22\,n^{1/2} + 36 \stackrel{(n \geq 18^2)}{\leq} 24\,n^{1/2}$$
