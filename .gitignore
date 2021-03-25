@@ -10,6 +10,9 @@
 *.toc
 *.out
 *.synctex(busy)
+*.fls
+*.fdb_latexmk
+*_temp.tex
 
 # VSCode settings
 .vscode
