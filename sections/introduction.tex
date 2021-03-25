@@ -7,14 +7,14 @@ To describe a regular hexagon with linear inequalities, 6 of these are required.
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.5,trim={0 2.5cm 0 2cm},clip]{hexagon}
-  \caption{A regular hexagon as a projection of a polytope with 5 factes. \cite[Figure 1]{kwan2020extension}}
+  \caption{A regular hexagon as a projection of a polytope with 5 facets. \cite[Figure 1]{kwan2020extension}}
   \label{fig:hexagon}
 \end{figure}
 
 This is the key idea behind extended formulations. Simplifying the representation of polygons by projecting simpler (higher-dimensional) polytopes ``down'' to the desired polytope.
 One can think of this operation as ``compressing'' the representation. This mental image is inspired by the fact, that regular $n$-gons (i.e.\ polygons with $n$ vertices), only require $O(\log(n))$ inequalities in their compressed form (see \cite{kaibel2010constructing}).
 
-This intuition is formalized like this:
+This intuition is formalized as follows:
 
 \begin{definition}[Extended Formulation]
   Let $P$ be a $d$-dimensional polytope, $Q$ an $m$-dimensional polytope and $\pi:\R^d \to \R^m$ a linear projection.
@@ -31,9 +31,10 @@ Such simplified formulations can be used for building faster algorithms for hard
 
 \subsection{Overview of Current Research}
 
-The application of extended formulations for solving hard linear problems seems promising. But research in the past years shows some bad-looking results:
+The application of extended formulations for solving hard linear problems seems promising. However, research in the past years shows unpromising results:
+
 \begin{itemize}
-  \item It was shown in \cite{fiorini2015exponential}, that the \emph{traveling salesman polytope} can't have polynomial extension complexity. So here extended formulations can't provide an improvement over traditional methods.
+  \item It was shown in \cite{fiorini2015exponential}, that the \emph{traveling salesman polytope} can't have polynomial extension complexity. For this problem, extended formulations don't provide an improvement over traditional methods.
   \item The results for the \emph{matching polytope} are even worse: In contrast to the polynomial-time algorithm for solving this problem \cite{ford1956maximal}, there is no polynomial-size extended formulation \cite{rothvoss2017matching}.
 \end{itemize}
 
