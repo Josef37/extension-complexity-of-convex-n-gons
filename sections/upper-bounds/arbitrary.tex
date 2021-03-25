@@ -1,10 +1,10 @@
 \subsection{Arbitrary Convex n-gons}
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
-In this section we give a detailed overview of \cite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$. 
+In this section we give a detailed overview of \cite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$.
 We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start the proof ``backwards'', presenting  the results first, since in doing so, we can highlight the reasoning more clearly.
 
-The gist of the approach is as follows: 
+The gist of the approach is as follows:
 \begin{enumerate}
   \item We cut the polygon into smaller slices, for which we can provide small extended formulations. Joining these together preserves this property.
   \item We prove this small extended formulation by iteratively finding a large enough subset of vertices in the slice, for which we can build a small extended formulation. Joining these subsets together will again preserve this property.
@@ -21,7 +21,7 @@ In Appendix~\ref{sec:dependency-graph} we added a graphical representation of th
   Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{2/3}$.
 \end{theorem}
 
-Naturally, we need to gather more statements, before we can prove this theorem. 
+Naturally, we need to gather more statements, before we can prove this theorem.
 
 The starting point is the following lemma, adopted from \cite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
 \begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
@@ -76,16 +76,16 @@ Based on Observation~\ref{observation:splitting} we choose to split the original
 Now we will go on to show that each $\pi/6$-thin sequence has extension complexity $O(n^{2/3})$. We do this by iteratively extracting a subsequence with a small extended formulation.
 
 \begin{theorem}[{\cite[Theorem 58]{shitov2020sublinear}}]\label{theorem:subsequence}
-  Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$. 
+  Let $v$ be a $\pi/6$-thin sequence with $n = 1024\tau^3 + 8\tau$ vertices, where $\tau \in \N$.
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq 4\tau^2$ and $\xc(u) \leq 12\tau$.
 \end{theorem}
 
 Proving this theorem is the objective of the rest of the paper. We preempted it to provide a better understanding of the results.
 
-The following corollary is a direct result of it: 
+The following corollary is a direct result of it:
 
 \begin{corollary}[{\cite[Corollary 59]{shitov2020sublinear}}]\label{corollary:subsequence}
-  Let $v$ be a $\pi/6$-thin sequence with $n > 263\,000$ vertices. 
+  Let $v$ be a $\pi/6$-thin sequence with $n > 263\,000$ vertices.
   Then $v$ contains a subsequence $u$ with $\abs{u} \geq \frac{1}{36}\,n^{2/3}$ and $\xc(s) \leq \left( \frac{72}{43}\,n \right)^{1/3}$.
 \end{corollary}
 
@@ -120,7 +120,7 @@ The key idea here is to omit some vertices to obtain a simpler surrounding polyg
 Before we can formulate this theorem, we have to introduce \emph{acute polyhedra} and \emph{acute diagrams}. These help us build the extensions for the surrounding polygon.
 
 \begin{definition}[Acute Polyhedron]\label{definition:acute-polyhedron}
-  Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its facets. If all other facets $F \neq B$ of $P$ 
+  Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its facets. If all other facets $F \neq B$ of $P$
   share an edge with $B$ and
   the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$.\footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}
@@ -160,7 +160,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 \end{figure}
 
 \begin{proof}[Proof outline (see Figure~\ref{fig:acute-construction})]
-  Begin constructing a half-plane $F_n$ with base $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define the plane $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. The half-plane $F_{n-1}$ has $v_{n-1} \wedge v_{n-2}$ as its base and contains $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed.\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is a ray with acute angle with $V$.}
+  Begin constructing a half-plane $F_n$ with base $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define the plane $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. The half-plane $F_{n-1}$ has $v_{n-1} \wedge v_{n-2}$ as its base and contains $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed.\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is a ray with acute angle with~$V$.}
 \end{proof}
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
@@ -174,7 +174,7 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
 
 \begin{definition}[Acute diagram and lifting]
   Let $P$ be an acute polyhedron with base~$B$ and $\pi$ like in Observation~\ref{observation:acute-projection}.
-  The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$. 
+  The image of all edges of $P$ under $\pi$ gives us a diagram, which we call the \emph{acute diagram} of $P$ relative to base $B$.
   We also say that $P$ is an \emph{acute lifting} of the corresponding diagram.
 \end{definition}
 
@@ -202,7 +202,7 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
   Then $\Delta$ is a planar straight-line graph such that
 
   (o) the base of $\Delta$ is $B$,
-  
+
   (i) every node of $\Delta$ has degree at least three,
 
   (ii) the non-base nodes of $\Delta$ lie in the interior of the base,
@@ -232,7 +232,7 @@ We omit the proof, because we only lift polyhedra from diagrams, not the other w
     \label{fig:lifting-proof}
   \end{figure}
 
-  For the induction step we find a triangle with base arc $e$ like above and ``remove'' it, by continuing the arcs next to it (see Figure~\ref{fig:lifting-proof}). The continuation meets on the ``outside'' of~$e$, since $e$ has turning angle less than $\pi$. 
+  For the induction step we find a triangle with base arc $e$ like above and ``remove'' it, by continuing the arcs next to it (see Figure~\ref{fig:lifting-proof}). The continuation meets on the ``outside'' of~$e$, since $e$ has turning angle less than $\pi$.
 
   From the induction hypothesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
 \end{proof}
@@ -245,11 +245,11 @@ We can now focus on the main result of the first part, which allows us to build 
   (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$,
 
   (ii) there are $\delta$ points $\left\{s^1, \dots, s^\delta \right\}$ in the interior of the triangle ${T_s = \conv \left\{s,s',s''\right\}}$,
-  
+
   (iii) the triangles $T_s$ are disjoint for different $s$ and
 
-  (iv) for any $i \in \{1,\dots,\delta\}$ there exists and acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$. 
-  
+  (iv) for any $i \in \{1,\dots,\delta\}$ there exists and acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$.
+
   $$\Rightarrow \ \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
 
@@ -265,10 +265,10 @@ We can now focus on the main result of the first part, which allows us to build 
 
   Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ for all edges $e$ of $P$ (we assume that all diagrams are lifted into the upper half-space $z \geq 0$).
 
-  Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with the following $\abs{V}+\delta$ inequalities 
+  Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with the following $\abs{V}+\delta$ inequalities
   \begin{align*}
-    a_e x + b_e y + c_e &\geq \sum_{i=1}^{\delta} \varepsilon_e^i z,\\
-    z^i &\geq 0,
+    a_e x + b_e y + c_e & \geq \sum_{i=1}^{\delta} \varepsilon_e^i z, \\
+    z^i                 & \geq 0,
   \end{align*}
   where $e$ runs over all edges of $P$ and $i \in \{1,\dots,\delta\}$.
 
@@ -301,7 +301,7 @@ We can now focus on the main result of the first part, which allows us to build 
 \begin{remark}\label{remark:pitfall}
   There is a subtle difference between Theorem~\ref{theorem:gluing} and Corollary~\ref{corollary:acute-direction}.
 
-  In the theorem we assume that ``the segment between $s$ and $s^i$ is a \emph{subset} of the main edge'', but in the corollary we construct a diagram for which ``the main edge from $v_i$ lies on $v_i \wedge y_i$'', implying that $y_i$ can lie outside the main edge. 
+  In the theorem we assume that ``the segment between $s$ and $s^i$ is a \emph{subset} of the main edge'', but in the corollary we construct a diagram for which ``the main edge from $v_i$ lies on $v_i \wedge y_i$'', implying that $y_i$ can lie outside the main edge.
 
   So we can't just apply Theorem~\ref{theorem:gluing} to any choice of points fulfilling (i)-(iii).
 \end{remark}
@@ -325,10 +325,10 @@ To understand Theorem~\ref{theorem:gluing} better, we will now look at the limit
 
   $$\frac{\partial}{\partial v} f_n(v,s) = 1 - \frac{1}{s} > 0$$ shows that $v$ should be chosen minimal for minimal extension size. So we set $v = s$ according to the assumptions of Theorem~\ref{theorem:gluing}.
   \begin{align*}
-    f_n(s, s) &= s + s + \frac{n-s}{s} \\
-    &= 2s + \frac{n}{s} - 1\\
-    \frac{\partial}{\partial s} f_n(s,s) &= 2 - \frac{n}{s^2} \Rightarrow s_{min} := \sqrt{\frac{n}{2}} \\
-    \frac{\partial^2}{\partial^2 s} f_n(s,s) &= \frac{2n}{s^3} > 0
+    f_n(s, s)                                & = s + s + \frac{n-s}{s}                                       \\
+                                             & = 2s + \frac{n}{s} - 1                                        \\
+    \frac{\partial}{\partial s} f_n(s,s)     & = 2 - \frac{n}{s^2} \Rightarrow s_{min} := \sqrt{\frac{n}{2}} \\
+    \frac{\partial^2}{\partial^2 s} f_n(s,s) & = \frac{2n}{s^3} > 0
   \end{align*}
 
   This shows that $f_n$ has a minimum at $s_{min} = \sqrt{n/2}$ with $v_{min}=s_{min}$.
@@ -368,7 +368,7 @@ Therefore, we formalize the notion of ``good'' sequences with respect to Theorem
 Now we find another way to determine which sequences are actually \emph{G-good}. Therefore, we have to define the following:
 
 \begin{definition}
-  Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$. 
+  Let $v=(v_1,\dots,v_n)$ be a thin sequence. For indexes $i,\hat{\imath},k, \hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<k<\hat{\jmath}<j\leq n$, we define $\rho(v,i,\hat{\imath},k, \hat{\jmath}, j)$ as the ray passing from the point $(v_i\wedge v_{\hat{\imath}})\wedge(v_{\hat{\jmath}}\wedge v_j)$ towards $v_k$.
 \end{definition}
 
 \begin{figure}[ht]
@@ -412,7 +412,7 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
 We now need to define one more property of a sequence, by which we will split our upcoming considerations.
 
 \begin{definition}[Slanted sequence]
-  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geq 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<\hat{\jmath}<j\leq t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$. 
+  Let $v=(v_1,\ldots,v_t)$ be a thin clockwise sequence, ${\beta\in(0,\pi/2)}$, $\delta\geq 0$. We say that $v$ is \emph{clockwise-slanted} to an angle $\beta$ with \emph{tolerance} $\delta$, if, for all $i,\hat{\imath},\hat{\jmath}, j$ satisfying $1\leq i<\hat{\imath}<\hat{\jmath}<j\leq t$, the ray ${\rho}(v,i,\hat{\imath},k,\hat{\jmath}, j)$ satisfies $$\angle\left(\overrightarrow{v_{\hat{\jmath}}\wedge v_j},\,\,\rho(v,i,\hat{\imath},k,\hat{\jmath}, j)\right)<\beta$$ for all $k$ satisfying $\hat{\imath}<k<\hat{\jmath}$ except for at most $\delta$ such values of $k$.
 
   A \emph{counterclockwise-slanted} sequence is a counterclockwise sequence, if the above definition holds with ``clockwise'' replaced with ``counterclockwise''.
 \end{definition}

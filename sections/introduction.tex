@@ -1,8 +1,8 @@
-\section{Introduction} 
+\section{Introduction}
 
 \subsection{Extension Complexity}
 
-To describe a regular hexagon with linear inequalities, 6 of these are required. However, by projecting a 3-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, one can describe the same polygon\footnote{We define a polygon to be a 2-dimensional polytope, i.e.\ it is convex.} with 5 linear inequalities, see Figure~\ref{fig:hexagon}. 
+To describe a regular hexagon with linear inequalities, 6 of these are required. However, by projecting a 3-dimensional polytope\footnote{A polytope is the convex hull of a finite set of points.}, one can describe the same polygon\footnote{We define a polygon to be a 2-dimensional polytope, i.e.\ it is convex.} with 5 linear inequalities, see Figure~\ref{fig:hexagon}.
 
 \begin{figure}[ht]
   \centering
@@ -45,7 +45,7 @@ There are currently two main approaches for finding bounds for the extension com
 
 \begin{definition}[Slack Matrix]
   Let $P$ be a polytope.
-  Then a \emph{slack matrix}\footnote{Note that the slack matrix depends on the representation of $P$. So there is no unique slack matrix to a given polytope.} $M$ of $P$ is a nonnegative matrix, whose rows are indexed by the vertices of $P$ and whose columns are indexed by the linear constraints of some representation of $P=\{x \in \R^d \mid Ax \leq b\}$. 
+  Then a \emph{slack matrix}\footnote{Note that the slack matrix depends on the representation of $P$. So there is no unique slack matrix to a given polytope.} $M$ of $P$ is a nonnegative matrix, whose rows are indexed by the vertices of $P$ and whose columns are indexed by the linear constraints of some representation of $P=\{x \in \R^d \mid Ax \leq b\}$.
   The entries of $M$ are defined as $m_{ij} = b_j - a_j v_i$, where $a_j$ is a row of $A$ and $v_i$ is a vertex of $P$.
 \end{definition}
 
@@ -64,7 +64,7 @@ Because this document is focused on polygons, we briefly recall the history of b
 
 Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N,\,\pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called \emph{polygon complexity}, i.e.\ the largest extension complexity for a polygon of size~$n$.
 
-The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done many times -- for example by the authors of \cite{fiorini2012extended} using a counting argument. In this paper we will provide another approach to proving this lower bound. 
+The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done many times -- for example by the authors of \cite{fiorini2012extended} using a counting argument. In this paper we will provide another approach to proving this lower bound.
 
 But the upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by Shitov \cite{shitov2014upper} and Padrol \& Pfeifle \cite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their proof was the fact that $\pc(7)=6$, i.e.\ each heptagon has extension complexity at most 6.
 
@@ -73,7 +73,7 @@ Because of missing improvements it was conjectured, that $\pc(n) \in \Theta(n)$ 
 In summary, this is currently known about the polygon complexity:
 $$\pc(n) \in \Omega(n^{1/2}) \cap O(n^{2/3})$$
 
-There is another recent paper \cite{kwan2020extension}, which focuses on cyclic polygons\footnote{A polygon is called cyclic, if all its vertices lie on a circle.}. The authors proved that $\xc(P) \in O(n^{1/2})$ for all cyclic $n$-gons. 
+There is another recent paper \cite{kwan2020extension}, which focuses on cyclic polygons\footnote{A polygon is called cyclic, if all its vertices lie on a circle.}. The authors proved that $\xc(P) \in O(n^{1/2})$ for all cyclic $n$-gons.
 This led the authors to propose, that this upper bound could also hold for general $n$-gons, since ``cyclic polygons seem to represent quite a diverse cross-section of the space of all polygons''.
 
 
@@ -82,7 +82,7 @@ This led the authors to propose, that this upper bound could also hold for gener
 
 In this paper we focus on the key ideas behind the discussed papers \cite{shitov2020sublinear} and \cite{kwan2020extension}. We will make use of examples and skip technical details.
 
-In the first part we examine the results that led to the best known upper bounds. 
+In the first part we examine the results that led to the best known upper bounds.
 We will start with Shitov's paper \cite{shitov2020sublinear}, which provides the upper bound of $O(n^{2/3})$ with a purely geometric approach.
 From there we have a look at cyclic $n$-gons and the upper bound of $O(n^{1/2})$, which was provided by a semi-geometric / semi-algebraic approach in \cite{kwan2020extension}.
 Next we try to compare these two approaches, as far as they are comparable. First on a high level -- comparing key ideas -- and later on a more technical level.

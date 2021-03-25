@@ -59,7 +59,7 @@ We divide the circle into a set $\X$ of $\lceil n^{1/2} \rceil$ arcs, such that 
 
 \begin{proof}
   We count how many such arcs fit into the ``not well-separated space''.\\
-  Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$ to $X$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$.\footnote{Our results in this proof differ from the source. But since this number only changes a constant in the bound, we will go on with the original numbers.} 
+  Let $\varepsilon$ be the length of $X$. If we put $5$ arcs of length at least $\varepsilon$ to each side of $X$, each other arc would have arc-distance at least $5\varepsilon$ to $X$. So the maximal number of not well-separated arcs with length at least $\varepsilon$ distinct to $X$ is $10$.\footnote{Our results in this proof differ from the source. But since this number only changes a constant in the bound, we will go on with the original numbers.}
 \end{proof}
 
 \begin{lemma}
@@ -107,20 +107,20 @@ In other words: For each vertex of color $c$ there is a scalar, such that for ea
 
 For each $i \in \{1,\dots,N\}$ we define vectors $t^{(i)} \in \R^{\abs{F_c}}$. For each $X \in \X_c$, $f \in F_X$:
 \begin{equation*}
-  t_f^{(i)} = 
+  t_f^{(i)} =
   \begin{cases}
-    0 &\text{if } i > \abs{V^X}\\
-    \alpha_v M_{v,f} &\text{else, with } v = \phi_X^{-1}(i)
+    0                & \text{if } i > \abs{V^X}              \\
+    \alpha_v M_{v,f} & \text{else, with } v = \phi_X^{-1}(i)
   \end{cases}
 \end{equation*}
 So the vectors $t_f^{(i)}$ are the scaled slacks for the local vertices (regarding $f$) with index $i$.
 
 Now we define the matrix $K \in \R^{\abs{V} \times \abs{F_c}}$, for which we will later apply the (general) ``lampshade argument''. For all $f \in F_c$ we define:
 \begin{equation*}
-  K_{v,f} = 
+  K_{v,f} =
   \begin{cases}
-    \alpha_v M_{v,f} - t_f^{(\phi(v))} & \text{if } v \in V_c\\
-    M_{v,f} & \text{else}
+    \alpha_v M_{v,f} - t_f^{(\phi(v))} & \text{if } v \in V_c \\
+    M_{v,f}                            & \text{else}
   \end{cases}
 \end{equation*}
 In other words, we manipulate the rows of $K$ with vertices of color $c$, by scaling them, such that for vertices with the same index the slack of the local vertex is smallest, and then subtracting that smallest scaled slack.
@@ -134,12 +134,12 @@ The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \i
 For the proof we need the generalized ``lampshade argument'', how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
 
 \begin{lemma}\label{lemma:shitov-lampshade}
-  Let $P$ be a polygon, and let $V$, $F$ and $M$ be defined like above. 
-  
+  Let $P$ be a polygon, and let $V$, $F$ and $M$ be defined like above.
+
   Let $X \subseteq V$ be a set of consecutive vertices of $P$, and let $F' \subseteq F$ be the set of facets of $P$ with both endpoints in $X$.
 
   Let $M'$ be a matrix with rows indexed by $V\setminus X$ and columns indexed by $F'$, such that the following condition holds for each vertex $v\in V\setminus X$:
-  
+
   There are real numbers $\alpha_v>0$, $\beta_v\geq 0$ and a vertex $x_v\in X$ such that\\
   $M_{v,f}'=\alpha_v M_{v,f}-\beta_v M_{x_v,f}$ for all $f\in F'$.
 

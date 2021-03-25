@@ -27,8 +27,8 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
 \begin{theorem}[{\cite[Theorem 1]{averkov2016maximum}}, adopted]\label{theorem:family}
   Let $\P$ be a family of polytopes in $\R^d$ of dimensions at least one with $2 \leq \abs{\P} < \infty $ such that each $P \in \P$ has an extended formulation of size $m$.
-  Let $\rho > 0$ and $\Delta > 0$ be such that each $P \in \P$ is contained in the ball $\rho \B^d$ and, 
-  for every two distinct polytopes $P \in \P$ and $P' \in \P$, one has $\dist_H(P, P') \geq \Delta$. 
+  Let $\rho > 0$ and $\Delta > 0$ be such that each $P \in \P$ is contained in the ball $\rho \B^d$ and,
+  for every two distinct polytopes $P \in \P$ and $P' \in \P$, one has $\dist_H(P, P') \geq \Delta$.
   Then $$m^2 \geq \frac{\log_2 \abs{\P}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P} \right)} =: B.$$
   In particular, we have $$\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B} .$$
 \end{theorem}
@@ -57,8 +57,8 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
   \end{figure}
 
   \begin{align*}
-    1 - d_{min} &= \cos\left( \frac{2 \pi}{n^2} \right)\\
-    d_{min} &\geq 1 - \left(1 - \frac{\left(\frac{2 \pi}{n^2}\right)^2}{2} \right) = 2 \frac{\pi^2}{n^4} =: \Delta
+    1 - d_{min} & = \cos\left( \frac{2 \pi}{n^2} \right)                                                                \\
+    d_{min}     & \geq 1 - \left(1 - \frac{\left(\frac{2 \pi}{n^2}\right)^2}{2} \right) = 2 \frac{\pi^2}{n^4} =: \Delta
   \end{align*}
 
   For the estimate we used $\cos(x) \geq 1 - \frac{x^2}{2!}$, which arises from the power series for cosine.
@@ -67,10 +67,10 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 
   Now we can calculate $B$ from Theorem~\ref{theorem:family}:
   \begin{align*}
-    B &= \frac{\log_2 \abs{\P_n}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P_n} \right)}\\
-    &\geq \frac{n \log_2 n}{16 \left(1 + \log_2 (n^4 / \pi^2) + 1 + \log_2 n + \log_2 \log_2 n \right)}\\
-    &= \frac{n \log_2 n}{16 \left(2 - 2 \log_2 \pi + 5 \log_2 n + \log_2 \log_2 n \right)}\\
-    &\geq \frac{n}{16 \cdot 6}
+    B & = \frac{\log_2 \abs{\P_n}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P_n} \right)}   \\
+      & \geq \frac{n \log_2 n}{16 \left(1 + \log_2 (n^4 / \pi^2) + 1 + \log_2 n + \log_2 \log_2 n \right)} \\
+      & = \frac{n \log_2 n}{16 \left(2 - 2 \log_2 \pi + 5 \log_2 n + \log_2 \log_2 n \right)}              \\
+      & \geq \frac{n}{16 \cdot 6}
   \end{align*}
 
   For the last inequality we used $2 - 2 \log_2 \pi \leq 0$ and $\frac{5 \log_2 n + \log_2 \log_2 n}{\log_2 n} \leq 6$ for $n \geq 1$.
@@ -88,7 +88,7 @@ Here is a short outline of the proof:
 \begin{enumerate}
   \item Each extended formulation can be normalized, i.e.\ $P = \varphi(Q) + t$ with\\ $Q = \{ x \mid Ax \leq \mathbbm{1} \}$, $\mathbb{B}^n \subseteq Q \subseteq n\mathbb{B}^n$ and $\varphi$ being linear.
   \item Each polytope $P_i \in \P$, where $P_i = \varphi_i(Q_i) + t_i$ and $Q_i = \{ x \in \R^{n_i} \mid A_ix \leq \mathbbm{1} \}$), is encoded trough $P_i \mapsto (A_i, \varphi_i, t_i)$.\\
-  From now on everything takes place in the encoding vector spaces $\mathcal{V}^n$, where $n$ is the dimension of the extended formulation.
+        From now on everything takes place in the encoding vector spaces $\mathcal{V}^n$, where $n$ is the dimension of the extended formulation.
   \item The encodings are partitioned into sets $W_i$ by the dimension of $Q_i$.
   \item The distance between two encodings $w, w' \in W_i$ can be bounded by $\norm{w - w'} \geq \Delta$.
   \item The overall space required can be bounded by $\norm{w} \leq 3\rho n^2, \forall w \in W_i$.
@@ -97,7 +97,7 @@ Here is a short outline of the proof:
   \item These bounds are joined together for all $W_i$ and solved for $m$.
 \end{enumerate}
 
-The lower bounding of $\xc$, i.e.\ $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication: 
+The lower bounding of $\xc$, i.e.\ $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication:
 $$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
 
 This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a family $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
