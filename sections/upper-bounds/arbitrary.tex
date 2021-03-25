@@ -262,8 +262,6 @@ We can now focus on the main result of the first part, which allows us to build 
   \label{fig:gluing-theorem}
 \end{figure}
 
-% todo?: insert cutting example for \delta=1
-
 % polish: check last argument (pi(P') really is right by conv commuting on affine maps)
 \begin{proof}
   We are going to construct a polytope $\P'$ in $\R^2 \times \R^{\delta} = \{(x,y,z^1,\dots,z^{\delta})\}$ with at most $\abs{V}+\abs{S}+\delta$ facets, which is an extended formulation of $P$.
@@ -290,6 +288,13 @@ We can now focus on the main result of the first part, which allows us to build 
   where there are $i-1$ zeros before~$t$ and $(\alpha_s^i, \beta_s^i)$ is pointing from $s$ to $s^i$ (and scaled such that we don't need a factor for~$t$).
 
   Now we define a half-space $H_s$, whose defining hyperplane is determined by the points $(x_{s'},y_{s'},0,\dots,0)$, $(x_{s''},y_{s''},0,\dots,0)$ and the $\delta$ points on \eqref{eq:ray}, which project to $s^i$ under $\pi$ (this hyperplane is well-defined, as all those points are linearly independent). The orientation of $H_s$ is set such that is does not include $\sigma_s$.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=70mm]{gluing-theorem-cut.png}
+    \caption{Cutting $P$ with $H_s$ in Theorem~\ref{theorem:gluing} for $\delta = 1$.}
+    \label{fig:gluing-theorem-cut}
+  \end{figure}
 
   If we now cut $\P$ with $H_s$, we only cut the rays passing from $\sigma_s$ at the defining points of $H_s$. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by cutting. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
 
