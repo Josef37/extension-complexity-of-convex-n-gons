@@ -1,5 +1,4 @@
 \subsection{Arbitrary Convex n-gons}
-% polish?: Add proof outlines for Lemma 49 and Theorem 57
 % polish: check that no orientation (left, right, ...) and cw/ccw is used undefined
 
 In this section we give a detailed overview of \cite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$. 
@@ -160,9 +159,8 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   \label{fig:acute-construction}
 \end{figure}
 
-% polish: remove hand-wavy footnote?
 \begin{proof}[Proof outline (see Figure~\ref{fig:acute-construction})]
-  Begin constructing a plane $F_n$ passing through $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. Now the next plane is given by the line $v_{n-1} \wedge v_{n-2}$  defined by a base edge and $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed.\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is ``inside'' of $V$.}
+  Begin constructing a half-plane $F_n$ with base $v_n \wedge v_{n-1}$ and having an arbitrary acute angle with $V$. Define the plane $H_{n-1}$ orthogonal to $V$ containing $v_{n-1}$ and $y_{n-1}$. The half-plane $F_{n-1}$ has $v_{n-1} \wedge v_{n-2}$ as its base and contains $F_n \cap H_{n-1}$. Proceed this way until $F_1$ is constructed.\footnote{All $F_i$ have an acute angle with $V$, since they contain $F_{i+1} \cap H_i$, which is a ray with acute angle with $V$.}
 \end{proof}
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
@@ -262,7 +260,6 @@ We can now focus on the main result of the first part, which allows us to build 
   \label{fig:gluing-theorem}
 \end{figure}
 
-% polish: check last argument (pi(P') really is right by conv commuting on affine maps)
 \begin{proof}
   We are going to construct a polytope $\P'$ in $\R^2 \times \R^{\delta} = \{(x,y,z^1,\dots,z^{\delta})\}$ with at most $\abs{V}+\abs{S}+\delta$ facets, which is an extended formulation of $P$.
 
@@ -287,7 +284,7 @@ We can now focus on the main result of the first part, which allows us to build 
   \end{equation}
   where there are $i-1$ zeros before~$t$ and $(\alpha_s^i, \beta_s^i)$ is pointing from $s$ to $s^i$ (and scaled such that we don't need a factor for~$t$).
 
-  Now we define a half-space $H_s$, whose defining hyperplane is determined by the points $(x_{s'},y_{s'},0,\dots,0)$, $(x_{s''},y_{s''},0,\dots,0)$ and the $\delta$ points on \eqref{eq:ray}, which project to $s^i$ under $\pi$ (this hyperplane is well-defined, as all those points are linearly independent). The orientation of $H_s$ is set such that is does not include $\sigma_s$.
+  Now we define a half-space $H_s$, whose defining hyperplane is determined by the points $(x_{s'},y_{s'},0,\dots,0)$, $(x_{s''},y_{s''},0,\dots,0)$ and the $\delta$ points on \eqref{eq:ray}, which project to $s^i$ under $\pi$ (this hyperplane is well-defined, as all those points are linearly independent). The orientation of $H_s$ is set such that it does not include $\sigma_s$.
 
   \begin{figure}[ht]
     \centering
@@ -296,7 +293,7 @@ We can now focus on the main result of the first part, which allows us to build 
     \label{fig:gluing-theorem-cut}
   \end{figure}
 
-  If we now cut $\P$ with $H_s$, we only cut the rays passing from $\sigma_s$ at the defining points of $H_s$. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by cutting. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
+  If we now intersect $\P$ with $H_s$, we cut the rays passing from $\sigma_s$ at the defining points of $H_s$. Since these points are all contained in an edge of $\P$ (by definition of $D^i$), these $\delta + 2$ points become vertices by this cut. The different cuts themselves don't overlap on $\P$, since the triangles $T_s$ are disjoint by definition and all $s^i$ lie in the interior of $T_s$.
 
   So we can define $\P' = \P \cap \bigcap_{s \in S} H_s$, which is given by $\abs{V}+\abs{S}+\delta$ inequalities, and conclude that $\pi(\P')$ is the desired polygon.
 \end{proof}
@@ -392,8 +389,6 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
   \label{fig:ray-good}
 \end{figure}
 
-% polish: formulate prove for "This path can only leave through the interior of $\conv\{v_1,v_n\}$" better: Extract it or something
-% polish: formulate ``arc towards'' more clearly
 \begin{proof}
   To prove that $v$ is $G$-good, we build an acute diagram $\Delta$ whose base is the $G$-envelope $v_G$ of $v$ and show that the main edge passing from $$o_g := (v_{g-2} \wedge v_{g-1}) \wedge (v_{g+1} \wedge v_{g+2})$$ contains $v_g$ for each $g \in G$.
 
@@ -405,12 +400,10 @@ Now we find another way to determine which sequences are actually \emph{G-good}.
   Now it remains to show that the edge passing from $o_g$ actually contains $v_g$. We will prove this by contradiction: Assume there is some $j \in G$, for which $v_j$ is not contained in the edge passing from $o_j$. That is, there is an edge in $\Delta$, which has its endpoint $e$ in the interior of $\conv \{o_j, v_j\}$, thus outside of $\conv v$.
 
   \textit{Case 1.} There is a path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
-  This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc ``towards'' $v_1$ for decreasing $i$, because $v$ itself is convex.
+  This is impossible, because the main edge passing from $v_n$ leaves towards $u_0$, thus not leaving $\conv v$. This follows from property (v) in Lemma~\ref{lemma:diagram-properties}, because an inner arc of $\Delta$ on the path from $v_n$ to $v_1$ separating the face containing $v_1 \wedge v_n$ and the face containing $v_i \wedge v_{i+1}$ continues to arc ``towards'' $v_1$ for decreasing $i$, because $v$ itself is convex.\footnote{The line through this arc has to be concurrent with $(v_1 \wedge v_n) \wedge (v_i \wedge v_{i+1})$, which is a point on $v_1 \wedge v_n$ outside $\conv \{v_1,v_n\}$, because of the convexity of $v$. This arc can't be moving away from $v_n$ steeper than $v_n \wedge u_0$.}
 
   \textit{Case 2.} There is \emph{no} path of inner arcs in $\Delta$ from $v_n$ to $v_1$, including $e$.\\
-  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (except the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$
-  % for any intersection (call it $I$) $f$ leftmost, $g$ is rightmost, $f_l$ and $f_r$ are left and right base edges, then we have $f_l$ and $g_r$ concurrent to outgoing arc $h$, by convexity it meets outside $v$, which fixes $h$ inside the cone spanned by $f$ and $g$. Therefore it can only go in direction of the interior of $\conv\{v_1,v_n\}$.
-  (Two intersecting arcs $f$, $g$ are concurrent with the base edges $f'$, $f''$ and $g'$, $g''$. Assume they are the outermost arcs at this intersection point. Then the outgoing arc is concurrent with $f'$ and $g''$, which always fixes it between the continuations of $f$ and $g$ by the convexity of $v$).
+  All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (except the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$.\footnote{For any intersection point, there is a leftmost incoming arc $f$ and a rightmost incoming arc $g$, which are concurrent with the base edges $f_l$, $f_r$ respectively $g_l$, $g_r$. So the outgoing arc $h$ is concurrent with $f_l$ and $g_r$, which fixes it inside the cone spanned by continuing $f$ and $g$.}
   So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
 
   So it is proved that the edge passing from $o_g$ contains $v_g$ for all $g \in G$.
@@ -441,12 +434,10 @@ Now we split the search for a good subsequence into two cases:
 
 We can show that for each case there is a large enough subsequence, for which Theorem~\ref{theorem:gluing} can be applied well. This is done in the following lemmata, for which we will skip the technical proofs, since they provide little insight.
 
-% polish: give some overview of proof ideas (sketches for Lemma 48 and 49)
 \begin{lemma}[{\cite[Lemma 49]{shitov2020sublinear}}]\label{lemma:unslanted-subseqence}
   Let $\delta, \tau, m$ be positive integers and $n=8\tau m$. Let $\alpha,\beta$ be positive reals with $\pi/2>\beta\geq 2\alpha$. Assume $v=(v_1,\dots,v_n)$ is an $\alpha$-thin sequence such that any subsequence with $m$ points is neither clockwise-slanted nor counterclockwise-slanted relative to the angle $\beta$ and tolerance $2\delta$. Then $v$ has a subsequence with $(6+\delta)\tau$ points with extension complexity not exceeding $6\tau+\delta+1$.
 \end{lemma}
 
-% polish: give some overview of proof ideas
 \begin{lemma}[{\cite[Theorem 57]{shitov2020sublinear}}]\label{lemma:slanted-subsequence}
   Let $\delta>1$ be an integer and $n=8\delta^2$. Let $v=(v_0,\ldots,v_n)$ be a $\pi/6$-thin sequence that is clockwise-slanted to the angle $\pi/3$ with tolerance~$2\delta$. Then $v$ has a subsequence of size at least $0.25\delta^2$ and extension complexity at most $3\delta$.
 \end{lemma}
