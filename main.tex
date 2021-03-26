@@ -17,9 +17,18 @@
 
 \usepackage{mathtools, amssymb, amsthm, bbm}
 \usepackage{hyperref}
+\usepackage[
+  labelfont=bf,
+  labelsep=period,
+  margin=10mm
+]{caption}
+
 \usepackage{graphicx}
 \graphicspath{ {./assets/} }
-\usepackage[labelfont=bf,labelsep=period,margin=10mm]{caption}
+
+\usepackage{biblatex}
+\addbibresource{main.bib}
+
 \usepackage{geometry}
 \geometry{
   a4paper,
@@ -28,9 +37,10 @@
   left=2.5cm,
   right=2.5cm
 }
+
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
-
+\setlength{\skip\footins}{6mm}
 \sloppy
 
 \input{definitions/index}
@@ -65,7 +75,6 @@
 
 \input{sections/appendix}
 
-\bibliographystyle{plain}
-\bibliography{main}
+\printbibliography
 
 \end{document}
