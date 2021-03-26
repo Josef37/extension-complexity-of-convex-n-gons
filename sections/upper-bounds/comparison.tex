@@ -1,5 +1,4 @@
 \subsection{Comparison}
-% todo: cite claims
 
 In this section we compare the results and approach from \cite{shitov2020sublinear} and \cite{kwan2020extension} by working out general similarities or differences. We further look at how both bounds are achieved numerically (in an asymptotic view). In the end we examine how the proofs could be altered to use them in the other's setting.
 
@@ -52,13 +51,17 @@ $\xc(P) \in O(n^{1/2})$ for cyclic $n$-gons $P$ in \cite{kwan2020extension}:
   \item Joining these columns results in $\rank_+ M \in O(\abs{\X} + n^{1/2}) = O(n^{1/2})$.
 \end{itemize}
 
-% todo: formulate comparing settings
-\textbf{This comparison is not finished yet.}
-
-Finally, we have a look at, how each procedure can be altered to be used in the other's setting:
+Finally, we have a look at, how each procedure could be used in the other's setting:
 
 \begin{itemize}
-  \item How is the circle property used? Can the approach be generalized (replace circle distance with edge distance)?\\
-        The circle ensures there are scaling factors $\alpha_v$, such that the local vertex has the smallest slack of any vertices of the same index and color
-  \item Is there a way to adopt a proof to the other case? Try Shitov's work on cyclic polygons. And try the other way around (you may have to use thin slices, too).
+  \item Even though the authors of \cite{kwan2020extension} state that \cite[Lemma~10.2]{kwan2020extension} is "the only place where we use this assumption that $P$ is cyclic", the definition of well-separateness uses arc-distance. Generalizing the proof requires something like a boundary-distance, where the distance between two vertices is the sum of the lengths of the edges separating them. In this setting, a counterexample for \cite[Lemma~10.2]{kwan2020extension} can be found easily, because well-separated facets and vertices can still have small slacks (see Figure~\ref{fig:cyclic-counter-example}).\\
+        We conclude that this approach can't be adopted easily for the general case, since it relies on $P$ being cyclic in central parts. Still, the used methods may be of value for future approaches.
+  \item If we want to improve the bound achieved in \cite{shitov2020sublinear} for cyclic polygons, we have to find a larger subsequence for which we can apply Theorem~\ref{theorem:gluing} optimally. In the best case, we can find a subsequence with $\Theta(n)$ vertices, where $\abs{V},\abs{S},\delta \in \Theta(n^{1/2})$ in Theorem~\ref{theorem:gluing}. Then we could get the same upper bound of $O(n^{1/2})$ for the extension complexity.
 \end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=100mm]{cyclic-counter-example.png}
+  \caption{Counterexample for \cite[Lemma~10.2]{kwan2020extension}, if it didn't require $P$ to be cyclic.}
+  \label{fig:cyclic-counter-example}
+\end{figure}
