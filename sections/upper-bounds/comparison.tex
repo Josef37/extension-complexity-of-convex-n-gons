@@ -51,7 +51,7 @@ Finally, we have a look at how each procedure could be used in the other's setti
 
 \begin{itemize}
   \item Even though \citeauthor{kwan2020extension} state that Lemma~10.2 is ``the only place where we use this assumption that $P$ is cyclic'' \cite[22]{kwan2020extension}, the definition of well-separateness uses arc-distance. Generalizing the proof requires something like a boundary-distance, where the distance between two vertices is the sum of the lengths of the edges separating them. In this setting, a counterexample for Lemma~10.2 can be found easily, because well-separated facets and vertices can still have small slacks (see Figure~\ref{fig:cyclic-counter-example}).\\
-        We conclude that this approach can't be adopted easily for the general case, since it relies on $P$ being cyclic in central parts. Still, the used methods may be of value for future approaches. This aligns well with the authors opinion \cite[28]{kwan2020extension}.
+        We conclude that this approach can't be adopted easily for the general case, since it relies on $P$ being cyclic in central parts. Still, the used methods may be of value for future approaches. This aligns well with the authors' opinion \cite[28]{kwan2020extension}.
   \item If we want to improve the bound achieved in \textcite{shitov2020sublinear} for cyclic polygons, we have to find a larger subsequence for which we can apply Theorem~\ref{theorem:gluing} optimally. In the best case, we can find a subsequence with $\Theta(n)$ vertices, where $\abs{V},\abs{S},\delta \in \Theta(n^{1/2})$ in Theorem~\ref{theorem:gluing}. Then we could get the same upper bound of $O(n^{1/2})$ for the extension complexity.
 \end{itemize}
 
