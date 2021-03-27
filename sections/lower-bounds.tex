@@ -2,9 +2,9 @@
 
 In this section we prove that there is a polygon $P$ with $\xc(P) \in \Omega(n^{1/2})$.
 
-After the proof is done, we will explain the key concepts of the applied theorem and show how to apply it in general.
+After the proof, we will explain the key concepts of the applied theorem and show how to apply it in general.
 
-The central piece of the proof is \cite[Theorem~1]{averkov2016maximum}, which we adopt for the case of linear extended formulations (the original also allowed semidefinite ones).
+The central piece of the proof is Theorem~1 from \textcite{averkov2016maximum}, which we adopt for the case of linear extended formulations.
 
 We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mid \norm{x} \leq 1 \}$ to be the $d$-dimensional unit ball.
 
@@ -12,7 +12,7 @@ We define $\norm{\cdot}$ to be the Euclidean norm and $\B^d := \{ x \in \R^d \mi
 
 \subsection{Introducing the Applied Theorem}
 
-First we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of ``the longest distance you can be forced to travel from a point in one of the two sets to the other set''. See Figure~\ref{fig:hausdorff} for an example.
+First we have to define the \emph{Hausdorff distance} of two compact sets, which can be thought of ``the longest distance one can be forced to travel from a point in one of the two sets to the other set''. See Figure~\ref{fig:hausdorff} for an example.
 
 \begin{figure}[ht]
   \centering
@@ -43,15 +43,15 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
 \begin{proof}
   To apply \ref{theorem:family} we have to pick a family of polytopes $\P$. Then we have to determine $\rho$ and $\Delta$ and bound $\log_2 \abs{\P}$ from below and $\log_2 \log_2 \abs{\P}$ from above.
 
-  So we choose $n^2$ fixed points evenly on the unit circle (so they would form a regular polygon). Let $\P_n$ be the family of polygons, where each polygon has $n$ vertices chosen from the $n^2$ points on the unit circle.
+  So we choose $n^2$ fixed points evenly on the unit circle (so they would form a regular polygon). Let $\P_n$ be the family of polygons, where each polygon is the convex hull of $n$ points chosen from the $n^2$ points on the unit circle.
 
   Then $\rho = 1$, since all polygons are contained in the unit circle.
 
-  For two distinct polygons $P, P' \in \P_n$ one of them has a vertex $v$, which the other one does not have. W.l.o.g.\ $v \notin P, v \in P'$. So $\dist_H(P,P') \geq \inf_{p \in P} \norm{v-p} \geq d_{min}$ (see Figure~\ref{fig:distance} for the definition of $d_{min}$).
+  For two distinct polygons $P, P' \in \P_n$ one of them has a vertex $v$, which the other one does not have. W.l.o.g.\ $v \notin P, v \in P'$. As a result, $\dist_H(P,P') \geq \inf_{p \in P} \norm{v-p} \geq d_{min}$ (see Figure~\ref{fig:distance} for the definition of $d_{min}$).
 
   \begin{figure}[ht]
     \centering
-    \includegraphics[height=55mm]{Minimal_Hausdorff_distance.png}
+    \includegraphics[height=50mm]{Minimal_Hausdorff_distance.png}
     \caption{Definition of $d_{min}$.}
     \label{fig:distance}
   \end{figure}
@@ -61,11 +61,13 @@ First we have to define the \emph{Hausdorff distance} of two compact sets, which
     d_{min}     & \geq 1 - \left(1 - \frac{\left(\frac{2 \pi}{n^2}\right)^2}{2} \right) = 2 \frac{\pi^2}{n^4} =: \Delta
   \end{align*}
 
-  For the estimate we used $\cos(x) \geq 1 - \frac{x^2}{2!}$, which arises from the power series for cosine.
+  For the estimate we used $\cos(x) \geq 1 - \frac{x^2}{2!}$.
 
-  Since each polygon in $\P_n$ is defined by $n$ points, chosen from a set of $n^2$ points, $\abs{\P_n} = \binom{n^2}{n}$. Therefore, $n^n = \left( \frac{n^2}{n} \right)^n \leq \abs{\P_n} \leq \left( n^2 \right)^n = n^{2n}$. $\log_2 \abs{\P_n} \geq n \log_2 n$ and $\log_2 \log_2 \abs{\P_n} \leq \log_2 (2n \log_2 n) = 1 + \log_2 n + \log_2 \log_2 n$.
+  Since each polygon in $\P_n$ is defined by $n$ points, chosen from a set of $n^2$ points, $\abs{\P_n} = \binom{n^2}{n}$.\\
+  With $(\frac{n}{k})^k \leq \binom{n}{k} \leq n^k$ we can estimate $n^n = \left( \frac{n^2}{n} \right)^n \leq \abs{\P_n} \leq \left( n^2 \right)^n = n^{2n}$.\\
+  Then $\log_2 \abs{\P_n} \geq n \log_2 n$ and $\log_2 \log_2 \abs{\P_n} \leq \log_2 (2n \log_2 n) = 1 + \log_2 n + \log_2 \log_2 n$.
 
-  Now we can calculate $B$ from Theorem~\ref{theorem:family}:
+  Now we can estimate $B$ from Theorem~\ref{theorem:family}:
   \begin{align*}
     B & = \frac{\log_2 \abs{\P_n}}{8d \left(1 + \log_2 (2\rho/\Delta) + \log_2\log_2 \abs{\P_n} \right)}   \\
       & \geq \frac{n \log_2 n}{16 \left(1 + \log_2 (n^4 / \pi^2) + 1 + \log_2 n + \log_2 \log_2 n \right)} \\
@@ -93,11 +95,11 @@ Here is a short outline of the proof:
   \item The distance between two encodings $w, w' \in W_i$ can be bounded by $\norm{w - w'} \geq \Delta$.
   \item The overall space required can be bounded by $\norm{w} \leq 3\rho n^2, \forall w \in W_i$.
   \item One creates small balls around each encoding with radius $\Delta/2$ and a ball containing all small balls with radius $3\rho n^2 + \Delta/2$ around the origin.
-  \item By comparing volumes, one can bound $\abs{W_i}$ from above depending on $\rho$, $\Delta$, $m$ and~$d$.
-  \item These bounds are joined together for all $W_i$ and solved for $m$.
+  \item By comparing volumes, one can bound the number of possible polytope encodings $\abs{W_i}$ from above depending on $\rho$, $\Delta$, $m$ and~$d$. Note that the dimension of $\mathcal{V}^n$ depends on $m$ and $d$.
+  \item These bounds are added by $\abs{\P} = \sum \abs{W_i}$ and solved for $m$.
 \end{enumerate}
 
-The lower bounding of $\xc$, i.e.\ $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication:
-$$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: xc(P) > m \right) \right) $$
+The lower bounding for the extension complexity, i.e.\ $\max \{\xc(P) \mid P \in \P\}  \geq \sqrt{B}$, is achieved by inverting the implication:
+$$ \left( \left( \forall P\in\P: \xc(P) \leq m \right) \Rightarrow m^2 \geq B \right) \Rightarrow \left( m^2 < B \Rightarrow \left( \exists P\in\P: \xc(P) > m \right) \right) $$
 
-This theorem is applied easily like in Corollary~\ref{corollary:lower-bound} by picking a family $\P$ and then bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. This theorem then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
+This theorem can be applied like in Corollary~\ref{corollary:lower-bound} by picking a family $\P$ and bounding $\rho$ from above, $\Delta$ from below, $\log_2 \abs{\P}$ from below and $\log_2\log_2 \abs{\P}$ from above. It then provides a lower bound for the largest extension complexity of one polytope $P \in \P$.
