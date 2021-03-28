@@ -16,12 +16,12 @@ In Appendix~\ref{sec:dependency-graph} we added a graphical representation of th
 
 \subsubsection{Main Result}
 
-\begin{theorem}[{\cite[Theorem 5]{shitov2020sublinear}}]\label{theorem:xc}
+\begin{theorem}[{\cite[Theorem~5]{shitov2020sublinear}}]\label{theorem:xc}
   Every convex $n$-gon $P$ has $\xc(P) \leq 147 n^{2/3}$.
 \end{theorem}
 
 The starting point for proving this theorem is the following lemma, adopted from \textcite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
-\begin{lemma}[{\cite[Lemma 8]{shitov2020sublinear}}]\label{lemma:union}
+\begin{lemma}[{\cite[Lemma~8]{shitov2020sublinear}}]\label{lemma:union}
   Let $P$ and $Q$ be polytopes\footnote{One is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.} in $\R^d$ -- each different from a point. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
@@ -61,7 +61,7 @@ For thin sequences, all lines $v_i \wedge v_j$ with $\{i,j\} \neq \{1,n\}$ meet 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=80mm]{polygon-splitting.png}
-  \caption{Splitting a polygon into three thin sequences. \cite[Figure 4]{shitov2020sublinear}}
+  \caption{Splitting a polygon into three thin sequences. \cite[Figure~4]{shitov2020sublinear}}
   \label{fig:polygon-splitting}
 \end{figure}
 
@@ -225,7 +225,7 @@ We omit the proof, because we only lift polyhedra from diagrams, which is what w
   \begin{figure}[ht]
     \centering
     \includegraphics[width=100mm]{lifting-proof.png}
-    \caption{The inductive step in the proof of Lemma~\ref{lemma:lifting}. \cite[Figure 2]{shitov2020sublinear}}
+    \caption{The inductive step in the proof of Lemma~\ref{lemma:lifting}. \cite[Figure~2]{shitov2020sublinear}}
     \label{fig:lifting-proof}
   \end{figure}
 
@@ -253,7 +253,7 @@ We can now focus on the main result of the first part, which allows us to build 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{gluing-theorem.png}
-  \caption{An application of Theorem~\ref{theorem:gluing}: Two acute diagrams confirm that the $14$-gon on the right has $\xc$ at most $10$. \cite[Figure 3]{shitov2020sublinear}}
+  \caption{An application of Theorem~\ref{theorem:gluing}: Two acute diagrams confirm that the $14$-gon on the right has $\xc$ at most $10$. \cite[Figure~3]{shitov2020sublinear}}
   \label{fig:gluing-theorem}
 \end{figure}
 
@@ -369,7 +369,7 @@ Now we find another way to determine which sequences are actually \emph{$G$-good
 \begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{ray-example.png}
-  \caption{Rays $\rho(v,1,2,3,4,5)$ and $\rho(v,3,5,7,8,9)$. \cite[Figure 5]{shitov2020sublinear}}
+  \caption{Rays $\rho(v,1,2,3,4,5)$ and $\rho(v,3,5,7,8,9)$. \cite[Figure~5]{shitov2020sublinear}}
   \label{fig:ray-example}
 \end{figure}
 
@@ -380,7 +380,7 @@ Now we find another way to determine which sequences are actually \emph{$G$-good
 \begin{figure}[ht]
   \centering
   \includegraphics[width=120mm]{ray-good.png}
-  \caption{An instance of Lemma~\ref{lemma:ray-good} with $n=12$ and $G=\{3,7,10\}$. \cite[Figure 7]{shitov2020sublinear}}
+  \caption{An instance of Lemma~\ref{lemma:ray-good} with $n=12$ and $G=\{3,7,10\}$. \cite[Figure~7]{shitov2020sublinear}}
   \label{fig:ray-good}
 \end{figure}
 
@@ -419,7 +419,6 @@ We now need to define one more property of a sequence, by which we split upcomin
   \centering
   \includegraphics[width=90mm]{slanted.png}
   \caption{Points and angles used in the definition of slanted sequences.}
-  \label{fig:slanted}
 \end{figure}
 
 Note that we couldn't come up with an intuitive understanding of slanted sequences, but there are some remarks: If $k$ is moved in clockwise direction, the measured angle decreases. Therefore, vertices failing the condition are consecutive starting after $\ihat$. And, if one fixes $k$, $\jhat$ and $j$, moving $i$ or $\ihat$ in clockwise direction will increase the measured angle. However, the same can't be done for $j$ and $\jhat$.

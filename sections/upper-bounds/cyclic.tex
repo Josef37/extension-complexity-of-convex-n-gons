@@ -17,7 +17,7 @@ In other words, every row of $M[V',F']$ is a convex combination of these constan
   \centering
   \includegraphics[scale=0.7,trim={2.5cm 2cm 2.5cm 4cm},clip]{separation}
   \includegraphics[scale=0.7,trim={0 2cm 0 4cm},clip]{shade}
-  \caption{On the left, a small patch of facets near the north pole is far away from a collection of vertices. On the right, a ``polyhedral lampshade'' encloses all the vertices in our collection, and lies entirely on the ``positive slack'' side of each of the facets in our patch. \cite[Figure 2]{kwan2020extension}}
+  \caption{On the left, a small patch of facets near the north pole is far away from a collection of vertices. On the right, a ``polyhedral lampshade'' encloses all the vertices in our collection, and lies entirely on the ``positive slack'' side of each of the facets in our patch. \cite[Figure~2]{kwan2020extension}}
   \label{fig:lampshade}
 \end{figure}
 
@@ -122,13 +122,13 @@ Now we define the matrix $K \in \R^{\abs{V} \times \abs{F_c}}$, for which we wil
 \end{equation*}
 In other words, we manipulate the rows of $K$ with vertices of color $c$, by scaling them, such that for vertices with the same index the slack of the local vertex is smallest, and then subtracting that smallest scaled slack.
 
-The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \in V^X$ and any facet $f \in F^X$, we have $K_{v,f} = 0$, i.e. all entries of $K[V^X, F^X]$ are zero, while $K$ is still nonnegative (that's why we had to scale all rows first).
+The purpose of this manipulation is that for each $X \in \X_c$, any vertex $v \in V^X$ and any facet $f \in F^X$, we have $K_{v,f} = 0$, i.e.\ all entries of $K[V^X, F^X]$ are zero, while $K$ is still nonnegative (that's why we had to scale all rows first).
 
 \begin{lemma}\label{lemma:rank-of-K}
   The matrix $K$ has nonnegative entries and satisfies $\rank_+ K \leq 8\abs{\X_c}$.
 \end{lemma}
 
-For the proof we need the generalized ``lampshade argument'', how it was originally proved in \cite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
+For the proof we need the generalized ``lampshade argument'', how it was originally proved in \textcite[Lemma 3.1]{shitov2014sublinear}. It was simplified for this use case to allow simpler notation.
 
 \begin{lemma}\label{lemma:shitov-lampshade}
   Let $P$ be a polygon, and let $V$, $F$ and $M$ be defined like above.

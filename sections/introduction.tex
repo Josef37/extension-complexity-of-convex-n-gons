@@ -7,7 +7,7 @@ Six linear inequalities are required to describe a regular hexagon. However, the
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.5,trim={0 2.5cm 0 2cm},clip]{hexagon}
-  \caption{A regular hexagon as a projection of a three-dimensional polytope with five facets. \cite[Figure 1]{kwan2020extension}}
+  \caption{A regular hexagon as a projection of a three-dimensional polytope with five facets. \cite[Figure~1]{kwan2020extension}}
   \label{fig:hexagon}
 \end{figure}
 
@@ -68,7 +68,7 @@ The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was d
 
 The upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by \textcite{shitov2014upper} and \textcite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their proof was $\pc(7)=6$, i.e.\ each heptagon has extension complexity at most 6.
 
-Because of missing improvements $\pc(n) \in \Theta(n)$ was conjectured \cite{fiorini2012extended}. This was refuted by \textcite{shitov2014sublinear} proving $\pc(n) \in o(n)$. He later improved the upper bound to $\pc(n) \in O(n^{2/3})$ \cite{shitov2020sublinear}, which is the best known bound so far.
+Because of missing improvements, $\pc(n) \in \Theta(n)$ was conjectured \cite{fiorini2012extended}. This was refuted by \textcite{shitov2014sublinear} proving $\pc(n) \in o(n)$. He later improved the upper bound to $\pc(n) \in O(n^{2/3})$ \cite{shitov2020sublinear}, which is the best known bound so far.
 
 In summary, this is currently known about the polygon complexity:
 $$\pc(n) \in \Omega(n^{1/2}) \cap O(n^{2/3})$$
@@ -87,4 +87,4 @@ We will start with \textcite{shitov2020sublinear}, which provides the upper boun
 From there we have a look at cyclic $n$-gons and the upper bound of $O(n^{1/2})$, which was provided by a semi-geometric / semi-algebraic approach by \textcite{kwan2020extension}.
 Next, we try to compare these two approaches, as far as they are comparable. First on a high level comparing key ideas and later on a more technical level.
 
-In the second part we give another proof of the lower bound and present the applied theorem \cite[Theorem 1]{averkov2016maximum}, which can be used for various problems. We also give a quick overview of the key ideas behind it.
+In the second part we give another proof of the lower bound and present the applied theorem \cite[Theorem~1]{averkov2016maximum}, which can be used for various problems. We also give a quick overview of the key ideas behind it.
