@@ -27,7 +27,7 @@ The starting point for proving this theorem is the following lemma, adopted from
 
 This statement enables us to split a polygon into smaller parts when estimating its extension complexity.
 
-Now we will go on to define those smaller parts, which we can handle well.
+We will go on to define those smaller parts, which we can handle well.
 
 \begin{definition}[Turning angle]
   If $P\subset\R^2$ is a polygon, then the \emph{turning angle} at a vertex~$v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
@@ -39,10 +39,10 @@ Now we will go on to define those smaller parts, which we can handle well.
   A sequence $v=(v_1,\ldots,v_n)$ of distinct points on a plane is called \emph{correct} if these points are the vertices of their convex hull $P$ and the segment between any pair of consecutive points in $v$ is an edge of $P$.
 \end{definition}
 
-If not stated otherwise, we assume the vertices of a correct sequence to be ordered \emph{clockwise}.
+Unless stated otherwise, we assume that the vertices of a correct sequence are in \emph{clockwise} order.
 
 \begin{definition}[Thin sequence]
-  Let $\alpha\in(0,\pi)$ and $n \geq 3$. A correct sequence ${v=(v_1,\ldots,v_n)}$ is called \emph{$\alpha$-thin}, if the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \emph{thin}, if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
+  Let $\alpha\in(0,\pi)$ and $n \geq 3$ be an integer. A correct sequence ${v=(v_1,\ldots,v_n)}$ is called \emph{$\alpha$-thin}, if the turning angle of the edge $\conv\{v_1, v_n\}$ in the polygon $\conv v$ is greater than $2\pi-\alpha$, that is, $$\angle v_n v_1 v_2+\angle v_1v_nv_{n-1}<\alpha.$$ We say that $v$ is \emph{thin}, if it is $\alpha$-thin for some $\alpha\in(0,\pi)$.
 \end{definition}
 
 \begin{figure}[ht]
@@ -52,7 +52,7 @@ If not stated otherwise, we assume the vertices of a correct sequence to be orde
   \label{fig:thin-sequence}
 \end{figure}
 
-For thin sequences, all lines $v_i \wedge v_j$ with $\{i,j\} \neq \{1,n\}$ meet on the same side of $v_1 \wedge v_n$ ($\cdot\wedge\cdot$ is used to describe the line joining two points or the intersection of two lines).
+For thin sequences, all lines $v_i \wedge v_j$ with $\{i,j\} \neq \{1,n\}$ meet on the same side of $v_1 \wedge v_n$, where $\cdot\wedge\cdot$ is used to describe the line joining two points or the intersection of two lines.
 
 \begin{observation}[Splitting into thin sequences, {\cite[Observation 30]{shitov2020sublinear}}]\label{observation:splitting}
   Let $P$ be a polygon with $n$ vertices, and let $q \geq 3$ be an integer. Then the vertices of $P$ can be partitioned into at most $q$ sets each of which is either a point or a pair of points, or a set that forms a $2\pi/q$-thin sequence.
@@ -102,7 +102,7 @@ The following corollary is a direct result of it:
 We can now prove the main result.
 
 \begin{proof}[Proof outline of Theorem~\ref{theorem:xc}]
-  Using Observation~\ref{observation:splitting} we split the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
+  Using Observation~\ref{observation:splitting} we split the $n$-gon $P$ into twelve disjoint $\pi/6$-thin sequences\footnote{Technically, we have to consider the case, when a sequence has less than three points. We omit it, since it does not provide further insight.} with sizes $n_1,\dots,n_{12}$.
 
   We apply Lemma~\ref{lemma:union} and Corollary~\ref{corollary:thin-xc} and get $$\xc(P)\leq\frac{324}{\sqrt[3]{129}}\left(\sum\limits_{i=1}^{12}n_i^{2/3}\right)\leq\frac{324}{\sqrt[3]{129}}\left(12\left(\frac{n}{12}\right)^{2/3}\right) < 147\,n^{2/3} .$$
 \end{proof}
@@ -119,7 +119,7 @@ Before we can formulate this theorem, we have to introduce \emph{acute polyhedra
 \begin{definition}[Acute Polyhedron]\label{definition:acute-polyhedron}
   Assume $P \subset \R^3$ is a polyhedron and $B$ is one of its facets. If all other facets $F \neq B$ of $P$
   share an edge with $B$ and
-  the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$ and $F$ is acute,
+  the angle\footnote{The angle between two faces $A$ and $B$ with a common edge $e$ is defined as the angle between two oriented segments that lie on $A$ and $B$ respectively, have their origin on $e$ and are orthogonal to $e$.} between $B$~and~$F$ is acute,
   then $P$ is called an \emph{acute polyhedron} with \emph{base} $B$.\footnote{Note that all facets lie on the same side of $B$. Since otherwise, $B$ would be no facet of $P$.}
 \end{definition}
 
@@ -149,17 +149,17 @@ Now follows an important lemma, which allows us to construct an acute polyhedron
   Then there is an acute polyhedron $P$ with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the image of the main edge passing from $v_i$ under the orthogonal projection of $P$ onto $V$ is collinear to $v_i \wedge y_i$.
 \end{lemma}
 
+\begin{proof}[Proof outline (see Figure~\ref{fig:acute-construction})]
+  Define the planes $H_i$ orthogonal to $V$ containing $v_i$ and $y_i$. The half-planes $F_i$ are defined recursively with $v_i \wedge v_{i-1}$ as their base\footnote{We define $v_0 := v_n$, since $v_1$ and $v_n$ share an edge.} and containing $F_{i+1} \cap H_i$.
+  Begin constructing $F_n$ with base $v_n \wedge v_{n-1}$ having an arbitrary acute angle with $V$. Iteratively construct $F_{n-1},\dots,F_1$ (all have an acute angle with $V$, since they contain the ray $F_{i+1} \cap H_i$, which heads towards the interior of $V$). Now $V$ and $F_1,\dots,F_n$ define the acute polyhedron.
+\end{proof}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.9\textwidth]{acute-construction.png}
   \caption{The construction of Figure~\ref{fig:acute-polyhedron} in the proof of Lemma~\ref{lemma:acute-direction}.}
   \label{fig:acute-construction}
 \end{figure}
-
-\begin{proof}[Proof outline (see Figure~\ref{fig:acute-construction})]
-  Define the planes $H_i$ orthogonal to $V$ containing $v_i$ and $y_i$. The half-planes $F_i$ are defined recursively with $v_i \wedge v_{i-1}$ as their base and containing $F_{i+1} \cap H_i$.
-  Begin constructing $F_n$ with base $v_n \wedge v_{n-1}$ having an arbitrary acute angle with $V$. Iteratively construct $F_{n-1},\dots,F_1$ (all having an acute angle with $V$, since they contain the ray $F_{i+1} \cap H_i$, which heads towards the interior of $V$). All $F_i$ together with $V$ now define the acute polyhedron.
-\end{proof}
 
 \begin{observation}[{\cite[Observation 16]{shitov2020sublinear}}]\label{observation:acute-projection}
   Let $P$ be an acute polyhedron with base $B$.
@@ -192,7 +192,7 @@ We can now reformulate Lemma~\ref{lemma:acute-direction} for acute diagrams:
   Then there is an acute diagram with base $V$ such that, for any $i \in \{1,\dots,n-1\}$, the main edge from $v_i$ lies on $v_i \wedge y_i$.
 \end{corollary}
 
-Since we have shown that every acute polyhedron has an acute diagram, we want to describe the properties of acute diagrams, which allow us to ``lift'' them into an acute polyhedron.
+We showed that every acute polyhedron has an acute diagram. Now we want to describe the properties of acute diagrams, which allow us to ``lift'' them into acute polyhedra.
 
 \begin{lemma}[Properties of acute diagrams, {\cite[Lemma 19]{shitov2020sublinear}}]\label{lemma:diagram-properties}
   Let $\Delta$ be the acute diagram of an acute polyhedron $P$ with base $B$.
@@ -211,7 +211,7 @@ Since we have shown that every acute polyhedron has an acute diagram, we want to
   (v) if a non-base arc $e$ of $\Delta$ separates faces $F$, $G$, then $e, e_F, e_G$ are concurrent.
 \end{lemma}
 
-We omit the proof, because we only lift polyhedra from diagrams, which is what we show next:
+We omit the proof, because we only lift polyhedra from diagrams in the following.
 
 \begin{lemma}[Lifting acute diagrams, {\cite[Lemma 25]{shitov2020sublinear}}]\label{lemma:lifting}
   A planar straight-line graph $\Delta$ satisfying (i)-(v) as in Lemma~\ref{lemma:diagram-properties} is an acute diagram of some acute polyhedron $P$.
@@ -229,12 +229,12 @@ We omit the proof, because we only lift polyhedra from diagrams, which is what w
     \label{fig:lifting-proof}
   \end{figure}
 
-  For the induction step we find a triangle with base arc $e$ like above and ``remove'' it, by continuing the arcs next to it (see Figure~\ref{fig:lifting-proof}). The continuation meets on the ``outside'' of~$e$, since $e$ has turning angle less than $\pi$.
+  For the induction step we find a triangle with base arc $e$ like above and ``remove'' it by continuing the arcs next to it (see Figure~\ref{fig:lifting-proof}). The continuation meets on the ``outside'' of~$e$, since $e$ has turning angle less than $\pi$.
 
   From the induction hypothesis we can lift this diagram with one vertex less. We cut the resulting polyhedron by the plane defined by our triangle to get our desired polyhedron.
 \end{proof}
 
-We can now focus on the main result of the first part, which allows us to build small extended formulations by combining simple extensions for a surrounding polygon.
+We can now focus on the main result of the first part, which allows us to build small extended formulations by combining acute polyhedra for a surrounding polygon, where some vertices were omitted. These polyhedra are lifted from acute diagrams, which have to include the omitted vertices in their main edges.
 
 \begin{theorem}[Gluing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:gluing}
   Let $P$ be a polygon with vertex set $V$. Let $\emptyset \neq S \subseteq V$ and $\delta \geq 1$ be an integer. Assume
@@ -245,7 +245,7 @@ We can now focus on the main result of the first part, which allows us to build 
 
   (iii) the triangles $T_s$ are disjoint for different $s$ and
 
-  (iv) for any $i \in \{1,\dots,\delta\}$ there exists an acute diagram $D^i$ with base face $P$ such that, for any $s \in S$, the segment between $s$ and $s^i$ is a subset of the main edge of $D^i$ passing from $s$.
+  (iv) for any $i \in \{1,\dots,\delta\}$ there is an acute diagram $D^i$ with base $P$ where, for any $s \in S$, the segment between $s$ and $s^i$ is a \emph{subset} of the main edge passing from $s$.
 
   $$\Rightarrow \ \xc\left( \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\}  \right) \right) \leq \abs{V} + \abs{S} + \delta$$
 \end{theorem}
@@ -260,7 +260,7 @@ We can now focus on the main result of the first part, which allows us to build 
 \begin{proof}
   We are going to construct a polytope $\P'$ in $\R^2 \times \R^{\delta} = \{(x,y,z^1,\dots,z^{\delta})\}$ with at most $\abs{V}+\abs{S}+\delta$ facets, which is an extended formulation of $P$.
 
-  Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ for all edges $e$ of $P$ (we assume that all diagrams are lifted into the upper half-space $z \geq 0$).
+  Assume that $a_e x + b_e y + c_e \geq 0$ is the defining inequality of an edge $e$ of $P$. Then the acute diagrams $D^i$ are lifted into three-dimensional polytopes described by $z \geq 0$ and $a_e x + b_e y + c_e \geq \varepsilon_e^i z$ with $\varepsilon_e^i > 0$ for all edges $e$ of $P$ (we assume that all polygons are located in the upper half-space $z \geq 0$).
 
   Then we define an auxiliary polytope $\P \in \R^2 \times \R^{\delta}$ with the following $\abs{V}+\delta$ inequalities
   \begin{align*}
@@ -301,10 +301,10 @@ We can now focus on the main result of the first part, which allows us to build 
   In the theorem we assume that ``the segment between $s$ and $s^i$ is a \emph{subset} of the main edge'', but in the corollary we construct a diagram for which ``the main edge from $v_i$ lies on $v_i \wedge y_i$'', implying that $y_i$ can lie outside the main edge.
 \end{remark}
 
-To understand Theorem~\ref{theorem:gluing} better, we will now look at the limits it has in application. This observation is aside from the main argument.
+To understand Theorem~\ref{theorem:gluing} better, we examine the limits it has in application. This observation is aside from the main argument.
 
 \begin{observation}[Limits of Theorem~{\ref{theorem:gluing}}]\label{observation:limits-of-gluing}
-  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:gluing} we obtain an extended formulation for $P$ with size $\Omega(\sqrt{n})$.
+  Let $P$ be a polygon with $n$ vertices. By applying Theorem~\ref{theorem:gluing} we obtain an extended formulation for $P$ with size in $\Omega(n^{1/2})$.
 \end{observation}
 \begin{proof}
   We set $P := \conv\left( (V \setminus S) \cup \bigcup_{s \in S} \left\{ s',s'',s^1,\dots,s^\delta \right\} \right)$ as in Theorem~\ref{theorem:gluing}. We define $v := \abs{V}$ and $s := \abs{S}$. Throughout this proof we assume that we can apply Theorem~\ref{theorem:gluing} for our choice of $v$, $s$ and $\delta$. Then
@@ -339,7 +339,7 @@ To understand Theorem~\ref{theorem:gluing} better, we will now look at the limit
 \subsubsection{Finding Good Subsequences}
 
 After defining this central theorem, we have to make a way to apply it to general polygons.\footnote{See Remark~\ref{remark:pitfall}, why we can't simply use Corollary~\ref{corollary:acute-direction}.}
-Therefore, we formalize the notion of ``good'' sequences with respect to Theorem~\ref{theorem:gluing}.
+Hence, we formalize the notion of ``good'' sequences in terms of Theorem~\ref{theorem:gluing}.
 
 \begin{definition}[$t$-scattered]
   Let $t, n \in \N$ and $G \subseteq \{1,\dots,n\}$. $G$ is called \emph{$t$-scattered} if for $g, g' \in G, g \neq g'$ we have $\abs{g-g'} \geq t$.
@@ -401,7 +401,7 @@ Now we find another way to determine which sequences are actually \emph{$G$-good
   All main edges of $\Delta$ go towards the interior of $\conv \{v_1, v_n\}$ (except the two at $v_1$ and $v_n$). And any path from a base vertex of $\Delta$ to $v_1$ that includes $e$ has to leave $\conv v$. This path can only leave through the interior of $\conv\{v_1,v_n\}$ because of (v) in Lemma~\ref{lemma:diagram-properties} and the convexity of $v$.\footnote{For any intersection point, there is a leftmost incoming arc $f$ and a rightmost incoming arc $g$, which are concurrent with the base edges $f_l$, $f_r$ or $g_l$, $g_r$ respectively. So the outgoing arc $h$ is concurrent with $f_l$ and $g_r$, which sets it between the continuations of $f$ and $g$.}
   So it has to intersect the path from $v_n$ to $v_1$ before leaving $\conv v$. This contradicts the assumption of this case.
 
-  So it is proved that the edge passing from $o_g$ contains $v_g$ for all $g \in G$.
+  This shows that the edge passing from $o_g$ contains $v_g$ for all $g \in G$.
 \end{proof}
 
 We now need to define one more property of a sequence, by which we split upcoming considerations.
@@ -423,7 +423,7 @@ We now need to define one more property of a sequence, by which we split upcomin
 
 Note that we couldn't come up with an intuitive understanding of slanted sequences, but there are some remarks: If $k$ is moved in clockwise direction, the measured angle decreases. Therefore, vertices failing the condition are consecutive starting after $\ihat$. And, if one fixes $k$, $\jhat$ and $j$, moving $i$ or $\ihat$ in clockwise direction will increase the measured angle. However, the same can't be done for $j$ and $\jhat$.
 
-Now we split the search for a good subsequence into two cases:
+We split the search for a good subsequence into two cases:
 \begin{enumerate}
   \item The original sequence has a large enough slanted subsequence.
   \item The original sequence does not have such a subsequence.
