@@ -2,7 +2,7 @@
 
 \subsection{Extension Complexity}
 
-Six linear inequalities are required to describe a regular hexagon. However, the same polygon\footnote{We define a polygon to be a two-dimensional polytope, i.e.\ it is convex.} can be described by a polytope\footnote{A polytope is the convex hull of a finite set of points.} in $\R^3$ and a linear projection with five linear inequalities, see Figure~\ref{fig:hexagon}.
+Six linear inequalities are required to describe a regular hexagon. However, the same polygon\footnote{We define a polygon to be a two-dimensional polytope, i.e.\ it is convex.} can be described by a polytope\footnote{A polytope is the convex hull of a finite set of points.} in $\R^3$ with five linear inequalities and a linear projection, see Figure~\ref{fig:hexagon}.
 
 \begin{figure}[ht]
   \centering
@@ -17,7 +17,7 @@ One can think of it as ``compressing'' the representation. This mental image is 
 This intuition is formalized as follows:
 
 \begin{definition}[Extended Formulation]
-  Let $P$ be a $d$-dimensional polytope, $Q$ an $m$-dimensional polytope and $\pi:\R^m \to \R^d$ a linear projection.
+  Let $P$ be a $d$-dimensional polytope, $Q$ an $m$\nobreakdash-dimensional polytope and $\pi:\R^m \to \R^d$ a linear projection.
   The pair $(Q,\pi)$ is called an \emph{extended formulation} of $P$, if $\pi(Q)=P$. The \emph{size} of $(Q,\pi)$ is defined as the number of facets of $Q$.
 \end{definition}
 
@@ -41,7 +41,7 @@ The application of extended formulations for solving hard linear problems seems 
 That's why the study of polygons has importance as a benchmark for extended formulations in general (\citeauthor{braun2015matching} called it ``prototypical importance'' \cite{braun2015matching}).
 Current research focuses on finding good bounds for the extension complexity, rather than developing algorithms for constructing extended formulations.
 
-There are currently two main approaches for finding bounds for the extension complexity: The first one is the natural geometric approach. The second one is a linear-algebraic approach based on a remarkable result of \textcite{yannakakis1991expressing}, which we'll recall briefly:
+There are currently two main approaches for finding bounds for the extension complexity: The first one is the natural geometric approach. The second one is a linear-algebraic approach based on a remarkable result of \textcite{yannakakis1991expressing}, which we recall briefly:
 
 \begin{definition}[Slack Matrix]
   Let $P$ be a polytope.
@@ -60,13 +60,15 @@ The nonnegative rank of $M$ can equivalently be defined as the minimum $r$ for w
   Let $P$ be a polytope and $M$ a slack matrix of $P$. Then $$\xc(P) = \rank_+(M) .$$
 \end{theorem}
 
-Because this document is focused on polygons, we briefly recall the history of bounds and conjectures for the extension complexity of those:
+Because this document is focused on polygons, we give a concise overview of the history of bounds and conjectures for the extension complexity of those:
 
-Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then $$\pc:\N \to \N,\,\pc(n) = \max \{\xc(P) \mid P \in \P_n\}$$ is called \emph{polygon complexity}. It describes the largest extension complexity for a polygon with $n$ vertices.
+Define $\P_n$ as the set of all convex polygons with $n$ vertices. Then
+$$\pc: \N \to \N,\ n \mapsto \max \{\xc(P) \mid P \in \P_n\}$$
+is called \emph{polygon complexity}. It describes the largest extension complexity for a polygon with $n$ vertices.
 
 The lower bound $\pc(n) \in \Omega(n^{1/2})$ is quite easy to prove, which was done many times, for example by \textcite{fiorini2012extended} using a counting argument. In this paper we will provide another proof for this lower bound.
 
-The upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by \textcite{shitov2014upper} and \textcite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their proof was $\pc(7)=6$, i.e.\ each heptagon has extension complexity at most 6.
+The upper bound is more challenging. Only few improvements have been made for a long time and the trivial upper bound $\pc(n) \leq n$ could only be improved by constant factors. One such improvement was done independently by \textcite{shitov2014upper} and \textcite{padrol2014polygons} and proved that $\pc(n) \leq (6n+6)/7$. The basis for their proofs was $\pc(7)=6$, i.e.\ each heptagon has extension complexity at most 6.
 
 Because of missing improvements, $\pc(n) \in \Theta(n)$ was conjectured \cite{fiorini2012extended}. This was refuted by \textcite{shitov2014sublinear} proving $\pc(n) \in o(n)$. He later improved the upper bound to $\pc(n) \in O(n^{2/3})$ \cite{shitov2020sublinear}, which is the best known bound so far.
 
@@ -84,7 +86,7 @@ In this paper we focus on the key ideas behind the discussed papers \citetitle*{
 
 In the first part we examine the results which led to the best known upper bounds.
 We will start with \textcite{shitov2020sublinear}, which provides the upper bound of $O(n^{2/3})$ for arbitrary $n$-gons by a purely geometric approach.
-From there we have a look at cyclic $n$-gons and the upper bound of $O(n^{1/2})$, which was provided by a semi-geometric / semi-algebraic approach by \textcite{kwan2020extension}.
+From there we have a look at cyclic $n$-gons and the upper bound of $O(n^{1/2})$, which was provided by a semi-geometric/semi-algebraic approach by \textcite{kwan2020extension}.
 Next, we try to compare these two approaches, as far as they are comparable. First on a high level comparing key ideas and later on a more technical level.
 
-In the second part we give another proof of the lower bound and present the applied theorem \cite[Theorem~1]{averkov2016maximum}, which can be used for various problems. We also give a quick overview of the key ideas behind it.
+In the second part we give another proof of the lower bound and present the applied theorem \cite[Theorem~1]{averkov2016maximum}. We also give a quick overview of the key ideas behind it.
