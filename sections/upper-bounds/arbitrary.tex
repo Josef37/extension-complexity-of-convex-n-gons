@@ -1,7 +1,7 @@
 \subsection{Arbitrary Convex n-Gons}
 
 In this section we give a detailed overview of \citetitle*{shitov2020sublinear}, \textcite{shitov2020sublinear}, which proves $\xc(P) \in O(n^{2/3})$ for any $n$-gon $P$.
-We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we start with presenting the results first, because, in doing so, we can highlight the reasoning more clearly.
+We focus on the underlying ideas and present only important arguments in more detail. In contrast to the source, we present the results first, because, in doing so, we can highlight the reasoning more clearly.
 
 The gist of the approach is as follows:
 \begin{enumerate}
@@ -22,15 +22,15 @@ In Appendix~\ref{sec:dependency-graph} we added a graphical representation of th
 
 The starting point for proving this theorem is the following lemma, adopted from \textcite[Proposition 3.1.1]{weltge2015sizes}, which states that the extension complexity behaves well for unions of polytopes:
 \begin{lemma}[{\cite[Lemma~8]{shitov2020sublinear}}]\label{lemma:union}
-  Let $P$ and $Q$ be polytopes\footnote{One is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.} in $\R^d$ -- each different from a point. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
+  Let $P$ and $Q$ be polytopes\footnote{One is tempted to think of these polytopes as being disjunct. But they can be arranged arbitrarily.} in $\R^d$, each different from a point. Then $$\xc(\conv(P \cup Q)) \leq \xc(P) + \xc(Q) .$$
 \end{lemma}
 
-This lemma allows us to consider a polygon in parts when estimating its extension complexity.
+This statement enables us to split a polygon into smaller parts when estimating its extension complexity.
 
 Now we will go on to define those smaller parts, which we can handle well.
 
 \begin{definition}[Turning angle]
-  If $P\subset\R^2$ is a polygon, then the \emph{turning angle} at a vertex $v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
+  If $P\subset\R^2$ is a polygon, then the \emph{turning angle} at a vertex~$v$ is $\pi-\angle v_-vv_+$, where $v_-$ and $v_+$ are two vertices adjacent to $v$ in $P$. \\
   In other words, it is the amount the angle at $v$ deviates from a straight line. \\
   The \emph{turning angle} of an edge $e$ of a polygon is the sum of the turning angles at the two endpoints of $e$.
 \end{definition}
@@ -237,7 +237,7 @@ We omit the proof, because we only lift polyhedra from diagrams, which is what w
 We can now focus on the main result of the first part, which allows us to build small extended formulations by combining simple extensions for a surrounding polygon.
 
 \begin{theorem}[Gluing acute extensions together, {\cite[Theorem 28]{shitov2020sublinear}}]\label{theorem:gluing}
-  Let $P$ be a polygon with vertex set $V$, $\emptyset \neq S \subseteq V$ and $\delta \geq 1$ a fixed integer. Assume
+  Let $P$ be a polygon with vertex set $V$. Let $\emptyset \neq S \subseteq V$ and $\delta \geq 1$ be an integer. Assume
 
   (i) for any $s \in S$ there are two vertices $s'$, $s''$ on two edges of $P$ adjacent to $s$,
 
@@ -341,7 +341,7 @@ To understand Theorem~\ref{theorem:gluing} better, we will now look at the limit
 After defining this central theorem, we have to make a way to apply it to general polygons.\footnote{See Remark~\ref{remark:pitfall}, why we can't simply use Corollary~\ref{corollary:acute-direction}.}
 Therefore, we formalize the notion of ``good'' sequences with respect to Theorem~\ref{theorem:gluing}.
 
-\begin{definition}[$t$-scattered subset]
+\begin{definition}[$t$-scattered]
   Let $t, n \in \N$ and $G \subseteq \{1,\dots,n\}$. $G$ is called \emph{$t$-scattered} if for $g, g' \in G, g \neq g'$ we have $\abs{g-g'} \geq t$.
 \end{definition}
 
@@ -385,7 +385,7 @@ Now we find another way to determine which sequences are actually \emph{$G$-good
 \end{figure}
 
 \begin{proof}
-  To prove that $v$ is $G$-good, we build an acute diagram $\Delta$ whose base is the $G$-envelope $v_G$ of $v$ and show that the main edge passing from $$o_g := (v_{g-2} \wedge v_{g-1}) \wedge (v_{g+1} \wedge v_{g+2})$$ contains $v_g$ for each $g \in G$.
+  To prove that $v$ is $G$-good, we build an acute diagram $\Delta$ whose base is the $G$\nobreakdash-envelope $v_G$ of $v$ and show that the main edge passing from $$o_g := (v_{g-2} \wedge v_{g-1}) \wedge (v_{g+1} \wedge v_{g+2})$$ contains $v_g$ for each $g \in G$.
 
   First we build an acute diagram $\Delta$ using Corollary~\ref{corollary:acute-direction} with base $v_G$ and\\
   (1) for each $g \in G$ the main edge from $o_g$ goes towards $v_g$,\\

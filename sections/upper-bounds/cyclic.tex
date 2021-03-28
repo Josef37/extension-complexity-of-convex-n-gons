@@ -97,7 +97,7 @@ In other words: For each vertex of color $c$ there is a scalar, such that for ea
   The gist of the proof is following. Since $M$ is representation dependent, reformulate the statement as a ratio of distances:
   $$\frac{d(v_j,f)}{d(v_k,f)} \leq \frac{d(v_j,g)}{d(v_k,g)}$$
   This can be done, since $M_{v_k,g} = 0$ verifies the statement and $M_{v_k,f} > 0$ holds, as the arcs are well-separated.\\
-  The idea is now this: Because $v_j$ is local to $f$, but $v_k$ and $g$ are relatively far away (at least $5\varepsilon$ in arc-distance), $d(v_j,f)$ is much smaller than $d(v_k,f)$ and $d(v_j,g)$. $d(v_k,g)$ may be large, but then we can argue using the triangle inequality that then also one of $d(v_k,f)$ or $d(v_j,g)$ has to be large.\footnote{Remark that this is the only place we use that $P$ is cyclic.}
+  The idea is as follows: Because $v_j$ is local to $f$, but $v_k$ and $g$ are relatively far away (at least $5\varepsilon$ in arc-distance), $d(v_j,f)$ is much smaller than $d(v_k,f)$ and $d(v_j,g)$. $d(v_k,g)$ may be large, but then we can argue using the triangle inequality that then also one of $d(v_k,f)$ or $d(v_j,g)$ has to be large.\footnote{Remark that this is the only place we use that $P$ is cyclic.}
 
   After those two properties of $M$ are shown to be true, we can apply a technical lemma \cite[Lemma~10.3]{kwan2020extension}, which gives us factors $\alpha_{v_1}, \dots, \alpha_{v_m}$, such that $\alpha_{v_i} M_{v_i,f} \leq \alpha_{v_j} M_{v_j,f}$ for all $f \in F^{X_i}$.
 \end{proof}
@@ -148,7 +148,7 @@ We will not prove this lemma here. But remark, that it does not require $P$ to b
 \begin{proof}[Proof outline of Lemma~\ref{lemma:rank-of-K}]
   We partition $K$ into submatrices $K[V,F^X]$ for $X \in \X_c$ and show that each of those $\abs{\X_c}$ slices has nonnegative rank at most $8$.
 
-  We know $K[V^X,F^X] = 0$ by definition of $K$. Therefore, it suffices to consider $K[V \setminus V^X, F^X]$. There are three possibilities for rows of this submatrix:
+  We know $K[V^X,F^X] = 0$ by definition of $K$. For estimating the nonnegative rank, we only have to consider $K[V \setminus V^X, F^X]$. There are three possibilities for rows of this submatrix:
 
   \begin{itemize}
     \item If $v \notin V_c$, then $K_{v,f} = M_{v_f}$ for all $f \in F^X$.
